@@ -15,10 +15,10 @@ class CreateAuthors extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50);
-            $table->string('slug', 50);
-            $table->string('web', 100);
-            $table->string('email', 100);
+            $table->string('name', 50)->default('');
+            $table->string('slug', 50)->unique()->default('');
+            $table->string('web', 100)->default('');
+            $table->string('email', 100)->default('');
             $table->timestamps();
         });
     }

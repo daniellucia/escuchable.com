@@ -15,13 +15,14 @@ class CreateShows extends Migration
     {
         Schema::create('shows', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 250);
-            $table->string('slug')->unique();
-            $table->string('feed')->unique();
-            $table->string('image', 50);
-            $table->text('description');
-            $table->integer('category');
-            $table->integer('author');
+            $table->string('name', 250)->default('');
+            $table->string('slug')->unique()->default('');
+            $table->string('feed')->unique()->default('');
+            $table->string('image', 50)->default('');
+            $table->text('description')->nullable();
+            $table->integer('category')->default(0);
+            $table->integer('author')->default(0);
+            $table->datetime('revised')->nullable();
             $table->timestamps();
         });
     }
