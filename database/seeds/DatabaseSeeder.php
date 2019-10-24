@@ -21,6 +21,11 @@ class DatabaseSeeder extends Seeder
             'slug' => Str::slug('Joan Boluda'),
         ]);
 
+        DB::table('authors')->insert([
+            'name' => 'Cadena Ser',
+            'slug' => Str::slug('Cadena Ser'),
+        ]);
+
         DB::table('categories')->insert([
             'name' => 'Podcasting',
             'slug' => Str::slug('Podcasting'),
@@ -29,6 +34,11 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
             'name' => 'Marketing',
             'slug' => Str::slug('Marketing'),
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Comedia',
+            'slug' => Str::slug('Comedia'),
         ]);
 
         DB::table('shows')->insert([
@@ -46,5 +56,15 @@ class DatabaseSeeder extends Seeder
             'category' => 2,
             'author' => 2,
         ]);
+
+        DB::table('shows')->insert([
+            'name' => 'Nadie sabe nada',
+            'slug' => Str::slug('Nadie sabe nada'),
+            'feed' => 'https://fapi-top.prisasd.com/podcast/playser/nadie_sabe_nada/itunestfp/podcast.xml',
+            'category' => 3,
+            'author' => 3,
+        ]);
+
+
     }
 }

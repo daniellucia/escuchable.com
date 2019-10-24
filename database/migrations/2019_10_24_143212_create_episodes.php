@@ -16,11 +16,13 @@ class CreateEpisodes extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title', 150)->default('');
+            $table->string('slug', 150)->default('');
             $table->string('link', 250)->default('');
             $table->string('mp3', 250)->default('');
             $table->text('description')->nullable();
+            $table->integer('length')->default(0);
             $table->datetime('published')->nullable();
-            $table->integer('show');
+            $table->integer('show')->default(0);
             $table->timestamps();
         });
     }
