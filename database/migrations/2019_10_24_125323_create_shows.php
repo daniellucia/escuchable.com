@@ -21,6 +21,7 @@ class CreateShows extends Migration
             $table->string('image', 50);
             $table->text('description');
             $table->integer('category');
+            $table->integer('author');
             $table->timestamps();
         });
     }
