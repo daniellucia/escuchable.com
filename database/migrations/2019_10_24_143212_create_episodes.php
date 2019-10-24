@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShows extends Migration
+class CreateEpisodes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateShows extends Migration
      */
     public function up()
     {
-        Schema::create('shows', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 250);
-            $table->string('slug')->unique();
-            $table->string('feed')->unique();
-            $table->string('image', 50);
+            $table->string('title', 150);
+            $table->string('link', 250);
+            $table->string('mp3', 250);
             $table->text('description');
-            $table->integer('category');
+            $table->datetime('published');
+            $table->integer('show');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateShows extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shows');
+        Schema::dropIfExists('episodes');
     }
 }

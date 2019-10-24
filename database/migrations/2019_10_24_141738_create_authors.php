@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShows extends Migration
+class CreateAuthors extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateShows extends Migration
      */
     public function up()
     {
-        Schema::create('shows', function (Blueprint $table) {
+        Schema::create('authors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 250);
-            $table->string('slug')->unique();
-            $table->string('feed')->unique();
-            $table->string('image', 50);
-            $table->text('description');
-            $table->integer('category');
+            $table->string('name', 50);
+            $table->string('web', 100);
+            $table->string('email', 100);
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateShows extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shows');
+        Schema::dropIfExists('authors');
     }
 }
