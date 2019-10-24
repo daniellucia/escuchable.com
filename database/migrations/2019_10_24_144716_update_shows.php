@@ -14,7 +14,7 @@ class UpdateShows extends Migration
     public function up()
     {
         Schema::table('shows', function($table) {
-            $table->dtetime('revised');
+            $table->datetime('revised');
         });
     }
 
