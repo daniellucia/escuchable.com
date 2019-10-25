@@ -3,9 +3,9 @@
 namespace App;
 
 use App\Categories;
-use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class Shows extends Model
 {
@@ -34,7 +34,18 @@ class Shows extends Model
         if ($channel->image->url) {
             $extension = pathinfo($channel->image->url, PATHINFO_EXTENSION);
             $image = sprintf('/images/show/%s.%s', Str::slug($channel->title), $extension);
-            Image::make($channel->image->url)->save(public_path($image));
+            if (!file_exists($image)) {
+                Image::make($channel->image->url)->save(public_path($image));
+
+                /**
+                 * Redimensionamos la imagen
+                 */
+                $img = Image::make(public_path($image));
+                $img->resize(400, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            }
+
         }
 
         /**
