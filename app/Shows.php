@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Categories;
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -24,15 +25,34 @@ class Shows extends Model
         }
 
         /**
+         * Comprobamos si el show
+         * tiene imagen y de ser así,
+         * la copiamos con el nombre
+         * correcto
+         */
+        $image = false;
+        if ($channel->image->url) {
+            $extension = pathinfo($channel->image->url, PATHINFO_EXTENSION);
+            $image = sprintf('/images/show/%s.%s', Str::slug($channel->title), $extension);
+            Image::make($channel->image->url)->save(public_path($image));
+        }
+
+        /**
          * Actualizamos el show
          */
+
         $this->name = $channel->title;
         $this->slug = Str::slug($channel->title);
         $this->web = $channel->link;
         $this->language = substr($channel->language, 0, 2);
         $this->description = $channel->description;
+
         if ($category) {
             $this->category = $category->id;
+        }
+
+        if ($image) {
+            $this->image = $image;
         }
 
         $this->save();

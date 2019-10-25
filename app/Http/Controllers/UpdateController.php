@@ -53,6 +53,13 @@ class UpdateController extends Controller
 
     public function opml()
     {
+        /**
+         * Obtenemos el archivo opml local
+         * para actualizarlo.
+         * Este método puede ser usado para
+         * que los usuarios puedan subir
+         * sus propios opml
+         */
         $xml = \File::get(storage_path('opml/Podcasts.opml'));
         Shows::saveFromOPML($xml);
 
