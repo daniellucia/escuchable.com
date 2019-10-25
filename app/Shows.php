@@ -52,7 +52,7 @@ class Shows extends Model
          * Actualizamos el show
          */
 
-        $this->name = $channel->title;
+        $this->name = trim($channel->title);
         $this->slug = Str::slug($channel->title);
         $this->web = $channel->link;
         $this->language = substr($channel->language, 0, 2);
