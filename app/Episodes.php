@@ -29,9 +29,13 @@ class Episodes extends Model
                 'description' => $item->description,
                 'link' => $item->link,
                 'published' => Carbon::createFromTimeString($item->pubDate)->toDateTimeString(),
-                'mp3' => $item->enclosure->attributes()['url'],
-                'length' => $item->enclosure->attributes()['length'],
+                'length' => 0,
             ];
+
+            if ($item->enclosure->attributes()) {
+                $episodeShow['mp3'] = $item->enclosure->attributes()['url'];
+                $episodeShow['length'] = $item->enclosure->attributes()['length'];
+            }
 
             if (!$episode) {
                 self::create($episodeShow);

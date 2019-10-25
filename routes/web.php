@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('update', 'UpdateController@index');
 Route::get('update/opml', 'UpdateController@opml');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

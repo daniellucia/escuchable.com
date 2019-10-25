@@ -34,8 +34,11 @@ class UpdateController extends Controller
             /**
              * Leemos feed
              */
-
-            $xml = Read::xml($show->feed);
+            $xml = null;
+            try {
+                $xml = Read::xml($show->feed);
+            } catch (Exception $e) {
+            }
 
             /**
              * Actualizamos el título
