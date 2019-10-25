@@ -18,13 +18,13 @@ class Episodes extends Model
 
         foreach ($channel->item as $item) {
             $episode = self::where([
-                'title' => $item->title,
+                'title' => Str::limit($item->title, 250),
                 'show' => $show->id,
             ])->first();
 
             $episodeShow = [
-                'title' => $item->title,
-                'slug' => Str::slug($item->title),
+                'title' => Str::limit($item->title, 250),
+                'slug' => Str::slug(Str::limit($item->title, 250)),
                 'show' => $show->id,
                 'description' => $item->description,
                 'link' => $item->link,

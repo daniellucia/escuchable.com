@@ -19,8 +19,8 @@ class Shows extends Model
          */
         $category = false;
         if ($channel->category) {
-            $category = Categories::firstOrCreate(['slug' => Str::slug($channel->category)]);
-            $category->name = $channel->category;
+            $category = Categories::firstOrCreate(['slug' => Str::slug(Str::limit($channel->category, 30))]);
+            $category->name = Str::limit($channel->category, 30);
             $category->save();
         }
 
@@ -52,8 +52,8 @@ class Shows extends Model
          * Actualizamos el show
          */
 
-        $this->name = trim($channel->title);
-        $this->slug = Str::slug($channel->title);
+        $this->name = Str::limit(trim($channel->title), 250);
+        $this->slug = Str::slug($this->name);
         $this->web = $channel->link;
         $this->language = substr($channel->language, 0, 2);
         $this->description = $channel->description;
@@ -79,8 +79,8 @@ class Shows extends Model
             foreach ($array['body'] as $element) {
                 if (isset($element['xmlUrl'])) {
                     $show = self::firstOrCreate(['feed' => $element['xmlUrl']]);
-                    $show->name = $element['text'];
-                    $show->slug = Str::slug($element['text']);
+                    $show->name = Str::limit($element['text'], 250);
+                    $show->slug = Str::slug($show->name);
                     $show->save();
                 }
 
