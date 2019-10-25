@@ -32,18 +32,23 @@ class Shows extends Model
          */
         $image = false;
         if ($channel->image->url) {
-            $extension = pathinfo($channel->image->url, PATHINFO_EXTENSION);
+            $urlRemote = strtok($channel->image->url, '?');
+            $extension = pathinfo($urlRemote, PATHINFO_EXTENSION);
             $image = sprintf('/images/show/%s.%s', substr(Str::slug($channel->title), 0, 30), $extension);
             if (!file_exists($image)) {
-                Image::make($channel->image->url)->save(public_path($image));
+                try {
+                    Image::make($urlRemote)->save(public_path($image));
 
-                /**
-                 * Redimensionamos la imagen
-                 */
-                $img = Image::make(public_path($image));
-                $img->resize(400, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
+                    /**
+                     * Redimensionamos la imagen
+                     */
+                    $img = Image::make(public_path($image));
+                    $img->resize(400, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                } catch (Exception $e) {
+
+                }
             }
 
         }

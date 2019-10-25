@@ -38,15 +38,17 @@ class UpdateController extends Controller
          * Actualizamos el título
          * del show
          */
-
-        $show->updateByChannel($xml->channel);
+        if (is_object($xml)) {
+            $show->updateByChannel($xml->channel);
+        }
 
         /**
          * Guardamos los episodios
          * correspondientes
          */
-
-        Episodes::saveFromChannel($show, $xml->channel);
+        if (is_object($xml)) {
+            Episodes::saveFromChannel($show, $xml->channel);
+        }
 
         return $show->name;
     }
