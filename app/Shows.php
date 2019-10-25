@@ -33,7 +33,7 @@ class Shows extends Model
         $image = false;
         if ($channel->image->url) {
             $extension = pathinfo($channel->image->url, PATHINFO_EXTENSION);
-            $image = sprintf('/images/show/%s.%s', Str::slug($channel->title), $extension);
+            $image = sprintf('/images/show/%s.%s', substr(Str::slug($channel->title), 0, 30), $extension);
             if (!file_exists($image)) {
                 Image::make($channel->image->url)->save(public_path($image));
 
