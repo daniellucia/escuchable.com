@@ -32,9 +32,9 @@ class Episodes extends Model
                 'length' => 0,
             ];
 
-            if ($item->enclosure->attributes()) {
+            if ($item->enclosure->attributes() !== null) {
                 $episodeShow['mp3'] = $item->enclosure->attributes()['url'];
-                $episodeShow['length'] = $item->enclosure->attributes()['length'];
+                $episodeShow['length'] = intval($item->enclosure->attributes()['length']);
             }
 
             if (!$episode) {
