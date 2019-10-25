@@ -16,41 +16,47 @@ class UpdateController extends Controller
          * para obtener el feed de episodios
          */
 
-        $show = Shows::whereDate('updated_at', '<', Carbon::today()->toDateString())->orWhereNull('updated_at')->first();
-        if (!$show) {
+        $shows = Shows::whereDate('updated_at', '<', Carbon::today()->toDateString())->orWhereNull('updated_at')->limit(5)->get();
+        if (!$shows) {
             return 'Nada que actualizar';
         }
 
-        /**
-         * Actualziamos la fecha
-         * de actualziación
-         */
+        $salida = [];
 
-        $show->touch();
+        foreach ($shows as $show) {
+            /**
+             * Actualziamos la fecha
+             * de actualziación
+             */
 
-        /**
-         * Leemos feed
-         */
+            $show->touch();
 
-        $xml = Read::xml($show->feed);
+            /**
+             * Leemos feed
+             */
 
-        /**
-         * Actualizamos el título
-         * del show
-         */
-        if (is_object($xml)) {
-            $show->updateByChannel($xml->channel);
+            $xml = Read::xml($show->feed);
+
+            /**
+             * Actualizamos el título
+             * del show
+             */
+            if (is_object($xml)) {
+                $show->updateByChannel($xml->channel);
+            }
+
+            /**
+             * Guardamos los episodios
+             * correspondientes
+             */
+            if (is_object($xml)) {
+                Episodes::saveFromChannel($show, $xml->channel);
+            }
+
+            $salida[] = $show->name;
         }
 
-        /**
-         * Guardamos los episodios
-         * correspondientes
-         */
-        if (is_object($xml)) {
-            Episodes::saveFromChannel($show, $xml->channel);
-        }
-
-        return $show->name;
+        return $salida;
     }
 
     public function opml()
