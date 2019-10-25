@@ -27,7 +27,15 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
 
+        /**
+         * Actualización de feeds
+         */
         $schedule->command('update:feeds')->everyMinute();
+
+        /**
+         * Verificación de shows duplicados
+         */
+        $schedule->command('update:duplicates')->daily();
     }
 
     /**

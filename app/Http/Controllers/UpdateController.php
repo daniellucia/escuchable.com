@@ -76,4 +76,22 @@ class UpdateController extends Controller
 
         return [];
     }
+
+    /**
+     * Método para encontrar duplicados
+     *
+     * @return array
+     */
+    public function findDuplicates()
+    {
+        $shows = Shows::all();
+        $showsUnique = $shows->unique('name');
+        $results = $shows->diff($showsUnique);
+        foreach ($results as $show) {
+            Episodes::whereShow($show->id)->delete();
+            $show->delete();
+            echo $show->id . "\n";
+        }
+        return false;
+    }
 }
