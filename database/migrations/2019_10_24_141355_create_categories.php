@@ -17,6 +17,7 @@ class CreateCategories extends Migration
             $table->bigIncrements('id');
             $table->string('name', 30)->default('');
             $table->string('slug')->unique()->default('');
+            $table->boolean('visible')->default(false);
             $table->timestamps();
         });
     }

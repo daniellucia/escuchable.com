@@ -26,26 +26,10 @@ class DatabaseSeeder extends Seeder
             'slug' => Str::slug('Cadena Ser'),
         ]);
 
-        DB::table('categories')->insert([
-            'name' => 'Podcasting',
-            'slug' => Str::slug('Podcasting'),
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Marketing',
-            'slug' => Str::slug('Marketing'),
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Comedia',
-            'slug' => Str::slug('Comedia'),
-        ]);
-
         DB::table('shows')->insert([
             'name' => 'El Siglo 21 es Hoy',
             'slug' => Str::slug('El Siglo 21 es Hoy'),
             'feed' => 'https://www.spreaker.com/show/880846/episodes/feed',
-            'category' => 1,
             'author' => 1,
         ]);
 
@@ -53,7 +37,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Marketing Online',
             'slug' => Str::slug('Marketing Online'),
             'feed' => 'https://boluda.com/podcast/feed/podcast/',
-            'category' => 2,
             'author' => 2,
         ]);
 
@@ -61,7 +44,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Nadie sabe nada',
             'slug' => Str::slug('Nadie sabe nada'),
             'feed' => 'https://fapi-top.prisasd.com/podcast/playser/nadie_sabe_nada/itunestfp/podcast.xml',
-            'category' => 3,
             'author' => 3,
         ]);
 
