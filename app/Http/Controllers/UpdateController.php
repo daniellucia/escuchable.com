@@ -18,7 +18,7 @@ class UpdateController extends Controller
 
         $show = Shows::whereDate('updated_at', '<', Carbon::today()->toDateString())->orWhereNull('updated_at')->first();
         if (!$show) {
-            return [];
+            return 'Nada que actualizar';
         }
 
         /**
@@ -48,6 +48,6 @@ class UpdateController extends Controller
 
         Episodes::saveFromChannel($show, $xml->channel);
 
-        return ['ok', $show];
+        return $show->name;
     }
 }
