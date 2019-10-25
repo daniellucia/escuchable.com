@@ -50,4 +50,12 @@ class UpdateController extends Controller
 
         return $show->name;
     }
+
+    public function opml()
+    {
+        $xml = \File::get(storage_path('opml/Podcasts.opml'));
+        Shows::saveFromOPML($xml);
+
+        return [];
+    }
 }

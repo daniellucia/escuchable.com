@@ -37,4 +37,23 @@ class Shows extends Model
 
         $this->save();
     }
+
+    public static function saveFromOPML($xml)
+    {
+        $parser = new \vipnytt\OPMLParser($xml);
+
+        $array = $parser->getResult();
+
+        if (!empty($array)) {
+            foreach ($array['body'] as $element) {
+                if (isset($element['xmlUrl'])) {
+                    $show = self::firstOrCreate(['feed' => $element['xmlUrl']]);
+                    $show->name = $element['text'];
+                    $show->slug = Str::slug($element['text']);
+                    $show->save();
+                }
+
+            }
+        }
+    }
 }

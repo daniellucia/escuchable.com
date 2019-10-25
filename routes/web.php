@@ -16,4 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('update', 'UpdateController@index');
+Route::get('update/opml', 'UpdateController@opml');
 
