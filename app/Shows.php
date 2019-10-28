@@ -19,8 +19,10 @@ class Shows extends Model
          * Al actualizar o crear, actualizamos
          * el slug con el nombre del modelo
          */
-        self::saving(function($show) {
+        self::saving(function ($show) {
+            $show->name = Str::limit(trim($show->name), 250);
             $show->slug = Str::slug($show->name);
+            $show->language = substr($show->language, 0, 2);
         });
     }
 
@@ -44,9 +46,9 @@ class Shows extends Model
          * Actualizamos el show
          */
 
-        $this->name = Str::limit(trim($channel->title), 250);
+        $this->name = $channel->title;
         $this->web = $channel->link;
-        $this->language = substr($channel->language, 0, 2);
+        $this->language = $channel->language;
         $this->description = $channel->description;
 
         if ($category) {
@@ -70,7 +72,7 @@ class Shows extends Model
             foreach ($array['body'] as $element) {
                 if (isset($element['xmlUrl'])) {
                     $show = self::firstOrCreate(['feed' => $element['xmlUrl']]);
-                    $show->name = Str::limit($element['text'], 250);
+                    $show->name = $element['text'];
                     $show->save();
                 }
 

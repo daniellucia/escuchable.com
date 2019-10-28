@@ -17,6 +17,7 @@ class CreateEpisodes extends Migration
             $table->bigIncrements('id');
             $table->string('title', 150)->default('');
             $table->string('slug', 150)->default('');
+            $table->string('unique', 150)->default('')->unique();
             $table->string('link', 250)->default('');
             $table->string('mp3', 250)->default('');
             $table->text('description')->nullable();
