@@ -16,4 +16,4 @@ Route::get('update/opml', 'UpdateController@opml');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
