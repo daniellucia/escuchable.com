@@ -11,18 +11,26 @@ class Shows extends Model
 {
     protected $fillable = ['name', 'slug', 'feed', 'image', 'descrition', 'category', 'author', 'revised'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        /**
+         * Al actualizar o crear, actualizamos
+         * el slug con el nombre del modelo
+         */
+        self::saving(function($show) {
+            $show->slug = Str::slug($show->name);
+        });
+    }
+
     public function updateByChannel($channel)
     {
 
         /**
          * Comprobamos la categoría
          */
-        $category = false;
-        if ($channel->category) {
-            $category = Categories::firstOrCreate(['slug' => Str::slug(Str::limit($channel->category, 30))]);
-            $category->name = Str::limit($channel->category, 30);
-            $category->save();
-        }
+        $category = Categories::check($channel);
 
         /**
          * Comprobamos si el show
@@ -30,35 +38,13 @@ class Shows extends Model
          * la copiamos con el nombre
          * correcto
          */
-        $image = false;
-        if ($channel->image->url) {
-            $urlRemote = strtok($channel->image->url, '?');
-            $extension = pathinfo($urlRemote, PATHINFO_EXTENSION);
-            $image = sprintf('/images/show/%s.%s', substr(Str::slug($channel->title), 0, 30), $extension);
-            if (!file_exists($image)) {
-                try {
-                    Image::make($urlRemote)->save(public_path($image));
-
-                    /**
-                     * Redimensionamos la imagen
-                     */
-                    $img = Image::make(public_path($image));
-                    $img->resize(400, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                } catch (Exception $e) {
-
-                }
-            }
-
-        }
+        $image = self::checkImage($channel);
 
         /**
          * Actualizamos el show
          */
 
         $this->name = Str::limit(trim($channel->title), 250);
-        $this->slug = Str::slug($this->name);
         $this->web = $channel->link;
         $this->language = substr($channel->language, 0, 2);
         $this->description = $channel->description;
@@ -85,11 +71,37 @@ class Shows extends Model
                 if (isset($element['xmlUrl'])) {
                     $show = self::firstOrCreate(['feed' => $element['xmlUrl']]);
                     $show->name = Str::limit($element['text'], 250);
-                    $show->slug = Str::slug($show->name);
                     $show->save();
                 }
 
             }
         }
+    }
+
+    public static function checkImage($channel)
+    {
+        $image = false;
+        if ($channel->image->url) {
+            $urlRemote = strtok($channel->image->url, '?');
+            $extension = pathinfo($urlRemote, PATHINFO_EXTENSION);
+            $image = sprintf('/images/show/%s.%s', substr(Str::slug($channel->title), 0, 30), $extension);
+            if (!file_exists($image)) {
+                try {
+                    Image::make($urlRemote)->save(public_path($image));
+
+                    /**
+                     * Redimensionamos la imagen
+                     */
+                    $img = Image::make(public_path($image));
+                    $img->resize(400, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                } catch (Exception $e) {
+
+                }
+            }
+        }
+
+        return $image;
     }
 }

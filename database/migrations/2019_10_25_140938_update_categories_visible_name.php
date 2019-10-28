@@ -14,7 +14,7 @@ class UpdateCategoriesVisibleName extends Migration
     public function up()
     {
         Schema::table('categories', function ($table) {
-            $table->string('visible_name', 250);
+            $table->string('visible_name', 250)->default('');
         });
     }
 
