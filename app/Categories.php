@@ -48,6 +48,6 @@ class Categories extends Model
             $category->save();
         }
 
-        return false;
+        return $category;
     }
 }

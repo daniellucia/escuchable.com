@@ -74,7 +74,7 @@ class Episodes extends Model
             'length' => 0,
         ];
 
-        if (null !== $item->enclosure->attributes() && count($item->enclosure->attributes()) > 0) {
+        if (null !== $item->enclosure->attributes()) {
             $episodeShow['mp3'] = (string) $item->enclosure->attributes()['url'];
             $episodeShow['length'] = intval($item->enclosure->attributes()['length']);
         }

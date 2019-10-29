@@ -15,7 +15,9 @@ class Read
         try {
             $xml = simplexml_load_string($data);
         } catch (\Exception $e) {
-            $sml = false;
+            $xml = false;
         }
+
+        return $xml;
     }
 }

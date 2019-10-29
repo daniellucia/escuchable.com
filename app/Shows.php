@@ -89,7 +89,6 @@ class Shows extends Model
          * como un tag
          */
         if ($category) {
-            dump($category->name);
             $this->attachTag($category->name);
         }
 
