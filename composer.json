@@ -14,6 +14,7 @@
         "intervention/image": "^2.5",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
+        "spatie/laravel-sluggable": "^2.2",
         "vipnytt/opmlparser": "dev-master"
     },
     "require-dev": {

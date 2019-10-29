@@ -15,9 +15,8 @@ class CreateEpisodes extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title', 150)->default('');
-            $table->string('slug', 150)->default('');
-            $table->string('unique', 150)->default('')->unique();
+            $table->string('title', 250)->default('');
+            $table->string('slug', 250)->default('')->unique();
             $table->string('link', 250)->default('');
             $table->string('mp3', 250)->default('');
             $table->text('description')->nullable();

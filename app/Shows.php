@@ -6,10 +6,34 @@ use App\Categories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Shows extends Model
 {
+    use HasSlug;
+
     protected $fillable = ['name', 'slug', 'feed', 'image', 'descrition', 'category', 'author', 'revised'];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public static function boot()
     {
@@ -21,7 +45,6 @@ class Shows extends Model
          */
         self::saving(function ($show) {
             $show->name = Str::limit(trim($show->name), 250);
-            $show->slug = Str::slug($show->name);
             $show->language = substr($show->language, 0, 2);
         });
     }
@@ -98,7 +121,7 @@ class Shows extends Model
                     $img->resize(400, null, function ($constraint) {
                         $constraint->aspectRatio();
                     });
-                } catch (Exception $e) {
+                } catch (\Exception $e) {
 
                 }
             }

@@ -4,20 +4,33 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
 class Categories extends Model
 {
+    use HasSlug;
+
     protected $fillable = ['name', 'slug', 'visible'];
 
-    public static function boot() {
-        parent::boot();
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 
-        /**
-         * Al actualizar o crear, actualizamos
-         * el slug con el nombre del modelo
-         */
-        self::saving(function($category) {
-            $category->slug = Str::slug($category->name);
-        });
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 
     /**
@@ -27,7 +40,8 @@ class Categories extends Model
      * @param [type] $channel
      * @return void
      */
-    public static function check($channel) {
+    public static function check($channel)
+    {
         $category = false;
         if ($channel->category) {
             $category = Categories::firstOrCreate(['name' => Str::limit($channel->category, 30)]);

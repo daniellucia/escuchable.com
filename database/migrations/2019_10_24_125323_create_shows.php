@@ -16,7 +16,7 @@ class CreateShows extends Migration
         Schema::create('shows', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 250)->default('');
-            $table->string('slug')->default('');
+            $table->string('slug')->default('')->unique();
             $table->string('feed')->unique()->default('');
             $table->string('web', 250)->default('');
             $table->string('language', 2)->default('');
