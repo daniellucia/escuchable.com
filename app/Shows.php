@@ -8,10 +8,12 @@ use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Spatie\Tags\HasTags;
 
 class Shows extends Model
 {
     use HasSlug;
+    use HasTags;
 
     protected $fillable = ['name', 'slug', 'feed', 'image', 'descrition', 'category', 'author', 'revised'];
 
@@ -80,6 +82,15 @@ class Shows extends Model
 
         if ($image) {
             $this->image = $image;
+        }
+
+        /**
+         * Añadimos la categoría
+         * como un tag
+         */
+        if ($category) {
+            dump($category->name);
+            $this->attachTag($category->name);
         }
 
         $this->save();
