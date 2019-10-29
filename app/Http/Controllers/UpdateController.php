@@ -38,24 +38,20 @@ class UpdateController extends Controller
             try {
                 $xml = Read::xml($show->feed);
             } catch (Exception $e) {
-                dd($e);
+                continue;
             }
 
             /**
              * Actualizamos el título
              * del show
              */
-            if (is_object($xml)) {
-                $show->updateByChannel($xml->channel);
-            }
+            $show->updateByChannel($xml->channel);
 
             /**
              * Guardamos los episodios
              * correspondientes
              */
-            if (is_object($xml)) {
-                Episodes::saveFromChannel($show, $xml->channel);
-            }
+            Episodes::saveFromChannel($show, $xml->channel);
 
             $salida[] = $show->name;
         }

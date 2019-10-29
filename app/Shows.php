@@ -88,8 +88,11 @@ class Shows extends Model
 
     public static function saveFromOPML($xml)
     {
-        $parser = new \vipnytt\OPMLParser($xml);
+        if (!is_object($xml)) {
+            return;
+        }
 
+        $parser = new \vipnytt\OPMLParser($xml);
         $array = $parser->getResult();
 
         if (!empty($array)) {
