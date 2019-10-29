@@ -75,20 +75,11 @@ class Shows extends Model
         $this->web = $channel->link;
         $this->language = $channel->language;
         $this->description = $channel->description;
+        $this->image = $image;
 
         if ($category) {
             $this->category = $category->id;
-        }
 
-        if ($image) {
-            $this->image = $image;
-        }
-
-        /**
-         * Añadimos la categoría
-         * como un tag
-         */
-        if ($category) {
             $this->attachTag($category->name);
         }
 
@@ -115,7 +106,7 @@ class Shows extends Model
 
     public static function checkImage($channel)
     {
-        $image = false;
+        $image = '';
         if ($channel->image->url) {
             $urlRemote = strtok($channel->image->url, '?');
             $extension = pathinfo($urlRemote, PATHINFO_EXTENSION);

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class Categories extends Model
 {
@@ -44,7 +45,8 @@ class Categories extends Model
     {
         $category = false;
         if ($channel->category) {
-            $category = Categories::firstOrCreate(['name' => Str::limit($channel->category, 30)]);
+            $categoryName = GoogleTranslate::trans($channel->category, 'es', 'en');
+            $category = Categories::firstOrCreate(['name' => Str::limit($categoryName, 30)]);
             $category->save();
         }
 
