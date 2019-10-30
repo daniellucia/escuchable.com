@@ -1,6 +1,6 @@
 <div class="episodes">
     @if (!empty($episodes))
-
+        <h1>{{$show->name}}</h1>
         {{ $episodes->links() }}
 
         @foreach ($episodes as $episode)
