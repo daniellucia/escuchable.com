@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Episodes;
+use App\Resources\Channel;
 use App\Resources\Read;
 use App\Shows;
 use Carbon\Carbon;
@@ -99,5 +100,36 @@ class UpdateController extends Controller
             echo $show->id . "\n";
         }
         return false;
+    }
+
+    public function fromTxt()
+    {
+        $feeds = file(storage_path('opml/feeds.txt'));
+        foreach ($feeds as $feed) {
+            $feed = trim($feed);
+            dump($feed);
+
+            $show = Shows::where('feed', $feed)->first();
+
+            if (!$show) {
+                $xml = null;
+                try {
+                    $xml = Read::xml($feed);
+                } catch (Exception $e) {
+                    continue;
+                }
+
+                if (is_object($xml)) {
+                    $channel = new Channel($xml->channel);
+                    $data = $channel->toArray();
+                    $data['category'] = intval($data['category']);
+                    dump('Insertado');
+
+                    $data['feed'] = $feed;
+                    $show = Shows::create($data);
+                }
+
+            }
+        }
     }
 }

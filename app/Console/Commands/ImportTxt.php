@@ -4,21 +4,21 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class FindDuplicates extends Command
+class ImportTxt extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'update:duplicates';
+    protected $signature = 'update:txt';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Busca duplicados y los elimina';
+    protected $description = 'Importa feeds de un TXT';
 
     /**
      * Create a new command instance.
@@ -37,6 +37,6 @@ class FindDuplicates extends Command
      */
     public function handle()
     {
-        app('App\Http\Controllers\UpdateController')->findDuplicates();
+        app('App\Http\Controllers\UpdateController')->fromTxt();
     }
 }
