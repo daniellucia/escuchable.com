@@ -7,6 +7,7 @@ use App\Categories;
 use App\Resources\Channel;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Tags\HasTags;
@@ -16,7 +17,9 @@ class Shows extends Model
     use HasSlug;
     use HasTags;
     use Metable;
+    use CanBeVoted;
 
+    protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'descrition', 'category', 'author', 'revised'];
 
     /**
