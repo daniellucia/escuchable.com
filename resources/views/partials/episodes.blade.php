@@ -1,11 +1,13 @@
-@if (!empty($episodes))
+<div class="episodes">
+    @if (!empty($episodes))
 
-    {{ $episodes->links() }}
+        {{ $episodes->links() }}
 
-    @foreach ($episodes as $episode)
-        <p><a href="{{ route('episode.view', [$category, $show, $episode]) }}">{{ $episode->title }}</a></p>
-    @endforeach
+        @foreach ($episodes as $episode)
+            <p><a href="{{ route('episode.view', [$category, $show, $episode]) }}">{{ $episode->title }}</a></p>
+        @endforeach
 
-    {{ $episodes->links() }}
+        {{ $episodes->links() }}
 
-@endif
+    @endif
+</div>

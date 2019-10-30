@@ -2,4 +2,7 @@
 
 @section('content')
 
+@include('partials.shows')
+@include('partials.episodes')
+
 @endsection

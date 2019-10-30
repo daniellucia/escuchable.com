@@ -31,14 +31,14 @@ class HomeController extends Controller
 
     public function viewCategory(Categories $category) {
 
-        return view('category', [
+        return view('home', [
             'category' => $category,
             'shows' => Shows::whereCategory($category->id)->get()
         ]);
     }
 
     public function viewShow(Categories $category, Shows $show) {
-        return view('show', [
+        return view('home', [
             'category' => $category,
             'shows' => Shows::whereCategory($category->id)->get(),
             'show' => $show,
@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
 
     public function viewEpisode(Categories $category, Shows $show) {
-        return view('episode', [
+        return view('home', [
             'category' => $category,
             'shows' => Shows::whereCategory($category->id)->get(),
             'show' => $show,
