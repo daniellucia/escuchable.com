@@ -23,7 +23,7 @@ class Channel
         $this->language = $channel->language;
         $this->description = $channel->description;
         $this->asset = $channel->image;
-        $this->category = $channel->category;
+        $this->category = strval($channel->category);
         $this->image = $this->setImage();
         $this->thumbnail = $this->setImage('/images/show/thumbnail', 32);
     }
@@ -45,7 +45,6 @@ class Channel
                     /**
                      * Redimensionamos la imagen
                      */
-                    dump(public_path($image));
                     $img = Image::make(public_path($image));
                     $img->resize(intval($width), intval($width), function ($constraint) {
                         $constraint->aspectRatio();
@@ -63,7 +62,8 @@ class Channel
 
     public function setCategory($category)
     {
-        if ($category) {
+        $this->category = 0;
+        if (isset($category->id)) {
             $this->category = $category->id;
         }
     }

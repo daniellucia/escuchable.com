@@ -44,10 +44,17 @@ class Categories extends Model
     public static function check($channel)
     {
         $category = false;
-        if ($channel->category) {
-            $categoryName = GoogleTranslate::trans($channel->category, 'es', 'en');
-            $category = Categories::firstOrCreate(['name' => Str::limit($categoryName, 30)]);
-            $category->save();
+
+        if (strval($channel->category) != '') {
+            $categoryName = GoogleTranslate::trans(strval($channel->category), 'es', 'en');
+
+            if (strlen($categoryName) > 3) {
+                $category = Categories::firstOrCreate(['name' => Str::limit($categoryName, 30)]);
+                $category->save();
+            } else {
+                $category = Categories::firstOrCreate(['name' => Str::limit(strval($channel->category), 30)]);
+                $category->save();
+            }
         }
 
         return $category;

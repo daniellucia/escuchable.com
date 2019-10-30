@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Categories;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         /**
          * Cambiamos el path public
          */
-        $this->app->bind('path.public', function() {
+        $this->app->bind('path.public', function () {
             return base_path('public_html');
         });
     }
@@ -28,6 +30,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share('categories', Categories::all());
     }
 }

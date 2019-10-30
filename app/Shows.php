@@ -73,7 +73,7 @@ class Shows extends Model
             $this->attachTag($category->name);
         }
 
-        $this->save((array) $channel);
+        $this->update((array) $channel);
     }
 
     public static function saveFromOPML($xml)

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Categories;
+use App\Shows;
+use App\Episodes;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -24,5 +27,31 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function viewCategory(Categories $category) {
+
+        return view('category', [
+            'category' => $category,
+            'shows' => Shows::whereCategory($category->id)->get()
+        ]);
+    }
+
+    public function viewShow(Categories $category, Shows $show) {
+        return view('show', [
+            'category' => $category,
+            'shows' => Shows::whereCategory($category->id)->get(),
+            'show' => $show,
+            'episodes' => Episodes::whereShow($show->id)->paginate(15),
+        ]);
+    }
+
+    public function viewEpisode(Categories $category, Shows $show) {
+        return view('episode', [
+            'category' => $category,
+            'shows' => Shows::whereCategory($category->id)->get(),
+            'show' => $show,
+            'episodes' => Episodes::whereShow($show->id)->paginate(15),
+        ]);
     }
 }
