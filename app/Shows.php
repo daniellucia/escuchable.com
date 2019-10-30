@@ -20,7 +20,7 @@ class Shows extends Model
     use CanBeVoted;
 
     protected $vote = User::class;
-    protected $fillable = ['name', 'slug', 'feed', 'image', 'descrition', 'category', 'author', 'revised'];
+    protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'category', 'author', 'revised', 'language', 'thumbnail'];
 
     /**
      * Get the options for generating the slug.
@@ -73,7 +73,7 @@ class Shows extends Model
             $this->attachTag($category->name);
         }
 
-        $this->update((array) $channel);
+        $this->update($channel->toArray());
     }
 
     public static function saveFromOPML($xml)

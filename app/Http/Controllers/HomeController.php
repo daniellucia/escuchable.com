@@ -42,7 +42,7 @@ class HomeController extends Controller
             'category' => $category,
             'shows' => Shows::whereCategory($category->id)->get(),
             'show' => $show,
-            'episodes' => Episodes::whereShow($show->id)->paginate(15),
+            'episodes' => Episodes::whereShow($show->id)->paginate(25),
         ]);
     }
 
@@ -51,7 +51,7 @@ class HomeController extends Controller
             'category' => $category,
             'shows' => Shows::whereCategory($category->id)->get(),
             'show' => $show,
-            'episodes' => Episodes::whereShow($show->id)->paginate(15),
+            'episodes' => Episodes::whereShow($show->id)->paginate(25),
         ]);
     }
 }

@@ -1,7 +1,10 @@
 @if (!empty($categories))
     <div class="categories">
+    <p class="title">Categorías</p>
+    <ul>
     @foreach ($categories as $category)
-        <p><a href="{{ route('category.view', $category) }}">{{ $category->name }}</a></p>
+        <li><a href="{{ route('category.view', $category) }}">{{ $category->name }}</a></li>
     @endforeach
+    </ul>
     </div>
 @endif

@@ -2,24 +2,117 @@ body {
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 14px;
 }
+
+body,
+input,
+select,
+textarea {
+    font-family: 'Source Sans Pro';
+}
+
+p {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+header {
+    height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #efefef;
+}
+
+header>* {
+    margin: 0;
+    padding: 0;
+}
+
 .web {
     display: flex;
 }
 
 .web>* {
-    height: 100vh;
+    height: calc(100vh - 50px);
     box-sizing: border-box;
     padding: 20px;
     overflow: auto;
     width: 100%;
 }
 
+.web>* ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.web>* ul li {
+    margin: 0 0 20px 0;
+    overflow: hidden;
+}
+
 .web .categories {
-    max-width: 150px;
+    max-width: 230px;
+    border-right: 1px solid #efefef;
 }
 
 .web .shows {
     max-width: 300px;
+}
+
+.web .shows .image {
+    float: left;
+    max-width: 40px;
+    margin: 0 20px 0 0;
+}
+
+.web .shows .image img {
+    border-radius: 4px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+    font-family: 'Apercu Pro';
+    margin: 0 0 20px 0;
+}
+
+
+h1,
+h3,
+.title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.pagination {
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+}
+
+.pagination li {
+    display: inline-block;
+    padding: 2px 5px;
+}
+
+.episodes .ShowDescription {
+    margin: 0 0 30px 0;
 }

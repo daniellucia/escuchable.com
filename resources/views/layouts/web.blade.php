@@ -17,9 +17,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
     <link href="{{ asset('css/web.css') }}" rel="stylesheet">
 </head>
 <body>
+
+    <header class="header"><p>escuchable</p></header>
+
     <div class="web">
 
         @include('partials.categories')

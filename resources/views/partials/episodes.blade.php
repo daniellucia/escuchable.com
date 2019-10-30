@@ -1,12 +1,16 @@
 <div class="episodes">
     @if (!empty($episodes))
-        <h1>{{$show->name}}</h1>
+        <div class="ShowDescription">
+            <h1>{{$show->name}}</h1>
+            <p>{!! $show->description !!}</p>
+        </div>
+
         {{ $episodes->links() }}
-
+        <ul>
         @foreach ($episodes as $episode)
-            <p><a href="{{ route('episode.view', [$category, $show, $episode]) }}">{{ $episode->title }}</a></p>
+            <li><a href="{{ route('episode.view', [$category, $show, $episode]) }}">{{ $episode->title }}</a></li>
         @endforeach
-
+        </ul>
         {{ $episodes->links() }}
 
     @endif
