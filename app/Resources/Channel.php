@@ -12,6 +12,7 @@ class Channel
     public $language;
     public $description;
     public $image;
+    public $thumbnail;
     public $category;
     public $asset;
 
@@ -23,17 +24,20 @@ class Channel
         $this->description = $channel->description;
         $this->asset = $channel->image;
         $this->category = $channel->category;
-        $this->setImage();
+        $this->image = $this->setImage();
+        $this->thumbnail = $this->setImage('/images/show/thumbnail', 32);
     }
 
-    private function setImage()
+    private function setImage($route = '/images/show', $width = 400)
     {
         $image = '';
+        $route .= '/%s.%s';
 
         if ($this->asset->url) {
             $urlRemote = strtok($this->asset->url, '?');
             $extension = pathinfo($urlRemote, PATHINFO_EXTENSION);
-            $image = sprintf('/images/show/%s.%s', substr(Str::slug($this->name), 0, 30), $extension);
+
+            $image = sprintf($route, substr(Str::slug($this->name), 0, 30), $extension);
             if (!file_exists($image)) {
                 try {
                     Image::make($urlRemote)->save(public_path($image));
@@ -42,13 +46,14 @@ class Channel
                      * Redimensionamos la imagen
                      */
                     $img = Image::make(public_path($image));
-                    $img->resize(400, null, function ($constraint) {
+                    $img->resize(intval($width), null, function ($constraint) {
                         $constraint->aspectRatio();
                     });
                 } catch (\Exception $e) {
 
                 }
             }
+
         }
 
         return $image;
