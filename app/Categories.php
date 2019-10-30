@@ -38,7 +38,7 @@ class Categories extends Model
      * Comprobamos si existe la categoria
      * la creamos y la retornamos.
      *
-     * @param [type] $channel
+     * @param Channel $channel
      * @return void
      */
     public static function check($channel)

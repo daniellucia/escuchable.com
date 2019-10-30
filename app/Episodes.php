@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Appstract\Meta\Metable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -11,6 +12,7 @@ use Spatie\Sluggable\SlugOptions;
 class Episodes extends Model
 {
     use HasSlug;
+    use Metable;
 
     protected $fillable = ['title', 'slug', 'mp3', 'description', 'published', 'show', 'link', 'mp3', 'length'];
 
@@ -74,13 +76,17 @@ class Episodes extends Model
             'length' => 0,
         ];
 
-        if (null !== $item->enclosure->attributes()) {
-            $episodeShow['mp3'] = (string) $item->enclosure->attributes()['url'];
+        try {
+            $episodeShow['mp3'] = strval($item->enclosure->attributes()['url']);
             $episodeShow['length'] = intval($item->enclosure->attributes()['length']);
+        } catch (Exception $e) {
+            $episodeShow['mp3'] = '';
+            $episodeShow['length'] = 0;
         }
 
         if (!$episode) {
-            self::create($episodeShow);
+            $newEpisode = self::create($episodeShow);
+            $newEpisode->addMeta('Escuchas', 0);
         }
     }
 }

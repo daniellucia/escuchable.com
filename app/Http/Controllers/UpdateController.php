@@ -45,13 +45,21 @@ class UpdateController extends Controller
              * Actualizamos el título
              * del show
              */
-            $show->updateByChannel($xml->channel);
+            if (is_object($xml)) {
+                $show->updateByChannel($xml->channel);
+                if (!$show->getMeta('Visitas')) {
+                    $show->addMeta('Visitas', 0);
+                }
+
+            }
 
             /**
              * Guardamos los episodios
              * correspondientes
              */
-            Episodes::saveFromChannel($show, $xml->channel);
+            if (is_object($xml)) {
+                Episodes::saveFromChannel($show, $xml->channel);
+            }
 
             $salida[] = $show->name;
         }
@@ -68,10 +76,11 @@ class UpdateController extends Controller
          * que los usuarios puedan subir
          * sus propios opml
          */
-        $xml = \File::get(storage_path('opml/Podcasts.opml'));
-        Shows::saveFromOPML($xml);
+        $showsImported = Shows::saveFromOPML(
+            \File::get(storage_path('opml/Podcasts.opml'))
+        );
 
-        return [];
+        return $showsImported;
     }
 
     /**
