@@ -45,10 +45,12 @@ class Channel
                     /**
                      * Redimensionamos la imagen
                      */
+                    dump(public_path($image));
                     $img = Image::make(public_path($image));
-                    $img->resize(intval($width), null, function ($constraint) {
+                    $img->resize(intval($width), intval($width), function ($constraint) {
                         $constraint->aspectRatio();
-                    });
+                    })->save($image);
+
                 } catch (\Exception $e) {
 
                 }
