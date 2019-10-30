@@ -22,7 +22,12 @@ class Channel
         $this->language = substr(strval($channel->language), 0, 2);
         $this->description = strval($channel->description);
         $this->category = strval($channel->category);
-        $this->image = $this->setImage(strval($channel->image->url));
+
+        $this->image = '';
+        if (isset($channel->image->url)) {
+            $this->image = $this->setImage(strval($channel->image->url));
+        }
+
         $this->thumbnail = $this->setImage('/images/show/thumbnail', 32);
     }
 
