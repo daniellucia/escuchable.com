@@ -103,13 +103,26 @@ ul li {
     overflow: hidden;
 }
 
-.Web .Categories {
+.Categories {
     max-width: 250px;
-    padding: 40px;
+    padding: 0;
     background-color: #f3f3f3;
 }
-
-.Web .Columns {
+.Categories .Title {
+    padding: 40px 40px 0 40px;
+}
+.Categories li {
+    margin: 0;
+}
+.Categories li a {
+    display: block;
+    padding: 10px 40px;
+}
+.Categories li a:hover, .Categories li.Selected a {
+    background-color: #e2e2e2;
+    text-decoration: none;
+}
+.Columns {
     display: flex;
 }
 
@@ -125,7 +138,7 @@ ul li {
     font-size: 15px;
     font-weight: bold;
 }
-.Web .Columns>* {
+.Columns>* {
     height: calc(100vh - 80px);
     box-sizing: border-box;
     padding: 40px;
@@ -133,8 +146,8 @@ ul li {
     width: 100%;
 }
 
-.Web .shows {
-    max-width: 450px;
+.Shows {
+    max-width: 350px;
 }
 
 .ShowSummary h5 {

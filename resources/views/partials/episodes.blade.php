@@ -5,13 +5,13 @@
             <p>{!! $show->description !!}</p>
         </div>
 
-        {{ $episodes->links() }}
+        {{ $episodes->appends(['page-show' => app('request')->input('page-show')])->links() }}
         <ul>
-        @foreach ($episodes as $episode)
-            <li><a href="{{ route('episode.view', [$category, $show, $episode]) }}">{{ $episode->title }}</a></li>
+        @foreach ($episodes as $episodeItem)
+            <li><a href="{{ route('episode.view', [$category, $show, $episodeItem, 'page-episode' => app('request')->input('page-episode'), 'page-show' => app('request')->input('page-show')]) }}">{{ $episodeItem->title }}</a></li>
         @endforeach
         </ul>
-        {{ $episodes->links() }}
+        {{ $episodes->appends(['page-show' => app('request')->input('page-show')])->links() }}
 
     @endif
 </div>

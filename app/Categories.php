@@ -49,10 +49,10 @@ class Categories extends Model
             $categoryName = GoogleTranslate::trans(strval($channel->categories_id), 'es', 'en');
 
             if (strlen($categoryName) > 3) {
-                $category = Categories::firstOrCreate(['name' => Str::limit($categoryName, 30)]);
+                $category = Categories::firstOrCreate(['name' => Str::limit($categoryName, 100)]);
                 $category->save();
             } else {
-                $category = Categories::firstOrCreate(['name' => Str::limit(strval($channel->category), 30)]);
+                $category = Categories::firstOrCreate(['name' => Str::limit(strval($channel->category), 100)]);
                 $category->save();
             }
         }

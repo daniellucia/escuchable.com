@@ -17,7 +17,7 @@ class UpdateController extends Controller
          * para obtener el feed de episodios
          */
 
-        $shows = Shows::whereDate('updated_at', '<', Carbon::today()->toDateString())->orWhereNull('updated_at')->limit(30)->get();
+        $shows = Shows::whereDate('updated_at', '<', Carbon::now()->subHours(3)->toDateTimeString())->orWhereNull('updated_at')->limit(30)->get();
         if (!$shows) {
             return 'Nada que actualizar';
         }
