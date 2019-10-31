@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('categories')->insert([
+            'name' => 'Sin categoría',
+            'slug' => Str::slug('Sin categoría'),
+        ]);
+
         DB::table('authors')->insert([
             'name' => 'LocutorCo',
             'slug' => Str::slug('LocutorCo'),

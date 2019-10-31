@@ -1,6 +1,6 @@
 <div class="episodes">
     @if (!empty($episodes))
-        <div class="ShowDescription">
+        <div class="ShowDescription sticky">
             <h1>{{$show->name}}</h1>
             <p>{!! $show->description !!}</p>
         </div>

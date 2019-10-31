@@ -45,8 +45,8 @@ class Categories extends Model
     {
         $category = false;
 
-        if (strval($channel->category) != '') {
-            $categoryName = GoogleTranslate::trans(strval($channel->category), 'es', 'en');
+        if (strval($channel->categories_id) != '') {
+            $categoryName = GoogleTranslate::trans(strval($channel->categories_id), 'es', 'en');
 
             if (strlen($categoryName) > 3) {
                 $category = Categories::firstOrCreate(['name' => Str::limit($categoryName, 30)]);
@@ -58,5 +58,10 @@ class Categories extends Model
         }
 
         return $category;
+    }
+
+    public function shows()
+    {
+        return $this->hasMany('App\Shows');
     }
 }

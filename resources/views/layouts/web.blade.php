@@ -23,13 +23,17 @@
 </head>
 <body>
 
-    <header class="header"><p>escuchable</p></header>
+
 
     <div class="web">
 
         @include('partials.categories')
-
-        @yield('content')
+        <div class="content">
+            <header class="header"><p>escuchable</p></header>
+            <div class="columns">
+            @yield('content')
+            </div>
+        </div>
 
     </div>
 

@@ -155,7 +155,6 @@ http://www.spreaker.com/show/1568853/episodes/feed
 http://www.ivoox.com/podcast-playlist_fg_f1146831_filtro_1.xml
 http://www.podcastreplay.com/feed/podcast/
 http://elcineporlosoidos.com/feed/
-http://feeds.feedburner.com/podkas?format=xml
 http://www.ivoox.com/salmorejo-geek_fg_f1206500_filtro_1.xml
 https://espejosenloscodos.wordpress.com/feed/
 http://www.ivoox.com/podcast-viajo-moto_fg_f134631_filtro_1.xml
@@ -509,7 +508,8 @@ http://www.ivoox.com/podcast-multiverso-sonoro_fg_f1310277_filtro_1.xml
 http://www.ivoox.com/podcast-podcast-nemesis-radio_fg_f1133446_filtro_1.xml
 http://www.spreaker.com/user/9714440/episodes/feed
 http://feeds.soundcloud.com/users/soundcloud:users:304010578/sounds.rss
-http://www.spreaker.com/show/1958373/episodes/feedhttp://www.ivoox.com/podcast-noche-es-nuestra_fg_f1959_filtro_1.xml
+http://www.spreaker.com/show/1958373/episodes/feed
+http://www.ivoox.com/podcast-noche-es-nuestra_fg_f1959_filtro_1.xml
 http://www.ivoox.com/podcast-ya-te-digo_fg_f1940_filtro_1.xml
 http://www.spreaker.com/show/1448151/episodes/feed
 http://api.rtve.es/api/programas/2082/audios.rss
@@ -543,7 +543,6 @@ http://api.rtve.es/api/programas/2036/audios.rss
 http://api.rtve.es/api/programas/60891/audios.rss
 http://api.rtve.es/api/programas/33930/audios.rss
 http://feedpress.me/lacolinadeavalon
-https://rss.art19.com/channel-33
 http://feedpress.me/slumberland
 http://feedpress.me/ybichosraros
 http://gallardoramos.com/podcast/feed/
@@ -585,7 +584,6 @@ http://www.ivoox.com/monos-del-espacio_fg_f1148042_filtro_1.xml
 http://www.ivoox.com/estudiante-geek-2-0_fg_f1298762_filtro_1.xml
 http://www.ivoox.com/charlando_fg_f1266452_filtro_1.xml
 http://feeds.feedburner.com/Vaciatubandeja
-http://feeds.feedburner.com/RetromaticaToday
 http://feeds.soundcloud.com/users/soundcloud:users:290244091/sounds.rss
 http://www.ivoox.com/radical-dreamers_fg_f150191_filtro_1.xml
 https://www.ivoox.com/en-la-busqueda_fg_f137855_filtro_1.xml
@@ -663,7 +661,6 @@ http://www.ivoox.com/elcofresuena_fg_f1452455_filtro_1.xml
 http://www.ivoox.com/elcofresuena-secciones_fg_f1452463_filtro_1.xml
 http://negocioswp.es/feed/podcast/
 http://www.ivoox.com/lo-tu-digas_fg_f1424550_filtro_1.xml
-http://streaming8.elitecomunicacion.es:8220/|LA
 http://www.ivoox.com/cloud-jazz-smooth-jazz_fg_f127170_filtro_1.xml
 https://securizando.com/feed/podcast
 https://alvaroroa.es/podcast/feed/

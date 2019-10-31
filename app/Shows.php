@@ -20,7 +20,7 @@ class Shows extends Model
     use CanBeVoted;
 
     protected $vote = User::class;
-    protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'category', 'author', 'revised', 'language', 'thumbnail'];
+    protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id', 'author', 'revised', 'language', 'thumbnail'];
 
     /**
      * Get the options for generating the slug.
@@ -96,6 +96,26 @@ class Shows extends Model
         }
 
         return $showsImported;
+    }
+
+    public function getImageAttribute($value)
+    {
+        if (!file_exists(public_path($value))) {
+            return '';
+        } else {
+            return $value;
+        }
+
+    }
+
+    public function getThumbnailAttribute($value)
+    {
+        if (!file_exists(public_path($value))) {
+            return '';
+        } else {
+            return $value;
+        }
+
     }
 
 }

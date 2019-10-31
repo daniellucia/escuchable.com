@@ -33,14 +33,13 @@ class HomeController extends Controller
 
         return view('home', [
             'category' => $category,
-            'shows' => Shows::whereCategory($category->id)->get()
         ]);
     }
 
     public function viewShow(Categories $category, Shows $show) {
+
         return view('home', [
             'category' => $category,
-            'shows' => Shows::whereCategory($category->id)->get(),
             'show' => $show,
             'episodes' => Episodes::whereShow($show->id)->paginate(25),
         ]);

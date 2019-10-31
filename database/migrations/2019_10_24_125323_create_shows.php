@@ -14,6 +14,9 @@ class CreateShows extends Migration
     public function up()
     {
         Schema::create('shows', function (Blueprint $table) {
+
+            $table->engine = 'InnoDB';
+
             $table->bigIncrements('id');
             $table->string('name', 250)->default('');
             $table->string('slug')->default('')->unique();
@@ -22,8 +25,10 @@ class CreateShows extends Migration
             $table->string('language', 2)->default('');
             $table->string('image', 50)->default('');
             $table->text('description')->nullable();
-            $table->integer('category')->default(0);
-            $table->integer('author')->default(0);
+            $table->bigInteger('categories_id')->unsigned()->default(1);
+            //$table->foreign('category')->references('id')->on('categories');
+            $table->bigInteger('author')->unsigned()->default(0);
+            //$table->foreign('author')->references('id')->on('authors');
             $table->timestamps();
         });
     }

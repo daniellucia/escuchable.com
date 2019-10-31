@@ -14,6 +14,8 @@ class CreateEpisodes extends Migration
     public function up()
     {
         Schema::create('episodes', function (Blueprint $table) {
+            $table->engine = 'InnoDB';
+
             $table->bigIncrements('id');
             $table->string('title', 250)->default('');
             $table->string('slug', 250)->default('')->unique();
@@ -22,7 +24,8 @@ class CreateEpisodes extends Migration
             $table->text('description')->nullable();
             $table->integer('length')->default(0);
             $table->datetime('published')->nullable();
-            $table->integer('show')->default(0);
+            $table->bigInteger('show')->unsigned()->default(0);
+            //$table->foreign('show')->references('id')->on('shows');
             $table->timestamps();
         });
     }

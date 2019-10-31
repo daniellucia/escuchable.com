@@ -13,7 +13,7 @@ class Channel
     public $description;
     public $image;
     public $thumbnail;
-    public $category;
+    public $categories_id;
 
     public function __construct($channel)
     {
@@ -21,14 +21,17 @@ class Channel
         $this->web = strval($channel->link);
         $this->language = substr(strval($channel->language), 0, 2);
         $this->description = strval($channel->description);
-        $this->category = strval($channel->category);
+        $this->categories_id = strval($channel->category);
 
         $this->image = '';
-        if (isset($channel->image->url)) {
-            $this->image = $this->setImage(strval($channel->image->url));
+
+        if (is_object($channel) && property_exists($channel, 'image')) {
+            if (isset($channel->image->url)) {
+                $this->image = $this->setImage(strval($channel->image->url));
+            }
         }
 
-        $this->thumbnail = $this->setImage('/images/show/thumbnail', 32);
+        $this->thumbnail = $this->setImage(strval($channel->image->url), '/images/show/thumbnail', 40);
     }
 
     private function setImage($urlRemote, $route = '/images/show', $width = 400)
@@ -51,7 +54,8 @@ class Channel
                     $img = Image::make(public_path($image));
                     $img->resize(intval($width), intval($width), function ($constraint) {
                         $constraint->aspectRatio();
-                    })->save($image);
+                    });
+                    $img->save(public_path($image));
 
                 } catch (\Exception $e) {
 
@@ -65,9 +69,9 @@ class Channel
 
     public function setCategory($category)
     {
-        $this->category = 0;
+        $this->categories_id = 1;
         if (isset($category->id)) {
-            $this->category = $category->id;
+            $this->categories_id = $category->id;
         }
     }
 
@@ -80,7 +84,7 @@ class Channel
             'description' => $this->description,
             'image' => $this->image,
             'thumbnail' => $this->thumbnail,
-            'category' => $this->category,
+            'categories_id' => $this->categories_id == 0 ? 1 : $this->categories_id,
         ];
     }
 }

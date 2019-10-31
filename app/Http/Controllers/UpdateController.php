@@ -17,7 +17,7 @@ class UpdateController extends Controller
          * para obtener el feed de episodios
          */
 
-        $shows = Shows::whereDate('updated_at', '<', Carbon::today()->toDateString())->orWhereNull('updated_at')->limit(15)->get();
+        $shows = Shows::whereDate('updated_at', '<', Carbon::today()->toDateString())->orWhereNull('updated_at')->limit(30)->get();
         if (!$shows) {
             return 'Nada que actualizar';
         }
@@ -122,7 +122,8 @@ class UpdateController extends Controller
                 if (is_object($xml)) {
                     $channel = new Channel($xml->channel);
                     $data = $channel->toArray();
-                    $data['category'] = intval($data['category']);
+                    //dump($data);
+                    $data['categories_id'] = intval($data['categories_id']);
                     dump('Insertado');
 
                     $data['feed'] = $feed;
