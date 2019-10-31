@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (Schema::hasTable('categories')) {
-            View::share('categories', Categories::all());
+            View::share('categories', Categories::orderBy('name')->get());
         }
 
     }

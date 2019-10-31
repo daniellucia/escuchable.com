@@ -1,3 +1,23 @@
+
+::-Webkit-scrollbar {
+    width: 5px;
+}
+
+::-Webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-Webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-Webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
 body {
     padding: 0;
     margin: 0;
@@ -30,21 +50,42 @@ a:hover {
     text-decoration: underline;
 }
 
-header {
-    height: 50px;
+.Header {
+    height: 80px;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  justify-content: center;
 }
 
-header>* {
+.Header>* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    padding: 20px;
 }
-
-.web {
+.Header .Search {
+    flex:1
+}
+.Header .Search input {
+    width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: 0 0 30px rgba(0,0,0,.04);
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 20px;
+}
+.Header .Search input:focus {
+    box-shadow: 0 0 30px rgba(0,0,0,.1);
+}
+.Web {
     display: flex;
 }
 
-.web>* {
+.Web>* {
     height: 100vh;
     box-sizing: border-box;
     overflow: auto;
@@ -62,37 +103,57 @@ ul li {
     overflow: hidden;
 }
 
-.web .categories {
+.Web .Categories {
     max-width: 250px;
     padding: 40px;
-    border-right: 1px solid #ccc;
+    background-color: #f3f3f3;
 }
 
-.web .columns {
+.Web .Columns {
     display: flex;
 }
-.web .columns>* {
-    height: calc(100vh - 50px);
+
+.Menu {
+    text-align: right;
+}
+.Menu li {
+    display: inline-block;
+    margin: 0 5px;
+}
+.Menu li a {
+    font-family: 'Apercu Pro';
+    font-size: 15px;
+    font-weight: bold;
+}
+.Web .Columns>* {
+    height: calc(100vh - 80px);
     box-sizing: border-box;
     padding: 40px;
     overflow: auto;
     width: 100%;
 }
-.web .shows {
+
+.Web .shows {
     max-width: 450px;
 }
-.web .shows h5 {
+
+.ShowSummary h5 {
     font-size: 15px;
     margin-bottom: 5px;
 }
-.web .shows .image {
+
+.ShowSummary .Image {
     float: left;
     max-width: 40px;
     margin: 0 20px 0 0;
 }
 
-.web .shows .image img {
+.ShowSummary .Image img {
     border-radius: 4px;
+}
+
+.ShowSummary .Description {
+    font-size: 12px;
 }
 
 h1,
@@ -101,7 +162,7 @@ h3,
 h4,
 h5,
 h6,
-.title {
+.Title {
     font-family: 'Apercu Pro';
     margin: 0 0 20px 0;
 }
@@ -109,7 +170,7 @@ h6,
 
 h1,
 h3,
-.title {
+.Title {
     font-size: 30px;
     font-weight: bold;
 }
@@ -125,11 +186,11 @@ h3,
     padding: 2px 5px;
 }
 
-.episodes .ShowDescription {
+.Episodes .ShowDescription {
     margin: 0 0 30px 0;
 }
 
-.sticky {
+.Sticky {
     /*position: sticky;
     top: 0;*/
 }

@@ -23,14 +23,20 @@
 </head>
 <body>
 
-
-
-    <div class="web">
+    <div class="Web">
 
         @include('partials.categories')
-        <div class="content">
-            <header class="header"><p>escuchable</p></header>
-            <div class="columns">
+        <div class="Content">
+            <header class="Header">
+                <form method="get" class="Search" action="{{ route('search') }}">
+                    <input type="search" name="s" placeholder="Búsqueda..." autocomplete="off" />
+                </form>
+                <ul class="Menu">
+                    <li><a href="#">Entrar</a></li>
+                    <li><a href="#">Descubrir</a></li>
+                </ul>
+            </header>
+            <div class="Columns">
             @yield('content')
             </div>
         </div>

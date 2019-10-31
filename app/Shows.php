@@ -20,7 +20,8 @@ class Shows extends Model
     use CanBeVoted;
 
     protected $vote = User::class;
-    protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id', 'author', 'revised', 'language', 'thumbnail'];
+    protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',
+    'author', 'revised', 'language', 'thumbnail', 'last_episode'];
 
     /**
      * Get the options for generating the slug.

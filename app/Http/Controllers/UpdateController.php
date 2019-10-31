@@ -52,6 +52,13 @@ class UpdateController extends Controller
                     $show->addMeta('Visitas', 0);
                 }
 
+                /**
+                 * Obtenemos elepisodio más nuevo
+                 */
+                $lastEpisode = Episodes::orderBy('published', 'desc')->first();
+                $show->last_episode = $lastEpisode->published;
+                $show->save();
+
             }
 
             /**
