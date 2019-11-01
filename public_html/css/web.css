@@ -1,4 +1,3 @@
-
 ::-Webkit-scrollbar {
     width: 5px;
 }
@@ -15,9 +14,12 @@
     background: #555;
 }
 
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
 }
+
 body {
     padding: 0;
     margin: 0;
@@ -55,7 +57,7 @@ a:hover {
     box-sizing: border-box;
     display: flex;
     align-items: center;
-  justify-content: center;
+    justify-content: center;
 }
 
 .Header>* {
@@ -64,23 +66,27 @@ a:hover {
     box-sizing: border-box;
     padding: 20px;
 }
+
 .Header .Search {
-    flex:1
+    flex: 1
 }
+
 .Header .Search input {
     width: 100%;
     box-sizing: border-box;
     width: 100%;
     box-sizing: border-box;
     border: none;
-    box-shadow: 0 0 30px rgba(0,0,0,.04);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .04);
     font-size: 15px;
     padding: 10px;
     border-radius: 20px;
 }
+
 .Header .Search input:focus {
-    box-shadow: 0 0 30px rgba(0,0,0,.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
+
 .Web {
     display: flex;
 }
@@ -104,24 +110,32 @@ ul li {
 }
 
 .Categories {
-    max-width: 250px;
+    max-width: 300px;
     padding: 0;
     background-color: #f3f3f3;
 }
+
 .Categories .Title {
-    padding: 40px 40px 0 40px;
+    padding: 40px 40px 0 60px;
 }
+
 .Categories li {
     margin: 0;
 }
+
 .Categories li a {
     display: block;
-    padding: 10px 40px;
+    padding: 10px 40px 10px 60px;
+    font-family: 'Apercu Pro';
+    font-weight: bold;
 }
-.Categories li a:hover, .Categories li.Selected a {
+
+.Categories li a:hover,
+.Categories li.Selected a {
     background-color: #e2e2e2;
     text-decoration: none;
 }
+
 .Columns {
     display: flex;
 }
@@ -129,15 +143,18 @@ ul li {
 .Menu {
     text-align: right;
 }
+
 .Menu li {
     display: inline-block;
     margin: 0 5px;
 }
+
 .Menu li a {
     font-family: 'Apercu Pro';
     font-size: 15px;
     font-weight: bold;
 }
+
 .Columns>* {
     height: calc(100vh - 80px);
     box-sizing: border-box;
@@ -167,6 +184,13 @@ ul li {
 
 .ShowSummary .Description {
     font-size: 12px;
+}
+
+.ShowSummary {}
+
+.ShowSummary.Selected {
+    padding-left: 20px;
+    border-left: 5px solid #ff2d20;
 }
 
 h1,

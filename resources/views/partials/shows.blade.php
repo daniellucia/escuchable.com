@@ -6,13 +6,15 @@
         {{ $shows->links() }}
         <ul>
         @foreach ($shows as $showItem)
-            <li class="ShowSummary">
+            <li class="ShowSummary @if(isset($show) && $showItem == $show) Selected @endif" id="{{ $showItem->slug }}">
                 @if ($showItem->thumbnail != '')
                 <p class="Image"><img width="40" height="40" src="{{ asset($showItem->thumbnail) }}" alt="{{ $showItem->name }}" /></p>
                 @endif
 
-                <h5><a href="{{ route('show.view', [$category, $showItem, 'page-show' => app('request')->input('page-show')]) }}">{{ $showItem->name }}</a></h5>
-                <p class="Description">{{ Str::limit(strip_tags($showItem->description), 110) }}</p>
+                <h5><a href="{{ route('show.view', [$category, $showItem, 'page-show' => app('request')->input('page-show'), '#'.$showItem->slug]) }}">{{ $showItem->name }}</a></h5>
+                <p class="Description">
+                {{ Str::limit(strip_tags($showItem->description), 110) }}
+                </p>
             </li>
         @endforeach
         </ul>
