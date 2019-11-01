@@ -87,15 +87,21 @@ a:hover {
     box-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
 
-.Web {
-    display: flex;
-}
+@media only screen and (min-width: 780px) {
+    .Web {
+        display: flex;
+    }
 
-.Web>* {
-    height: 100vh;
-    box-sizing: border-box;
-    overflow: auto;
-    width: 100%;
+    .Web>* {
+        height: 100vh;
+        box-sizing: border-box;
+        overflow: auto;
+        width: 100%;
+    }
+
+    .Categories {
+        max-width: 300px;
+    }
 }
 
 ul {
@@ -110,7 +116,6 @@ ul li {
 }
 
 .Categories {
-    max-width: 300px;
     padding: 0;
     background-color: #f3f3f3;
 }
@@ -136,8 +141,22 @@ ul li {
     text-decoration: none;
 }
 
-.Columns {
-    display: flex;
+@media only screen and (min-width: 780px) {
+    .Columns {
+        display: flex;
+    }
+
+    .Columns>* {
+        height: calc(100vh - 80px);
+        box-sizing: border-box;
+        padding: 40px;
+        overflow: auto;
+        width: 100%;
+    }
+
+    .Shows {
+        max-width: 350px;
+    }
 }
 
 .Menu {
@@ -155,17 +174,7 @@ ul li {
     font-weight: bold;
 }
 
-.Columns>* {
-    height: calc(100vh - 80px);
-    box-sizing: border-box;
-    padding: 40px;
-    overflow: auto;
-    width: 100%;
-}
 
-.Shows {
-    max-width: 350px;
-}
 
 .ShowSummary h5 {
     font-size: 15px;
@@ -185,8 +194,6 @@ ul li {
 .ShowSummary .Description {
     font-size: 12px;
 }
-
-.ShowSummary {}
 
 .ShowSummary.Selected {
     padding-left: 20px;
@@ -230,4 +237,10 @@ h3,
 .Sticky {
     /*position: sticky;
     top: 0;*/
+}
+
+@media only screen and (max-width: 780px) {
+    .Shows, .Episodes {
+        padding: 30px;
+    }
 }
