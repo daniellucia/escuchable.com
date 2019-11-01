@@ -104,6 +104,7 @@ a:hover {
     }
 }
 
+
 ul {
     margin: 0;
     padding: 0;
@@ -240,7 +241,33 @@ h3,
 }
 
 @media only screen and (max-width: 780px) {
-    .Shows, .Episodes {
+
+    .Shows,
+    .Episodes {
         padding: 30px;
+    }
+}
+
+@media only screen and (max-width: 780px) {
+    .Categories .Title {
+        display: none;
+    }
+
+    .Categories li a {
+        padding: 12px;
+    }
+
+    .Categories li.Selected {
+        border-bottom: 5px solid #ff2d20;
+    }
+
+    .Categories ul {
+        overflow: auto;
+        white-space: nowrap;
+        min-width: 100%;
+    }
+
+    .Categories li {
+        display: inline-block;
     }
 }
