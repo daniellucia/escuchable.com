@@ -176,6 +176,16 @@ ul li {
 }
 
 
+.ResultSummary h5 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.ResultSummary .Image {
+    float: left;
+    max-width: 40px;
+    margin: 0 20px 0 0;
+}
 
 .ShowSummary h5 {
     font-size: 15px;
@@ -243,7 +253,8 @@ h3,
 @media only screen and (max-width: 780px) {
 
     .Shows,
-    .Episodes {
+    .Episodes,
+    .Results {
         padding: 30px;
     }
 }

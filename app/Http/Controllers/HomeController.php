@@ -52,9 +52,10 @@ class HomeController extends Controller
     {
         return view('home', [
             'category' => $category,
-            'shows' => Shows::whereCategory($category->id)->get(),
+            'shows' => Shows::where('categories_id', $category->id)->paginate(10, ['*'], 'page-show'),
             'show' => $show,
             'episodes' => Episodes::whereShow($show->id)->paginate(25),
         ]);
     }
+
 }

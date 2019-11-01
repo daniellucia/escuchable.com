@@ -28,8 +28,8 @@
         @include('partials.categories')
         <div class="Content">
             <header class="Header">
-                <form method="get" class="Search" action="{{ route('search') }}">
-                    <input type="search" name="s" placeholder="Búsqueda..." autocomplete="off" />
+                <form method="get" class="Search" action="{{ route('search.results') }}">
+                    <input type="search" name="term" placeholder="Búsqueda..." autocomplete="off" @if (isset($term)) value="{{$term}}" @endif />
                 </form>
                 <ul class="Menu">
                     <li><a href="#">Entrar</a></li>

@@ -14,8 +14,10 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/search', 'SearchController@index')->name('search.results');
+
 Route::get('/{category}', 'HomeController@viewCategory')->name('category.view');
 Route::get('/{category}/{show}', 'HomeController@viewShow')->name('show.view');
 Route::get('/{category}/{show}/{episode}', 'HomeController@viewEpisode')->name('episode.view');
 
-Route::get('/results', 'SearchController@index')->name('search');
+
