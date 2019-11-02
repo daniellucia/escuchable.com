@@ -2,4 +2,6 @@
 
 @section('content')
 
+@include('partials.episodes')
+
 @endsection

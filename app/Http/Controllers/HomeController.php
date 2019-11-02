@@ -36,7 +36,7 @@ class HomeController extends Controller
             'description' => $category->description,
         ]);
 
-        return view('home', [
+        return view('shows', [
             'category' => $category,
             'shows' => $category->shows()->paginate(10, ['*'], 'page-show'),
         ]);
@@ -50,7 +50,7 @@ class HomeController extends Controller
             'description' => $show->description,
         ]);
 
-        return view('home', [
+        return view('episodes', [
             'category' => $category,
             'shows' => $category->shows()->paginate(10, ['*'], 'page-show'),
             'show' => $show,
@@ -65,7 +65,7 @@ class HomeController extends Controller
             'description' => $show->description,
         ]);
 
-        return view('home', [
+        return view('episodes', [
             'category' => $category,
             'shows' => Shows::where('categories_id', $category->id)->paginate(10, ['*'], 'page-show'),
             'show' => $show,

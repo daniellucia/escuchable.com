@@ -142,6 +142,19 @@ ul li {
     text-decoration: none;
 }
 
+.Shows .List {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.Shows .List li {
+    padding: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
 @media only screen and (min-width: 780px) {
     .Columns {
         display: flex;
@@ -156,9 +169,18 @@ ul li {
     }
 
     .Shows {
-        max-width: 350px;
+        /*max-width: 350px;*/
+    }
+
+    .Shows .List {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    .Shows .List li {
+        margin-bottom: 40px;
     }
 }
+
 
 .Menu {
     text-align: right;
@@ -186,6 +208,7 @@ ul li {
     max-width: 40px;
     margin: 0 20px 0 0;
 }
+
 .ResultSummary.typeEpisode .Image img {
     width: 20px;
 }
@@ -196,13 +219,11 @@ ul li {
 }
 
 .ShowSummary .Image {
-    float: left;
-    max-width: 40px;
-    margin: 0 20px 0 0;
+    margin: 0 0 20px 0;
 }
 
 .ShowSummary .Image img {
-    border-radius: 4px;
+    border-radius: 7px;
 }
 
 .ShowSummary .Description {
@@ -253,26 +274,31 @@ h3,
     top: 0;*/
 }
 
+.Back {
+ text-align: right;
+}
 @media only screen and (max-width: 780px) {
-
+    .Back {
+        text-align: center;
+    }
     .Shows,
     .Episodes,
     .Results {
         padding: 30px;
     }
-}
 
-@media only screen and (max-width: 780px) {
+    .Header {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+    }
+
     .Categories .Title {
         display: none;
     }
 
     .Categories li a {
         padding: 12px;
-    }
-
-    .Categories li.Selected {
-        border-bottom: 5px solid #ff2d20;
     }
 
     .Categories ul {
@@ -283,5 +309,13 @@ h3,
 
     .Categories li {
         display: inline-block;
+    }
+
+    .Categories .categorySelected li {
+        display: none;;
+    }
+    .Categories .categorySelected li.Selected {
+        display: block;
+        text-align: center;
     }
 }
