@@ -5,7 +5,6 @@ namespace App;
 use Appstract\Meta\Metable;
 use App\Categories;
 use App\Resources\Channel;
-use App\Search;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
@@ -50,10 +49,6 @@ class Shows extends Model
             $show->name = Str::limit(trim($show->name), 250);
             $show->language = substr($show->language, 0, 2);
 
-        });
-
-        self::deleting(function ($show) {
-            Search::remove($show->id, 'show');
         });
     }
 
