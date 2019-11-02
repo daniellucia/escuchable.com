@@ -5,18 +5,17 @@ namespace App;
 use Appstract\Meta\Metable;
 use App\Categories;
 use App\Resources\Channel;
+use App\Resources\Read;
 use App\Search;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Spatie\Tags\HasTags;
 
 class Shows extends Model
 {
     use HasSlug;
-    use HasTags;
     use Metable;
     use CanBeVoted;
 
@@ -48,47 +47,30 @@ class Shows extends Model
     {
         parent::boot();
 
-        /**
-         * Al actualizar o crear, actualizamos
-         * el slug con el nombre del modelo
-         */
-        self::saving(function ($show) {
-            $show->name = Str::limit(trim($show->name), 250);
-            $show->language = substr($show->language, 0, 2);
-
-            /**
-             * Sistema de búsqueda
-             */
+        self::saved(function ($show) {
             $category = Categories::find($show->categories_id);
             $url = route('show.view', [$category, $show]);
-            $search = Search::where('url', $url)->first();
-            if (!$search) {
-                $search = Search::create([
-                    'search' => $show->name,
-                    'url' => $url,
-                    'type' => 'show',
-                    'id_type' => $show->id,
-                    'image' => $show->thumbnail,
-                    'weight' => 4,
-                ]);
-            }
+            Search::add($show->id, 'show', $show->name, $url, $show->thumbnail, 4);
 
             $keywords = Read::tags($show->name);
             if (!empty($keywords)) {
                 foreach ($keywords as $keyword) {
                     if ($keyword != '') {
-                        $show->attachTag(strval($keyword));
+                        Search::add($show->id, 'show', $keyword, $url, $show->thumbnail, 4);
                     }
 
                 }
             }
         });
 
+        self::saving(function ($show) {
+            $show->name = Str::limit(trim($show->name), 250);
+            $show->language = substr($show->language, 0, 2);
+
+        });
+
         self::deleting(function ($show) {
-            Search::where([
-                'type' => 'show',
-                'id_type' => $show->id,
-            ])->delete();
+            Search::remove($show->id, 'show');
         });
     }
 
@@ -104,10 +86,6 @@ class Shows extends Model
          */
         $category = Categories::check($channel);
         $channel->setCategory($category);
-
-        if ($category) {
-            $this->attachTag($category->name);
-        }
 
         $this->update($channel->toArray());
     }

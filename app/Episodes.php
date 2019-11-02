@@ -4,6 +4,7 @@ namespace App;
 
 use Appstract\Meta\Metable;
 use App\Categories;
+use App\Resources\Read;
 use App\Search;
 use App\Shows;
 use Carbon\Carbon;
@@ -43,43 +44,34 @@ class Episodes extends Model
     {
         parent::boot();
 
-        self::saving(function ($episode) {
-            $episode->title = Str::limit($episode->title, 350);
-
-            /**
-             * Sistema de búsqueda
-             */
+        self::saved(function ($episode) {
             $show = Shows::find($episode->show);
             $category = Categories::find($show->categories_id);
+
+            $url = route('show.view', [$category, $show]);
+            Search::add($show->id, 'show', $show->name, $url, $show->thumbnail, 4);
+
             $url = route('episode.view', [$category, $show, $episode]);
-            $search = Search::where('url', $url)->first();
-            if (!$search) {
-                $search = Search::create([
-                    'search' => $show->name,
-                    'url' => $url,
-                    'type' => 'show',
-                    'id_type' => $show->id,
-                    'image' => $show->thumbnail,
-                    'weight' => 4,
-                ]);
-            }
 
             $keywords = Read::tags($episode->title);
             if (!empty($keywords)) {
                 foreach ($keywords as $keyword) {
                     if ($keyword != '') {
-                        $show->attachTag(strval($keyword));
+                        Search::add($episode->id, 'episode', $keyword, $url, $show->thumbnail, 2);
+                        Search::add($show->id, 'show', $keyword, $url, $show->thumbnail, 4);
                     }
 
                 }
             }
         });
 
+        self::saving(function ($episode) {
+            $episode->title = Str::limit($episode->title, 350);
+
+        });
+
         self::deleting(function ($episode) {
-            Search::where([
-                'type' => 'episode',
-                'id_type' => $episode->id,
-            ])->delete();
+            Search::remove($episode->id, 'episode');
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Resources;
 
 class Read
 {
+
     public static function xml(string $feed)
     {
         $ch = curl_init();
@@ -21,37 +22,38 @@ class Read
         return $xml;
     }
 
-    public static function tags($string, $encoding = 'UTF-8')
+    public static function tags(string $string): array
     {
         $string = trim(strip_tags(html_entity_decode(urldecode($string))));
         if (empty($string)) {
-            return false;
+            return [];
+        }
+        $string = self::normalize($string);
+        $string = str_replace(['?', '¿', '!', '¡', ':', '#', ',', '.'], ' ', $string);
+        $keywords = array_map(function ($string) {
+            if (!is_numeric($string) && strlen($string) > 2) {
+                return trim($string);
+            }
+        }, explode(' ', $string));
+
+        if (empty($keywords)) {
+            return [];
         }
 
-        $extras = array(
-            'p' => array('ante', 'bajo', 'con', 'contra', 'desde', 'durante', 'entre',
-                'hacia', 'hasta', 'mediante', 'para', 'por', 'pro', 'segun',
-                'sin', 'sobre', 'tras', 'via',
-            ),
-            'a' => array('los', 'las', 'una', 'unos', 'unas', 'este', 'estos', 'ese',
-                'esos', 'aquel', 'aquellos', 'esta', 'estas', 'esa', 'esas',
-                'aquella', 'aquellas', 'usted', 'nosotros', 'vosotros',
-                'ustedes', 'nos', 'les', 'nuestro', 'nuestra', 'vuestro',
-                'vuestra', 'mis', 'tus', 'sus', 'nuestros', 'nuestras',
-                'vuestros', 'vuestras',
-            ),
-            'o' => array('esto', 'que'),
-        );
+        $stopwords = array_map(function ($string) {
+            return trim($string);
+        }, file(storage_path('opml/stopwords.txt')));
 
-        $string = mb_strtolower((string) $string, $encoding);
+        return array_diff($keywords, $stopwords);
+    }
+
+    private static function normalize(string $string): string
+    {
+        $originals = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+        $modifies = 'aaaaaaaceeeeiiiidnoooooouuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
         $string = utf8_decode($string);
-        $string = strtr($string,
-            utf8_decode('âàåáäèéêëïîìíôöòóúûüùñ'),
-            'aaaaaeeeeiiiioooouuuun'
-        );
-        if (preg_match_all('/\pL{3,}/s', $string, $m)) {
-            $m = array_diff(array_unique($m[0]), $extras['p'], $extras['a'], $extras['o']);
-        }
-        return $m;
+        $string = strtr($string, utf8_decode($originals), $modifies);
+        $string = strtolower($string);
+        return utf8_encode($string);
     }
 }

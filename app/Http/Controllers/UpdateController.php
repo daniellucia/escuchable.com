@@ -18,7 +18,9 @@ class UpdateController extends Controller
          * para obtener el feed de episodios
          */
 
-        $shows = Shows::whereDate('updated_at', '<', Carbon::now()->subHours(3)->toDateTimeString())->orWhereNull('updated_at')->limit(30)->get();
+        $shows = Shows::where('updated_at', '<', Carbon::now()->subHours(3)->toDateTimeString())->orWhereNull('updated_at')->limit(30)->get();
+
+        //dd($shows);
         if (!$shows) {
             return 'Nada que actualizar';
         }
@@ -152,7 +154,7 @@ class UpdateController extends Controller
                 if (!empty($keywords)) {
                     foreach ($keywords as $keyword) {
                         if ($keyword != '') {
-                            $show->attachTag(strval($keyword));
+                            //$show->attachTag(strval($keyword));
                         }
 
                     }
@@ -164,7 +166,7 @@ class UpdateController extends Controller
                     if (!empty($keywords)) {
                         foreach ($keywords as $keyword) {
                             if ($keyword != '') {
-                                $show->attachTag(strval($keyword));
+                                //$show->attachTag(strval($keyword));
                             }
 
                         }

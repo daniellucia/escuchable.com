@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Episodes;
+use App\Resources\Read;
 use App\Search;
 use App\Shows;
 use Illuminate\Http\Request;
-use App\Resources\Read;
 
 class SearchController extends Controller
 {
@@ -20,22 +20,21 @@ class SearchController extends Controller
                 $posts = Shows::withAnyTags($keywords)->pluck('id');
             }
             $results = Search::where('search', 'LIKE', "%{$term}%")
-            ->orWhere(function ($query) use ($posts) {
-                $query->whereIn('id', $posts)
-                      ->where('type', '=', 'post');
-            })
-            ->orderBy('weight', 'desc')->paginate(25);
+                ->orWhere(function ($query) use ($posts) {
+                    $query->whereIn('id', $posts)
+                        ->where('type', '=', 'post');
+                })
+                ->orderBy('weight', 'desc')->paginate(25);
         }
 
         return view('search', [
             'results' => $results,
-            'term' => $term
+            'term' => $term,
         ]);
     }
 
     public function update()
     {
-
         $categories = Categories::all();
         foreach ($categories as $category) {
 
@@ -43,31 +42,31 @@ class SearchController extends Controller
             foreach ($shows as $show) {
 
                 $url = route('show.view', [$category, $show]);
-                $search = Search::where('url', $url)->first();
-                if (!$search) {
-                    $search = Search::create([
-                        'search' => $show->name,
-                        'url' => $url,
-                        'type' => 'show',
-                        'id_type' => $show->id,
-                        'image' => $show->thumbnail,
-                        'weight' => 4,
-                    ]);
+                Search::add($show->id, 'show', $show->name, $url, $show->thumbnail, 4);
+                $keywords = Read::tags($show->name);
+                if (!empty($keywords)) {
+                    foreach ($keywords as $keyword) {
+                        if ($keyword != '') {
+                            Search::add($show->id, 'show', $keyword, $url, $show->thumbnail, 4);
+                        }
+
+                    }
                 }
 
                 $episodes = Episodes::whereShow($show->id)->get();
                 foreach ($episodes as $episode) {
                     $url = route('episode.view', [$category, $show, $episode]);
-                    $search = Search::where('url', $url)->first();
-                    if (!$search) {
-                        $search = Search::create([
-                            'search' => substr($episode->title, 0, 400),
-                            'url' => $url,
-                            'type' => 'episode',
-                            'id_type' => $episode->id,
-                            'image' => $show->thumbnail,
-                            'weight' => 2,
-                        ]);
+                    Search::add($episode->id, 'episode', $episode->title, $url, $show->thumbnail, 2);
+
+                    $keywords = Read::tags($episode->title);
+                    if (!empty($keywords)) {
+                        foreach ($keywords as $keyword) {
+                            if ($keyword != '') {
+                                Search::add($episode->id, 'episode', $keyword, $url, $show->thumbnail, 2);
+                                Search::add($show->id, 'show', $keyword, $url, $show->thumbnail, 4);
+                            }
+
+                        }
                     }
                 }
             }
