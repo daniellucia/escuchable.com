@@ -3,14 +3,14 @@
 namespace App;
 
 use Appstract\Meta\Metable;
-use App\Shows;
 use App\Categories;
+use App\Search;
+use App\Shows;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use App\Search;
 
 class Episodes extends Model
 {
@@ -44,7 +44,7 @@ class Episodes extends Model
         parent::boot();
 
         self::saving(function ($episode) {
-            $episode->title = Str::limit($episode->title, 250);
+            $episode->title = Str::limit($episode->title, 350);
 
             /**
              * Sistema de búsqueda
@@ -62,6 +62,16 @@ class Episodes extends Model
                     'image' => $show->thumbnail,
                     'weight' => 4,
                 ]);
+            }
+
+            $keywords = Read::tags($episode->title);
+            if (!empty($keywords)) {
+                foreach ($keywords as $keyword) {
+                    if ($keyword != '') {
+                        $show->attachTag($keyword);
+                    }
+
+                }
             }
         });
 

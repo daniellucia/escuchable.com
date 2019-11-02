@@ -72,6 +72,16 @@ class Shows extends Model
                     'weight' => 4,
                 ]);
             }
+
+            $keywords = Read::tags($show->name);
+            if (!empty($keywords)) {
+                foreach ($keywords as $keyword) {
+                    if ($keyword != '') {
+                        $show->attachTag($keyword);
+                    }
+
+                }
+            }
         });
 
         self::deleting(function ($show) {
