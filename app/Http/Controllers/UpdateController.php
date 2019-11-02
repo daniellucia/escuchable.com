@@ -152,7 +152,7 @@ class UpdateController extends Controller
                 if (!empty($keywords)) {
                     foreach ($keywords as $keyword) {
                         if ($keyword != '') {
-                            $show->attachTag($keyword);
+                            $show->attachTag(strval($keyword));
                         }
 
                     }
@@ -164,7 +164,7 @@ class UpdateController extends Controller
                     if (!empty($keywords)) {
                         foreach ($keywords as $keyword) {
                             if ($keyword != '') {
-                                $show->attachTag($keyword);
+                                $show->attachTag(strval($keyword));
                             }
 
                         }
