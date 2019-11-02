@@ -3,10 +3,6 @@
 namespace App;
 
 use Appstract\Meta\Metable;
-use App\Categories;
-use App\Resources\Read;
-use App\Search;
-use App\Shows;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -44,34 +40,9 @@ class Episodes extends Model
     {
         parent::boot();
 
-        self::saved(function ($episode) {
-            $show = Shows::find($episode->show);
-            $category = Categories::find($show->categories_id);
-
-            $url = route('show.view', [$category, $show]);
-            Search::add($show->id, 'show', $show->name, $url, $show->thumbnail, 4);
-
-            $url = route('episode.view', [$category, $show, $episode]);
-
-            $keywords = Read::tags($episode->title);
-            if (!empty($keywords)) {
-                foreach ($keywords as $keyword) {
-                    if ($keyword != '') {
-                        Search::add($episode->id, 'episode', $keyword, $url, $show->thumbnail, 2);
-                        Search::add($show->id, 'show', $keyword, $url, $show->thumbnail, 4);
-                    }
-
-                }
-            }
-        });
-
         self::saving(function ($episode) {
             $episode->title = Str::limit($episode->title, 350);
 
-        });
-
-        self::deleting(function ($episode) {
-            Search::remove($episode->id, 'episode');
         });
     }
 

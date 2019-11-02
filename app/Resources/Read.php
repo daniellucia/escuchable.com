@@ -29,7 +29,7 @@ class Read
             return [];
         }
         $string = self::normalize($string);
-        $string = str_replace(['?', '¿', '!', '¡', ':', '#', ',', '.'], ' ', $string);
+        $string = str_replace(['?', '¿', '!', '¡', ':', '#', ',', '.', '«', '(', ')', '<', '>'], ' ', $string);
         $keywords = array_map(function ($string) {
             if (!is_numeric($string) && strlen($string) > 2) {
                 return trim($string);

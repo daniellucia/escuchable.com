@@ -34,6 +34,7 @@ class UpdateController extends Controller
              */
 
             $show->touch();
+            dump($show->name);
 
             /**
              * Leemos feed

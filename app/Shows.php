@@ -5,7 +5,6 @@ namespace App;
 use Appstract\Meta\Metable;
 use App\Categories;
 use App\Resources\Channel;
-use App\Resources\Read;
 use App\Search;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -46,22 +45,6 @@ class Shows extends Model
     public static function boot()
     {
         parent::boot();
-
-        self::saved(function ($show) {
-            $category = Categories::find($show->categories_id);
-            $url = route('show.view', [$category, $show]);
-            Search::add($show->id, 'show', $show->name, $url, $show->thumbnail, 4);
-
-            $keywords = Read::tags($show->name);
-            if (!empty($keywords)) {
-                foreach ($keywords as $keyword) {
-                    if ($keyword != '') {
-                        Search::add($show->id, 'show', $keyword, $url, $show->thumbnail, 4);
-                    }
-
-                }
-            }
-        });
 
         self::saving(function ($show) {
             $show->name = Str::limit(trim($show->name), 250);

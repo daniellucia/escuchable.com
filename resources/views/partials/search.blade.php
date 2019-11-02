@@ -8,6 +8,7 @@
         <ul>
         @foreach ($results as $result)
             <li class="ResultSummary type{{ucfirst($result->type)}}">
+
                 <a href="{{ $result->url }}">
                     @if ($result->image != '')
                         <p class="Image">
