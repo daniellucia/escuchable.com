@@ -186,6 +186,9 @@ ul li {
     max-width: 40px;
     margin: 0 20px 0 0;
 }
+.ResultSummary.typeEpisode .Image img {
+    width: 20px;
+}
 
 .ShowSummary h5 {
     font-size: 15px;

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categories;
 use App\Episodes;
 use App\Resources\Channel;
 use App\Resources\Read;
@@ -140,5 +141,36 @@ class UpdateController extends Controller
             }
         }
     }
+    public function tags()
+    {
+        $categories = Categories::all();
+        foreach ($categories as $category) {
 
+            $shows = Shows::where('categories_id', $category->id)->orderBy('updated_at', 'desc')->get();
+            foreach ($shows as $show) {
+                $keywords = Read::tags($show->name);
+                if (!empty($keywords)) {
+                    foreach ($keywords as $keyword) {
+                        if ($keyword != '') {
+                            $show->attachTag($keyword);
+                        }
+
+                    }
+                }
+
+                $episodes = Episodes::whereShow($show->id)->get();
+                foreach ($episodes as $episode) {
+                    $keywords = Read::tags($episode->title);
+                    if (!empty($keywords)) {
+                        foreach ($keywords as $keyword) {
+                            if ($keyword != '') {
+                                $show->attachTag($keyword);
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Appstract\Meta\Metable;
 use App\Categories;
 use App\Resources\Channel;
+use App\Search;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
@@ -21,7 +22,7 @@ class Shows extends Model
 
     protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',
-    'author', 'revised', 'language', 'thumbnail', 'last_episode'];
+        'author', 'revised', 'language', 'thumbnail', 'last_episode'];
 
     /**
      * Get the options for generating the slug.
@@ -54,6 +55,30 @@ class Shows extends Model
         self::saving(function ($show) {
             $show->name = Str::limit(trim($show->name), 250);
             $show->language = substr($show->language, 0, 2);
+
+            /**
+             * Sistema de búsqueda
+             */
+            $category = Categories::find($show->categories_id);
+            $url = route('show.view', [$category, $show]);
+            $search = Search::where('url', $url)->first();
+            if (!$search) {
+                $search = Search::create([
+                    'search' => $show->name,
+                    'url' => $url,
+                    'type' => 'show',
+                    'id_type' => $show->id,
+                    'image' => $show->thumbnail,
+                    'weight' => 4,
+                ]);
+            }
+        });
+
+        self::deleting(function ($show) {
+            Search::where([
+                'type' => 'show',
+                'id_type' => $show->id,
+            ])->delete();
         });
     }
 

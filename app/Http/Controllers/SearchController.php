@@ -7,6 +7,7 @@ use App\Episodes;
 use App\Search;
 use App\Shows;
 use Illuminate\Http\Request;
+use App\Resources\Read;
 
 class SearchController extends Controller
 {
@@ -14,7 +15,16 @@ class SearchController extends Controller
     {
         $term = $request->get('term');
         if ($term) {
-            $results = Search::where('search', 'LIKE', "%{$term}%")->orderBy('weight', 'desc')->paginate(25);
+            $keywords = Read::tags($term);
+            if (!empty($keywords)) {
+                $posts = Shows::withAnyTags($keywords)->pluck('id');
+            }
+            $results = Search::where('search', 'LIKE', "%{$term}%")
+            ->orWhere(function ($query) use ($posts) {
+                $query->whereIn('id', $posts)
+                      ->where('type', '=', 'post');
+            })
+            ->orderBy('weight', 'desc')->paginate(25);
         }
 
         return view('search', [

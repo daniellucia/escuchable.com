@@ -3,11 +3,14 @@
 namespace App;
 
 use Appstract\Meta\Metable;
+use App\Shows;
+use App\Categories;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use App\Search;
 
 class Episodes extends Model
 {
@@ -42,6 +45,31 @@ class Episodes extends Model
 
         self::saving(function ($episode) {
             $episode->title = Str::limit($episode->title, 250);
+
+            /**
+             * Sistema de búsqueda
+             */
+            $show = Shows::find($episode->show);
+            $category = Categories::find($show->categories_id);
+            $url = route('episode.view', [$category, $show, $episode]);
+            $search = Search::where('url', $url)->first();
+            if (!$search) {
+                $search = Search::create([
+                    'search' => $show->name,
+                    'url' => $url,
+                    'type' => 'show',
+                    'id_type' => $show->id,
+                    'image' => $show->thumbnail,
+                    'weight' => 4,
+                ]);
+            }
+        });
+
+        self::deleting(function ($episode) {
+            Search::where([
+                'type' => 'episode',
+                'id_type' => $episode->id,
+            ])->delete();
         });
     }
 
