@@ -10,12 +10,14 @@ use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 
 class Shows extends Model
 {
     use HasSlug;
     use Metable;
     use CanBeVoted;
+    use Metatagable;
 
     protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',

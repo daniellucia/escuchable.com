@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\Episodes;
 use App\Shows;
+use MetaTag;
 
 class HomeController extends Controller
 {
@@ -30,6 +31,10 @@ class HomeController extends Controller
 
     public function viewCategory(Categories $category)
     {
+        MetaTag::setTags([
+            'title' => $category->name,
+            'description' => $category->description,
+        ]);
 
         return view('home', [
             'category' => $category,
@@ -40,6 +45,11 @@ class HomeController extends Controller
     public function viewShow(Categories $category, Shows $show)
     {
 
+        MetaTag::setTags([
+            'title' => $show->name,
+            'description' => $show->description,
+        ]);
+
         return view('home', [
             'category' => $category,
             'shows' => $category->shows()->paginate(10, ['*'], 'page-show'),
@@ -48,8 +58,13 @@ class HomeController extends Controller
         ]);
     }
 
-    public function viewEpisode(Categories $category, Shows $show)
+    public function viewEpisode(Categories $category, Shows $show, Episode $episode)
     {
+        MetaTag::setTags([
+            'title' => $episode->title,
+            'description' => $show->description,
+        ]);
+
         return view('home', [
             'category' => $category,
             'shows' => Shows::where('categories_id', $category->id)->paginate(10, ['*'], 'page-show'),

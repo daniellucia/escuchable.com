@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 
 class Episodes extends Model
 {
     use HasSlug;
     use Metable;
+    use Metatagable;
 
     protected $fillable = ['title', 'slug', 'mp3', 'description', 'published', 'show', 'link', 'mp3', 'length'];
 

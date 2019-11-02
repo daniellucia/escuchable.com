@@ -7,10 +7,12 @@ use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Stichoza\GoogleTranslate\GoogleTranslate;
+use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 
 class Categories extends Model
 {
     use HasSlug;
+    use Metatagable;
 
     protected $fillable = ['name', 'slug', 'visible'];
 
