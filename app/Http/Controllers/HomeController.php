@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\Episodes;
 use App\Shows;
+use Illuminate\Support\Facades\Cache;
 use MetaTag;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -29,16 +31,20 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function viewCategory(Categories $category)
+    public function viewCategory(Categories $category, Request $request)
     {
         MetaTag::setTags([
             'title' => $category->name,
             'description' => $category->description,
         ]);
 
+        $shows = Cache::remember(sprintf('episodes.%d.%d', $category->id, $request->get('page')), 60, function () use ($category) {
+            return $category->shows()->orderBy('last_episode', 'desc')->paginate(16);
+        });
+
         return view('shows', [
             'category' => $category,
-            'shows' => $category->shows()->orderBy('last_episode', 'desc')->paginate(16),
+            'shows' => $shows,
         ]);
     }
 
@@ -50,44 +56,35 @@ class HomeController extends Controller
             'description' => $show->description,
         ]);
 
-        $category = Categories::find($show->category);
+        $category = Cache::remember(sprintf('category.%d', $show->category), 60, function () use ($show) {
+            return Categories::find($show->category);
+        });
 
         return view('episodes', [
             'category' => $category,
-            //'shows' => $category->shows()->orderBy('last_episode', 'desc')->paginate(16),
             'show' => $show,
             'episodes' => Episodes::whereShow($show->id)->paginate(25),
         ]);
     }
 
-    public function viewEpisode(Shows $show, Episode $episode)
+    public function viewEpisode(Shows $show, Episode $episode, Request $request)
     {
         MetaTag::setTags([
             'title' => $episode->title,
             'description' => $show->description,
         ]);
 
-        $episodes = Episodes::whereShow($show->id)->paginate(25);
-        $category = Categories::find($show->category);
+        $episodes = Cache::remember(sprintf('episodes.%d.%d', $show->id, $request->get('page')), 60, function () use ($show) {
+            return Episodes::whereShow($show->id)->paginate(25);
+        });
 
-        /*$events = [];
-        foreach ($episodes as $episode) {
-            $events[] = \Calendar::event(
-                $episode->title,
-                true,
-                $episode->published,
-                $episode->published,
-                $episode->slug
-            );
-        }
-        $calendar = \Calendar::addEvents($events);*/
+        $category = Cache::remember(sprintf('category.%d', $show->category), 60, function () use ($show) {
+            return Categories::find($show->category);
+        });
 
         return view('episodes', [
             'category' => $category,
-            //'shows' => $category->shows()->paginate(16),
-            //'show' => $show,
             'episodes' => $episodes,
-            //'calendar' => $calendar,
         ]);
     }
 
