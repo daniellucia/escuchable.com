@@ -158,6 +158,22 @@ ul li {
 @media only screen and (min-width: 780px) {
     .Columns {
         display: flex;
+        position: relative;
+    }
+
+    .Columns:after {
+        content: "";
+        top: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        height: 15px;
+        z-index: 999;
+        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+        background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
     }
 
     .Columns>* {
@@ -234,6 +250,7 @@ ul li {
 .ShowSummary .Metas {
     margin-top: 5px;
 }
+
 .ShowSummary.Selected {
     padding-left: 20px;
     border-left: 5px solid #ff2d20;
@@ -282,12 +299,14 @@ h3,
 }
 
 .Back {
- text-align: right;
+    text-align: right;
 }
+
 @media only screen and (max-width: 780px) {
     .Back {
         text-align: center;
     }
+
     .Shows,
     .Episodes,
     .Results {
@@ -319,8 +338,10 @@ h3,
     }
 
     .Categories .categorySelected li {
-        display: none;;
+        display: none;
+        ;
     }
+
     .Categories .categorySelected li.Selected {
         display: block;
         text-align: center;
