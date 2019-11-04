@@ -23,7 +23,7 @@ class Channel
         $this->description = strval($channel->description);
         $this->categories_id = strval($channel->category);
 
-        $this->image = '';
+        $this->image = '/images/show/no-image.jpg';
 
         if (is_object($channel) && property_exists($channel, 'image')) {
             if (isset($channel->image->url)) {
@@ -67,10 +67,10 @@ class Channel
         return $image;
     }
 
-    public function setCategory($category)
+    public function setCategory($category, $default = 0)
     {
-        $this->categories_id = 1;
-        if (isset($category->id)) {
+        $this->categories_id = $default;
+        if (isset($category->id) && $default == 0) {
             $this->categories_id = $category->id;
         }
     }

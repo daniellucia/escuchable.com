@@ -49,7 +49,7 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .Header {
@@ -174,6 +174,7 @@ ul li {
 
     .Shows .List {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        max-width: 800px;
     }
 
     .Shows .List li {
@@ -230,6 +231,9 @@ ul li {
     font-size: 12px;
 }
 
+.ShowSummary .Metas {
+    margin-top: 5px;
+}
 .ShowSummary.Selected {
     padding-left: 20px;
     border-left: 5px solid #ff2d20;
@@ -255,14 +259,17 @@ h3,
 }
 
 .pagination {
-    margin: 0;
+    margin: 15px 0;
     padding: 5px;
     list-style: none;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .pagination li {
     display: inline-block;
     padding: 2px 5px;
+    margin: 0;
 }
 
 .Episodes .ShowDescription {

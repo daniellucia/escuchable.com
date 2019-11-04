@@ -28,13 +28,15 @@ class UpdateController extends Controller
         $salida = [];
 
         foreach ($shows as $show) {
+
+            dump($show->name);
+
             /**
              * Actualziamos la fecha
              * de actualziación
              */
 
             $show->touch();
-            dump($show->name);
 
             /**
              * Leemos feed
@@ -59,9 +61,13 @@ class UpdateController extends Controller
                 /**
                  * Obtenemos elepisodio más nuevo
                  */
-                $lastEpisode = Episodes::orderBy('published', 'desc')->first();
-                $show->last_episode = $lastEpisode->published;
-                $show->save();
+                $lastEpisode = Episodes::whereShow($show->id)->orderBy('published', 'desc')->first();
+
+                if (isset($lastEpisode->published)) {
+                    dump($lastEpisode->published);
+                    $show->last_episode = $lastEpisode->published;
+                    $show->save();
+                }
 
             }
 

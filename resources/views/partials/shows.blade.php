@@ -20,6 +20,11 @@
                     <p class="Description">
                     {{ Str::limit(strip_tags($showItem->description), 110) }}
                     </p>
+                    <div class="Metas">
+                        <p>
+                        <small>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($showItem->last_episode))->diffForHumans() }}</small>
+                        </p>
+                    </div>
                 </a>
             </li>
         @endforeach

@@ -65,7 +65,7 @@ class Shows extends Model
          * Comprobamos la categoría
          */
         $category = Categories::check($channel);
-        $channel->setCategory($category);
+        $channel->setCategory($category, $this->category);
 
         $this->update($channel->toArray());
     }

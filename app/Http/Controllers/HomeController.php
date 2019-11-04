@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         return view('shows', [
             'category' => $category,
-            'shows' => $category->shows()->paginate(10, ['*'], 'page-show'),
+            'shows' => $category->shows()->orderBy('last_episode', 'desc')->paginate(16),
         ]);
     }
 
@@ -52,7 +52,7 @@ class HomeController extends Controller
 
         return view('episodes', [
             'category' => $category,
-            'shows' => $category->shows()->paginate(10, ['*'], 'page-show'),
+            //'shows' => $category->shows()->orderBy('last_episode', 'desc')->paginate(16),
             'show' => $show,
             'episodes' => Episodes::whereShow($show->id)->paginate(25),
         ]);
@@ -65,11 +65,26 @@ class HomeController extends Controller
             'description' => $show->description,
         ]);
 
+        $episodes = Episodes::whereShow($show->id)->paginate(25);
+
+        /*$events = [];
+        foreach ($episodes as $episode) {
+            $events[] = \Calendar::event(
+                $episode->title,
+                true,
+                $episode->published,
+                $episode->published,
+                $episode->slug
+            );
+        }
+        $calendar = \Calendar::addEvents($events);*/
+
         return view('episodes', [
             'category' => $category,
-            'shows' => Shows::where('categories_id', $category->id)->paginate(10),
-            'show' => $show,
-            'episodes' => Episodes::whereShow($show->id)->paginate(25),
+            //'shows' => $category->shows()->paginate(16),
+            //'show' => $show,
+            'episodes' => $episodes,
+            //'calendar' => $calendar,
         ]);
     }
 

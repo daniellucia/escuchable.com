@@ -1,25 +1,33 @@
-<div class="Results">
+<div class="Shows">
 
-    @if (!empty($results))
+    @if (!empty($shows))
 
         <p class="Title Sticky">{{ $term }}</p>
 
-        {{ $results->links() }}
-        <ul>
-        @foreach ($results as $result)
-            <li class="ResultSummary type{{ucfirst($result->type)}}">
+        {{ $shows->links() }}
 
-                <a href="{{ $result->url }}">
-                    @if ($result->image != '')
-                        <p class="Image">
-                            <img width="40" height="40" src="{{ asset($result->image) }}" alt="{{ $result->name }}" />
-                        </p>
+        <ul class="List">
+        @foreach ($shows as $showItem)
+            <li class="ShowSummary @if(isset($show) && $showItem == $show) Selected @endif" id="{{ $showItem->slug }}">
+                <a href="{{ route('show.view', [App\Categories::find($showItem->category), $showItem]) }}">
+                    @if ($showItem->thumbnail != '')
+                    <p class="Image"><img src="{{ asset($showItem->image) }}" alt="{{ $showItem->name }}" /></p>
                     @endif
-                    <h5>{{ $result->search }}</h5>
+
+                    <h5>{{ $showItem->name }}</h5>
+                    <p class="Description">
+                    {{ Str::limit(strip_tags($showItem->description), 110) }}
+                    </p>
+                    <div class="Metas">
+                        <p>
+                        <small>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($showItem->last_episode))->diffForHumans() }}</small>
+                        </p>
+                    </div>
                 </a>
             </li>
         @endforeach
         </ul>
-        {{ $results->links() }}
+
+        {{ $shows->links() }}
     @endif
 </div>
