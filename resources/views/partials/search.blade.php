@@ -9,7 +9,7 @@
         <ul class="List">
         @foreach ($shows as $showItem)
             <li class="ShowSummary @if(isset($show) && $showItem == $show) Selected @endif" id="{{ $showItem->slug }}">
-                <a href="{{ route('show.view', [App\Categories::find($showItem->category), $showItem]) }}">
+                <a href="{{ route('show.view', $showItem) }}">
                     @if ($showItem->thumbnail != '')
                     <p class="Image"><img src="{{ asset($showItem->image) }}" alt="{{ $showItem->name }}" /></p>
                     @endif

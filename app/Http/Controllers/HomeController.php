@@ -42,13 +42,15 @@ class HomeController extends Controller
         ]);
     }
 
-    public function viewShow(Categories $category, Shows $show)
+    public function viewShow(Shows $show)
     {
 
         MetaTag::setTags([
             'title' => $show->name,
             'description' => $show->description,
         ]);
+
+        $category = Categories::find($show->category);
 
         return view('episodes', [
             'category' => $category,
@@ -58,7 +60,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function viewEpisode(Categories $category, Shows $show, Episode $episode)
+    public function viewEpisode(Shows $show, Episode $episode)
     {
         MetaTag::setTags([
             'title' => $episode->title,
@@ -66,6 +68,7 @@ class HomeController extends Controller
         ]);
 
         $episodes = Episodes::whereShow($show->id)->paginate(25);
+        $category = Categories::find($show->category);
 
         /*$events = [];
         foreach ($episodes as $episode) {

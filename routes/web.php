@@ -17,7 +17,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@index')->name('search.results');
 
 Route::get('/{category}', 'HomeController@viewCategory')->name('category.view');
-Route::get('/{category}/{show}', 'HomeController@viewShow')->name('show.view');
-Route::get('/{category}/{show}/{episode}', 'HomeController@viewEpisode')->name('episode.view');
+Route::get('/show/{show}', 'HomeController@viewShow')->name('show.view');
+Route::get('/{show}/{episode}', 'HomeController@viewEpisode')->name('episode.view');
 
 
