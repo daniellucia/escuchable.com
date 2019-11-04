@@ -20,7 +20,8 @@
                     <input type="search" name="term" placeholder="Búsqueda..." autocomplete="off" @if (isset($term)) value="{{$term}}" @endif />
                 </form>
                 <ul class="Menu">
-                    <li><a href="#">Entrar</a></li>
+                    <li><a href="{{ route('login') }}">Entrar</a></li>
+                    <li><a href="{{ route('register') }}">Registro</a></li>
                     <li><a href="#">Descubrir</a></li>
                 </ul>
             </header>
