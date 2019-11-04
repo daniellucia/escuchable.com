@@ -14,6 +14,9 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', function () {
+    return redirect('/');
+});
 Route::get('/search', 'SearchController@index')->name('search.results');
 
 Route::get('/{category}', 'HomeController@viewCategory')->name('category.view');
