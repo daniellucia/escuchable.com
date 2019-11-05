@@ -2,6 +2,8 @@
 
 @section('content')
 
-@widget('recentEpisodes')
+<div class="Home">
+    @widget('recentEpisodes')
+</div>
 
 @endsection

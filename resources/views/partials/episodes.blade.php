@@ -7,9 +7,9 @@
         </div>
 
         {{ $episodes->links() }}
-        <ul>
-        @foreach ($episodes as $episodeItem)
-            <li><a href="{{ route('episode.view', [$show, $episodeItem]) }}">{{ $episodeItem->title }}</a></li>
+        <ul class="episodesList">
+        @foreach ($episodes as $item)
+            @include('episodes.detail')
         @endforeach
         </ul>
         {{ $episodes->links() }}

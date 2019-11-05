@@ -77,10 +77,11 @@ a:hover {
     width: 100%;
     box-sizing: border-box;
     border: none;
-    box-shadow: 0 0 30px rgba(0, 0, 0, .04);
     font-size: 15px;
     padding: 10px;
     border-radius: 20px;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
 }
 
 .Header .Search input:focus {
@@ -309,7 +310,8 @@ h3,
 
     .Shows,
     .Episodes,
-    .Results {
+    .Results,
+    .Home {
         padding: 30px;
     }
 
@@ -346,4 +348,34 @@ h3,
         display: block;
         text-align: center;
     }
+}
+
+
+.episodesList {
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
+    margin: 10px 0;
+}
+.episodesList li a{
+    display: flex;
+}
+.episodesList li a>* {
+    width: 100%;
+    margin: 0;
+}
+.episodesList li .Thumb {
+    max-width: 24px;
+    margin-right: 20px;
+}
+.episodesList li .Metas {
+    max-width: 100px;
+    text-align: right;
+    margin-right: 20px;
+}
+.episodesList li .Author {
+    max-width: 200px;
+    font-size: .85em;
+    margin-right: 20px;
 }

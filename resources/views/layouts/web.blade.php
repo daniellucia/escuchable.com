@@ -7,7 +7,7 @@
     {!! MetaTag::render() !!}
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191105" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=20191105a" rel="stylesheet">
 </head>
 <body>
 
@@ -19,23 +19,7 @@
                 <form method="get" class="Search" action="{{ route('search.results') }}">
                     <input type="search" name="term" placeholder="Búsqueda..." autocomplete="off" @if (isset($term)) value="{{$term}}" @endif />
                 </form>
-                <ul class="Menu">
-                    @guest
-                    <li><a href="{{ route('login') }}">Entrar</a></li>
-                    <li><a href="{{ route('register') }}">Registro</a></li>
-                    @else
-                    <li><strong> {{ Auth::user()->name }}</strong></li>
-                    <li>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">Salir</a>
-                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-
-                    @endguest
-                    <li><a href="#">Descubrir</a></li>
-                </ul>
+                @include('partials.menu')
             </header>
             <div class="Columns">
             @yield('content')

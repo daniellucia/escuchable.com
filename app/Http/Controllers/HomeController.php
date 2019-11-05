@@ -67,7 +67,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function viewEpisode(Shows $show, Episode $episode, Request $request)
+    public function viewEpisode(Shows $show, Episodes $episode, Request $request)
     {
         MetaTag::setTags([
             'title' => $episode->title,
@@ -85,6 +85,7 @@ class HomeController extends Controller
         return view('episodes', [
             'category' => $category,
             'episodes' => $episodes,
+            'show' => $show,
         ]);
     }
 
