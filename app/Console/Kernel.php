@@ -36,6 +36,11 @@ class Kernel extends ConsoleKernel
          * Verificación de shows duplicados
          */
         $schedule->command('update:duplicates')->daily();
+
+        /**
+         * Regenerar sitemap
+         */
+        $schedule->command('update:sitemap')->daily();
     }
 
     /**

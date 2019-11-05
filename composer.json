@@ -19,6 +19,7 @@
         "jcc/laravel-vote": "^1.1",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
+        "spatie/laravel-sitemap": "^5.5",
         "spatie/laravel-sluggable": "^2.2",
         "stichoza/google-translate-php": "^4.0",
         "vipnytt/opmlparser": "dev-master"
