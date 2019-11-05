@@ -27,6 +27,6 @@
         </div>
 
     </div>
-
+    {!! Analytics::render() !!}
 </body>
 </html>
