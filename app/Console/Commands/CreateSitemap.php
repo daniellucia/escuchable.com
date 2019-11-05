@@ -38,7 +38,7 @@ class CreateSitemap extends Command
      */
     public function handle()
     {
-        SitemapGenerator::create('https://www.escuchable.com')
+        SitemapGenerator::create('https://www.escuchable.com/')
         ->writeToFile(
             public_path('sitemap.xml')
         );
