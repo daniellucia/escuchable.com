@@ -71,20 +71,16 @@ class HomeController extends Controller
     {
         MetaTag::setTags([
             'title' => $episode->title,
-            'description' => $show->description,
+            'description' => $episode->description,
         ]);
-
-        $episodes = Cache::remember(sprintf('episodes.%d.%d', $show->id, $request->get('page')), 60, function () use ($show) {
-            return Episodes::whereShow($show->id)->paginate(25);
-        });
 
         $category = Cache::remember(sprintf('category.%d', $show->category), 60, function () use ($show) {
             return Categories::find($show->category);
         });
 
-        return view('episodes', [
+        return view('episode', [
             'category' => $category,
-            'episodes' => $episodes,
+            'episode' => $episode,
             'show' => $show,
         ]);
     }

@@ -3,7 +3,7 @@
     @if (!empty($shows))
 
         <p class="Back"><a href="{{ route('home')}}">Volver</a></p>
-        <h3 class="Sticky">{{$category->name}}</h3>
+        <h1 class="Sticky">{{$category->name}}</h1>
 
 
         {{ $shows->links() }}
