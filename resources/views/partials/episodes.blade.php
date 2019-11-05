@@ -16,5 +16,4 @@
 
     @endif
 
-    @widget('recentEpisodes', ['show' => $show->id])
 </div>
