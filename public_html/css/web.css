@@ -379,7 +379,7 @@ h3,
     margin-right: 20px;
 }
 
-@media only screen and (min-width: 1280px)  {
+@media only screen and (min-width: 1380px)  {
     .Shows .List {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
