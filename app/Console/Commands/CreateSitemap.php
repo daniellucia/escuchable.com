@@ -39,9 +39,6 @@ class CreateSitemap extends Command
     public function handle()
     {
         SitemapGenerator::create('https://www.escuchable.com')
-        ->configureCrawler(function (Crawler $crawler) {
-            $crawler->setMaximumDepth(2);
-        })
         ->writeToFile(
             public_path('sitemap.xml')
         );
