@@ -6,13 +6,15 @@
             <p>{!! $show->description !!}</p>
         </div>
 
-        {{ $episodes->appends(['page-show' => app('request')->input('page-show')])->links() }}
+        {{ $episodes->links() }}
         <ul>
         @foreach ($episodes as $episodeItem)
             <li><a href="{{ route('episode.view', [$show, $episodeItem]) }}">{{ $episodeItem->title }}</a></li>
         @endforeach
         </ul>
-        {{ $episodes->appends(['page-show' => app('request')->input('page-show')])->links() }}
+        {{ $episodes->links() }}
 
     @endif
+
+    @widget('recentEpisodes', ['show' => $show->id])
 </div>

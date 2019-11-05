@@ -95,4 +95,8 @@ class Episodes extends Model
             $newEpisode->addMeta('Escuchas', 0);
         }
     }
+
+    public function parentShow() {
+        return Shows::find($this->show);
+    }
 }

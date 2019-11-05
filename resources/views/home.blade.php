@@ -2,4 +2,6 @@
 
 @section('content')
 
+@widget('recentEpisodes')
+
 @endsection
