@@ -1,6 +1,6 @@
 <div class="Episodes">
     @if (!empty($episodes))
-        <p class="Back"><a href="{{ route('category.view', [$category])}}">Volver</a></p>
+        <p class="Back"><a href="{{ route('category.view', $category)}}">Volver</a></p>
         <div class="ShowDescription Sticky">
             <h1>{{$show->name}}</h1>
             <p>{!! $show->description !!}</p>
