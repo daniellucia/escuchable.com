@@ -7,7 +7,7 @@
     {!! MetaTag::render() !!}
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191105a" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=20191106" rel="stylesheet">
 </head>
 <body>
 

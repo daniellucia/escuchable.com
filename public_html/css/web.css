@@ -191,7 +191,6 @@ ul li {
 
     .Shows .List {
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        max-width: 800px;
     }
 
     .Shows .List li {
@@ -378,4 +377,10 @@ h3,
     max-width: 200px;
     font-size: .85em;
     margin-right: 20px;
+}
+
+@media only screen and (min-width: 1100px)  {
+    .Shows .List {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
 }
