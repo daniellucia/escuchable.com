@@ -22,3 +22,8 @@ Breadcrumbs::for('episode', function ($trail, $show, $episode) {
     $trail->parent('episodes', $show);
     $trail->push($episode->title, route('show.view', [$show, $episode]));
 });
+
+Breadcrumbs::for('shows', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Buscador', route('search.results'));
+});
