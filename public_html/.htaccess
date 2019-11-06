@@ -1,12 +1,3 @@
-Header unset ETag
-FileETag None
-
-<FilesMatch "\.(js|css|ico|pdf|jpg|jpeg|png|gif)$">
-    Header set Cache-Control "public"
-    Header set Expires "Thu, 15 Apr 2023 20:00:00 GMT"
-    Header unset Last-Modified
-</FilesMatch>
-
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
