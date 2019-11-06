@@ -12,3 +12,4 @@ npm-debug.log
 yarn-error.log
 composer.lock
 /public_html/images
+/public_html/.htaccess

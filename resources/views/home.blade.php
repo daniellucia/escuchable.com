@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="Home">
-    @widget('recentEpisodes')
+    {{ Widget::recentEpisodes() }}
 </div>
 
 @endsection
