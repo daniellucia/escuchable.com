@@ -4,7 +4,7 @@
     @include('partials.metatags')
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191106" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=20191106a" rel="stylesheet">
 </head>
 <body>
 
@@ -13,10 +13,14 @@
         @include('partials.categories')
         <div class="Content">
             <header class="Header">
-                <form method="get" class="Search" action="{{ route('search.results') }}">
-                    <input type="search" name="term" placeholder="Búsqueda..." autocomplete="off" @if (isset($term)) value="{{$term}}" @endif />
-                </form>
-                @include('partials.menu')
+                <div class="HeaderContent">
+                    <form method="get" class="Search" action="{{ route('search.results') }}">
+                        <input type="search" name="term" placeholder="Búsqueda..." autocomplete="off" @if (isset($term)) value="{{$term}}" @endif />
+                    </form>
+                    @include('partials.menu')
+                </div>
+
+                @yield('breadcrumbs')
             </header>
             <div class="Columns">
             @yield('content')

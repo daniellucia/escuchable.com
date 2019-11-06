@@ -53,14 +53,17 @@ a:hover {
 }
 
 .Header {
-    height: 80px;
+    height: 110px;
+}
+
+.Header .HeaderContent {
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
-
-.Header>* {
+.Header .HeaderContent>* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -178,7 +181,7 @@ ul li {
     }
 
     .Columns>* {
-        height: calc(100vh - 80px);
+        height: calc(100vh - 110px);
         box-sizing: border-box;
         padding: 40px;
         overflow: auto;
@@ -247,7 +250,7 @@ ul li {
     font-size: 12px;
 }
 
-.ShowSummary .Metas {
+.Metas {
     margin-top: 5px;
 }
 
@@ -383,4 +386,22 @@ h3,
     .Shows .List {
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     }
+}
+
+
+.Breadcrumb {
+    font-size: 12px;
+    padding: 4px 30px;
+}
+
+.Breadcrumb li {
+    display: inline-block;
+    margin: 0 3px 0 0;
+    position: relative;
+}
+
+.Breadcrumb li:not(.active):after {
+    content: " / ";
+    opacity: .5;
+    margin-left: 2px;
 }
