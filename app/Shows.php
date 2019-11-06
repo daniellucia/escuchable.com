@@ -94,7 +94,7 @@ class Shows extends Model
 
     public function getImageAttribute($value)
     {
-        if (!file_exists(public_path($value))) {
+        if ($value == ''|| !file_exists(public_path($value))) {
             return '/images/show/no-image.jpg';
         } else {
             return $value;
@@ -104,7 +104,7 @@ class Shows extends Model
 
     public function getThumbnailAttribute($value)
     {
-        if (!file_exists(public_path($value))) {
+        if ($value == ''|| !file_exists(public_path($value))) {
             return '/images/show/no-image.jpg';
         } else {
             return $value;
