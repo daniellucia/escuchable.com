@@ -8,6 +8,7 @@ use App\Shows;
 use Illuminate\Support\Facades\Cache;
 use MetaTag;
 use Illuminate\Http\Request;
+use TorMorten\Eventy\Facades\Events as Eventy;
 
 class HomeController extends Controller
 {
@@ -34,7 +35,7 @@ class HomeController extends Controller
     public function viewCategory(Categories $category, Request $request)
     {
         MetaTag::setTags([
-            'title' => $category->name,
+            'title' => Eventy::filter('meta.title', $category->name),
             'description' => $category->description,
         ]);
 
@@ -52,7 +53,7 @@ class HomeController extends Controller
     {
 
         MetaTag::setTags([
-            'title' => $show->name,
+            'title' => Eventy::filter('meta.title', $show->name),
             'description' => $show->description,
         ]);
 
@@ -70,7 +71,7 @@ class HomeController extends Controller
     public function viewEpisode(Shows $show, Episodes $episode, Request $request)
     {
         MetaTag::setTags([
-            'title' => $episode->title,
+            'title' => Eventy::filter('meta.title', $episode->title),
             'description' => $episode->description,
         ]);
 

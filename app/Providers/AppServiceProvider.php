@@ -6,6 +6,7 @@ use App\Categories;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use TorMorten\Eventy\Facades\Events as Eventy;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,10 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('categories')) {
             View::share('categories', Categories::orderBy('name')->get());
         }
+
+        Eventy::addFilter('meta.title', function($title) {
+            return $title .' • escuchable.com';
+        }, 20, 1);
 
     }
 }

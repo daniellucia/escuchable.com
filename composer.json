@@ -24,6 +24,7 @@
         "spatie/laravel-permission": "^3.2",
         "spatie/laravel-sluggable": "^2.2",
         "stichoza/google-translate-php": "^4.0",
+        "tormjens/eventy": "^0.5.7",
         "vipnytt/opmlparser": "dev-master"
     },
     "require-dev": {
