@@ -449,15 +449,6 @@ h3,
     border: 1px solid #f5f5f5;
     box-shadow: 0 0 10px rgba(0, 0, 0, .04);
 }
-
-.Controls {
-    display: flex;
-}
-.Controls > * {
-    margin-right: 10px;
-}
-
-.Controls span {
-    font-size: 0.85em;
-    margin-left: auto;
+.Player audio {
+    width: 100%;
 }
