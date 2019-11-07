@@ -125,8 +125,6 @@ class UpdateController extends Controller
         $feeds = file(storage_path('opml/feeds.txt'));
         foreach ($feeds as $feed) {
             $feed = trim($feed);
-            dump($feed);
-
             $show = Shows::where('feed', $feed)->first();
 
             if (!$show) {
@@ -142,10 +140,13 @@ class UpdateController extends Controller
                     $data = $channel->toArray();
                     //dump($data);
                     $data['categories_id'] = intval($data['categories_id']);
-                    dump('Insertado');
+                    dump($feed);
 
                     $data['feed'] = $feed;
                     $show = Shows::create($data);
+
+                    $show->timestamps = false;
+                    $show->save();
                 }
 
             }
