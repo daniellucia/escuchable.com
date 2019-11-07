@@ -1,6 +1,5 @@
 @if (!empty($categories))
     <div class="Categories">
-        <p class="Title Sticky">Categorías</p>
         <ul @if(isset($category)) class="categorySelected" @endif >
         @foreach ($categories as $categoryItem)
             <li id="{{ $categoryItem->slug }}" class=" @if(isset($category) && $categoryItem == $category) Selected @endif">

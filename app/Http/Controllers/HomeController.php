@@ -29,7 +29,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home',[
+            'categories' => Categories::orderBy('name')->get()
+        ]);
     }
 
     public function viewCategory(Categories $category, Request $request)

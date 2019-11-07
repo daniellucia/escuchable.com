@@ -4,22 +4,24 @@
     @include('partials.metatags')
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191107d" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=20191107e" rel="stylesheet">
 </head>
 <body>
 
     <div class="Web">
+        @include('partials.menu')
 
-        @include('partials.categories')
-        <div class="Content">
+       <div class="Content @if(Route::current()->getName() == 'home') ContentHome @endif">
+            @if(Route::current()->getName() != 'home')
             <header class="Header">
                 <div class="HeaderContent">
                     <form method="get" class="Search" action="{{ route('search.results') }}">
                         <input type="search" name="term" placeholder="Búsqueda..." autocomplete="off" @if (isset($term)) value="{{$term}}" @endif />
                     </form>
-                    @include('partials.menu')
+
                 </div>
             </header>
+            @endif
             <div class="Columns">
 
             @yield('content')
