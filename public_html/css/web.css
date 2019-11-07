@@ -341,6 +341,115 @@ h3,
     text-align: right;
 }
 
+
+
+.episodesList {
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
+    margin: 10px 0;
+}
+
+.episodesList li .Thumb {
+    max-width: 24px;
+    margin-right: 20px;
+}
+
+.episodesList li .Author {
+    max-width: 200px;
+    font-size: .85em;
+    margin-right: 20px;
+}
+
+@media only screen and (min-width: 1380px) {
+    .Shows .List {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .Categories ul {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+.Categories li a {
+    display: flex;
+    align-items: center;
+    font-family: 'Apercu Pro';
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f3f3f3;
+    min-height: 150px;
+    white-space: normal;
+    font-size: 22px;
+}
+
+.Categories a span {
+    align-self: flex-end;
+    word-wrap: break-word;
+    display: block;
+}
+
+.Breadcrumb {
+    font-size: 12px;
+    padding: 4px 4px 4px 0;
+    margin: 5px;
+}
+
+.Breadcrumb li {
+    display: inline-block;
+    margin: 0 3px 0 0;
+    position: relative;
+}
+
+.Breadcrumb li:not(.active):after {
+    content: " / ";
+    opacity: .5;
+    margin-left: 2px;
+}
+
+.HeaderTitle {
+    display: flex;
+}
+
+.HeaderTitle .Back {
+    text-align: right;
+    margin-left: auto;
+    padding-left: 15px;
+}
+
+.Button {
+    display: inline-block;
+    padding: 5px 20px;
+    background-color: #2f7fd2;
+    border: 1px solid #295c90;
+    color: #fff;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+}
+
+.Button.Disabled {
+    opacity: .5;
+    cursor: no-drop;
+}
+
+.Player {
+    margin: 30px 0;
+    border-radius: 6px;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
+}
+
+.Player audio {
+    width: 100%;
+}
+
+
 @media only screen and (max-width: 780px) {
     .Categories ul {
         overflow: auto;
@@ -351,8 +460,13 @@ h3,
 
     .Categories ul li {
         display: inline-block;
-        width: 230px;
+        width: 170px;
         margin-right: 20px;
+    }
+
+    .Categories li a {
+        min-height: 200px;
+        font-size: 18px;
     }
 
     .episodesList li {
@@ -412,105 +526,4 @@ h3,
     .MainMenu li {
         display: inline-block;
     }
-}
-
-
-.episodesList {
-    padding: 20px;
-    border-radius: 4px;
-    border: 1px solid #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
-    margin: 10px 0;
-}
-
-.episodesList li .Thumb {
-    max-width: 24px;
-    margin-right: 20px;
-}
-
-.episodesList li .Author {
-    max-width: 200px;
-    font-size: .85em;
-    margin-right: 20px;
-}
-
-@media only screen and (min-width: 1380px) {
-    .Shows .List {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    .Categories ul {
-        display: grid;
-        grid-column-gap: 20px;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-}
-
-.Categories li a {
-    display: flex;
-    align-items: center;
-    font-family: 'Apercu Pro';
-    font-weight: bold;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #f3f3f3;
-    min-height: 150px;
-    align-self: flex-end;
-    font-size: 22px;
-}
-
-.Breadcrumb {
-    font-size: 12px;
-    padding: 4px 4px 4px 0;
-    margin: 5px;
-}
-
-.Breadcrumb li {
-    display: inline-block;
-    margin: 0 3px 0 0;
-    position: relative;
-}
-
-.Breadcrumb li:not(.active):after {
-    content: " / ";
-    opacity: .5;
-    margin-left: 2px;
-}
-
-.HeaderTitle {
-    display: flex;
-}
-
-.HeaderTitle .Back {
-    text-align: right;
-    margin-left: auto;
-    padding-left: 15px;
-}
-
-.Button {
-    display: inline-block;
-    padding: 5px 20px;
-    background-color: #2f7fd2;
-    border: 1px solid #295c90;
-    color: #fff;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 3px;
-}
-
-.Button.Disabled {
-    opacity: .5;
-    cursor: no-drop;
-}
-
-.Player {
-    margin: 30px 0;
-    border-radius: 6px;
-    border: 1px solid #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
-}
-
-.Player audio {
-    width: 100%;
 }
