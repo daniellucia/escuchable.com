@@ -63,11 +63,14 @@ a:hover {
     padding: 10px 20px;
 }
 
-.Header .Search {
+.Home .Search {
+    margin-bottom: 30px;
+}
+.Search {
     flex: 1
 }
 
-.Header .Search input {
+.Search input {
     width: 100%;
     box-sizing: border-box;
     width: 100%;
@@ -80,7 +83,7 @@ a:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, .04);
 }
 
-.Header .Search input:focus {
+.Search input:focus {
     box-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
 
