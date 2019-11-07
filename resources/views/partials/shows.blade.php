@@ -1,9 +1,10 @@
 <div class="Shows">
 
     @if (!empty($shows))
-
-        <p class="Back"><a href="{{ route('home')}}">Volver</a></p>
-        <h1 class="Sticky">{{$category->name}}</h1>
+        <div class="HeaderTitle">
+            <h1 class="Sticky">{{$category->name}}</h1>
+            <p class="Back"><a class="Button" href="{{ route('home')}}">Volver</a></p>
+        </div>
 
 
         {{ $shows->links() }}
