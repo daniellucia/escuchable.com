@@ -464,7 +464,7 @@ h3,
 .HeaderTitle .Back {
     text-align: right;
     margin-left: auto;
-    margin-left: 15px;
+    padding-left: 15px;
 }
 
 .Button {
