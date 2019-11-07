@@ -1,8 +1,9 @@
-https://www.ivoox.com/podcast-contracronica_fg_f1267769_filtro_1.xml
-https://www.ivoox.com/podcast-insert-coin-games_fg_f1503306_filtro_1.xml
-https://cuonda.com/encuentros-fundacion-telefonica/feed
-https://www.ivoox.com/podcast-jazzensor_fg_f1389165_filtro_1.xml
-http://feeds.feedburner.com/Menteschocantes
-https://www.spreaker.com/show/3008277/episodes/feed
-https://www.spreaker.com/show/1156786/episodes/feed
-https://feeds.feedburner.com/elgatodeturing
+http://divinadelamente.com/feed/podcast/
+https://www.ivoox.com/podcast-momentos-luis-rodriguez_fg_f119428_filtro_1.xml
+https://www.ivoox.com/podcast-al-hilo-mente_fg_f1640553_filtro_1.xml
+https://www.spreaker.com/show/3086858/episodes/feed
+http://fitnessrevolucionario.com/feed/podcast/
+https://www.ivoox.com/podcast-podcast-alicia-iglesias_fg_f1759607_filtro_1.xml
+https://www.ivoox.com/podcast-zumo-arana_fg_f1778138_filtro_1.xml
+http://fitnessrevolucionario.com/feed/podcast/
+https://www.ivoox.com/podcast-un-ratito-irene_fg_f1762510_filtro_1.xml
