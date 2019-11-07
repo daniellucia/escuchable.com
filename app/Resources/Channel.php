@@ -28,10 +28,10 @@ class Channel
         if (is_object($channel) && property_exists($channel, 'image')) {
             if (isset($channel->image->url)) {
                 $this->image = $this->setImage(strval($channel->image->url));
+                $this->thumbnail = $this->setImage(strval($channel->image->url), '/images/show/thumbnail', 40);
             }
         }
 
-        $this->thumbnail = $this->setImage(strval($channel->image->url), '/images/show/thumbnail', 40);
     }
 
     private function setImage($urlRemote, $route = '/images/show', $width = 400)
