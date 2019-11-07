@@ -410,9 +410,6 @@ h3,
 
 .Player {
     margin: 30px 0;
-    border-radius: 6px;
-    border: 1px solid #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
 }
 
 .Player audio {
