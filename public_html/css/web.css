@@ -411,7 +411,9 @@ h3,
     width: 100%;
 }
 
-
+.Home .Search {
+    padding-bottom: 30px;
+}
 @media only screen and (max-width: 780px) {
     .Categories ul {
         overflow: auto;
