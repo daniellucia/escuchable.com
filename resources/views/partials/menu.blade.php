@@ -6,7 +6,7 @@
             <li><a href="{{ route('login') }}">Entrar</a></li>
             <li><a href="{{ route('register') }}">Registro</a></li>
         @else
-            <li><strong> {{ Auth::user()->name }}</strong></li>
+            <li><span> {{ Auth::user()->name }}</span></li>
             <li>
                 <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">Salir</a>
