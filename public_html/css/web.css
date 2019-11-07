@@ -14,24 +14,23 @@
     background: #555;
 }
 
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
+* {
+    box-sizing: border-box;
 }
+
 
 body {
     padding: 0;
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
 }
 
 body,
 input,
 select,
-textarea {
+textarea,
+button {
     font-family: 'Source Sans Pro';
+    font-size: 15px;
 }
 
 p {
@@ -53,38 +52,16 @@ a:hover {
 }
 
 .Header .HeaderContent {
-    box-sizing: border-box;
     width: 100%;
 }
 
 .Header .HeaderContent>* {
     margin: 0;
-    box-sizing: border-box;
     padding: 10px 20px;
 }
 
-.Home .Search {
-    margin-bottom: 30px;
-}
 .Search {
     flex: 1
-}
-
-.Search input {
-    width: 100%;
-    box-sizing: border-box;
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-    font-size: 15px;
-    padding: 10px;
-    border-radius: 20px;
-    border: 1px solid #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
-}
-
-.Search input:focus {
-    box-shadow: 0 0 30px rgba(0, 0, 0, .1);
 }
 
 @media only screen and (min-width: 780px) {
@@ -127,7 +104,6 @@ a:hover {
 
     .Web>* {
         height: 100vh;
-        box-sizing: border-box;
         overflow: auto;
         width: 100%;
     }
@@ -211,7 +187,6 @@ ul li {
 
     .Columns>* {
         height: calc(100vh - 80px);
-        box-sizing: border-box;
         padding: 40px;
         overflow: auto;
         width: 100%;
@@ -397,7 +372,7 @@ h3,
 }
 
 .Breadcrumb {
-    font-size: 12px;
+    font-size: 13px;
     padding: 4px 4px 4px 0;
     margin: 5px;
 }
@@ -424,22 +399,6 @@ h3,
     padding-left: 15px;
 }
 
-.Button {
-    display: inline-block;
-    padding: 5px 20px;
-    background-color: #2f7fd2;
-    border: 1px solid #295c90;
-    color: #fff;
-    font-size: 0.85em;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 3px;
-}
-
-.Button.Disabled {
-    opacity: .5;
-    cursor: no-drop;
-}
 
 .Player {
     margin: 30px 0;
@@ -458,13 +417,14 @@ h3,
         overflow: auto;
         white-space: nowrap;
         min-width: 100%;
-        margin-bottom: 30px
+        margin-bottom: 30px;
+        padding: 0 15px;
     }
 
     .Categories ul li {
         display: inline-block;
         width: 170px;
-        margin-right: 20px;
+        margin: 0 15px;
     }
 
     .Categories li a {
@@ -501,7 +461,40 @@ h3,
     .Episodes,
     .Results,
     .Home {
+        /*padding: 30px;*/
+    }
+
+    .Home .Search,
+    .episodesList {
         padding: 30px;
+    }
+
+    .Shows .List {
+        padding: 0 30px 30px 30px;
+    }
+
+    .HeaderTitle {
+        padding: 30px 30px 0 30px;
+    }
+
+    .ShowDescription .Description {
+        padding: 0 30px 0 30px;
+    }
+
+    .episodesList {
+        margin: 30px;
+    }
+
+    .Title {
+        padding: 30px 30px 0 30px;
+    }
+
+    .Container {
+        padding: 30px;
+    }
+
+    .Container .Title {
+        padding: 0;
     }
 
     .Header {
@@ -524,9 +517,101 @@ h3,
         overflow: auto;
         white-space: nowrap;
         min-width: 100%;
+        text-align: center;
     }
 
     .MainMenu li {
         display: inline-block;
     }
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+}
+
+input[type=email],
+input[type=text],
+input[type=password],
+input[type=search],
+select,
+textarea {
+    width: 100%;
+    border: none;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .04);
+}
+
+input[type=email]:focus,
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=search]:focus,
+select:focus,
+textarea:focus {
+    box-shadow: 0 0 7px rgba(0, 0, 0, .1);
+}
+
+.Button,
+input[type=submit],
+button {
+    display: inline-block;
+    padding: 5px 20px!important;
+    background-color: #2f7fd2;
+    border: 1px solid #295c90;
+    color: #fff;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.Button.Disabled,
+input[type=submit]:Disabled,
+button.Disabled {
+    opacity: .5;
+    cursor: no-drop;
+}
+
+.Control {
+    padding: 0 0 15px 0;
+    display: flex;
+}
+
+.Control:last-child {
+    padding: 0 0 15px 0;
+}
+
+.Control>* {
+    width: 100%;
+}
+
+.Control label {
+    padding-right: 10px;
+    max-width: 130px;
+    padding-top: 10px;
+}
+
+.Control a {
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.Control .Button,
+.Control input[type=submit],
+.Control button {
+    margin-right: 10px;
+}
+
+.Control *:last-child {
+    margin-right: 0;
+}
+
+.Form {
+    max-width: 500px;
 }

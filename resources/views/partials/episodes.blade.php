@@ -9,7 +9,9 @@
                 <h1>{{$show->name}}</h1>
                 <p class="Back"><a class="Button" href="{{ route('category.view', [$category])}}">Volver</a></p>
             </div>
-            <p>{!! $show->description !!}</p>
+            <div class="Description">
+                <p>{!! $show->description !!}</p>
+            </div>
         </div>
 
         {{ $episodes->links() }}
