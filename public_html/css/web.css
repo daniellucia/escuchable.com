@@ -138,11 +138,16 @@ ul li {
     margin: 0;
 }
 
-.MainMenu li a {
+.MainMenu li a,
+.MainMenu li span {
     display: block;
     padding: 10px 40px 10px 60px;
     font-family: 'Apercu Pro';
     font-weight: bold;
+}
+
+.MainMenu li span {
+    font-weight: normal;
 }
 
 .MainMenu li a:hover,
@@ -511,7 +516,8 @@ h3,
         display: none;
     }
 
-    .MainMenu li a {
+    .MainMenu li a,
+    .MainMenu li span {
         padding: 12px;
     }
 
