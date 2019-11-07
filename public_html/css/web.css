@@ -439,3 +439,25 @@ h3,
     letter-spacing: 1px;
     border-radius: 3px;
 }
+.Button.Disabled {
+    opacity: .5;
+    cursor: no-drop;
+}
+.Player {
+    margin: 30px 0;
+    border-radius: 6px;
+    border: 1px solid #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
+}
+
+.Controls {
+    display: flex;
+}
+.Controls > * {
+    margin-right: 10px;
+}
+
+.Controls span {
+    font-size: 0.85em;
+    margin-left: auto;
+}
