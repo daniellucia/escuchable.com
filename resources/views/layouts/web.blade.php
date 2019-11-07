@@ -19,11 +19,11 @@
                     </form>
                     @include('partials.menu')
                 </div>
-
-                @yield('breadcrumbs')
             </header>
             <div class="Columns">
+
             @yield('content')
+
             </div>
         </div>
 

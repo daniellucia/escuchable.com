@@ -1,5 +1,7 @@
 <div class="Shows">
 
+    @yield('breadcrumbs')
+
     @if (!empty($shows))
 
         <p class="Title Sticky">{{ $term }}</p>

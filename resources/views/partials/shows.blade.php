@@ -1,5 +1,7 @@
 <div class="Shows">
 
+    @yield('breadcrumbs')
+
     @if (!empty($shows))
         <div class="HeaderTitle">
             <h1 class="Sticky">{{$category->name}}</h1>

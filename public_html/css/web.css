@@ -405,7 +405,8 @@ h3,
 
 .Breadcrumb {
     font-size: 12px;
-    padding: 4px 30px;
+    padding: 4px 4px 4px 0;
+    margin: 5px;
 }
 
 .Breadcrumb li {

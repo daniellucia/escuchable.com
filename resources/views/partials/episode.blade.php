@@ -1,5 +1,7 @@
 <div class="Episodes">
 
+    @yield('breadcrumbs')
+
     <div class="ShowDescription Sticky">
         <div class="HeaderTitle">
             <h1>{{$episode->title}}</h1>

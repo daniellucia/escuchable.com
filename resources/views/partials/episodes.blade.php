@@ -1,4 +1,7 @@
 <div class="Episodes">
+
+    @yield('breadcrumbs')
+
     @if (!empty($episodes))
 
         <div class="ShowDescription Sticky">
