@@ -138,6 +138,9 @@ ul li {
     margin: 0;
 }
 
+.MainMenu li.Divider {
+    border-top: 1px solid #fff;
+}
 .MainMenu li a,
 .MainMenu li span {
     display: block;
@@ -147,7 +150,7 @@ ul li {
 }
 
 .MainMenu li span {
-    font-weight: normal;
+    opacity: .7;
 }
 
 .MainMenu li a:hover,
