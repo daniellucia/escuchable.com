@@ -7,7 +7,12 @@
         <div class="ShowDescription Sticky">
             <div class="HeaderTitle">
                 <h1>{{$show->name}}</h1>
-                <p class="Back"><a class="Button" href="{{ route('category.view', [$category])}}">Volver</a></p>
+                <p class="Back">
+                    @can('edit show')
+                    <a class="Button" href="{{ route('show.edit', $show)}}">Editar</a>
+                    @endcan
+                    <a class="Button" href="{{ route('category.view', [$category])}}">Volver</a>
+                </p>
             </div>
             <div class="Description">
                 <p>{!! $show->description !!}</p>

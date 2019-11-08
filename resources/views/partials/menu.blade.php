@@ -3,6 +3,11 @@
     <ul class="Menu">
         <li><a href="{{ route('home') }}">Inicio</a></li>
         <li><a href="#">Descubrir</a></li>
+
+        @can('show.create')
+        <li><a href="#">Añadir show</a></li>
+        @endcan
+
         @guest
             <li><a href="{{ route('login') }}">Entrar</a></li>
             <li><a href="{{ route('register') }}">Registro</a></li>

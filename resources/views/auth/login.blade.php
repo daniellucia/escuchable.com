@@ -8,7 +8,7 @@
         @csrf
 
         <div class="Control">
-            <label for="email">{{ __('E-Mail Address') }}</label>
+            <label for="email">{{ __('E-Mail') }}</label>
             <input id="email" type="email" class=" @error('email') IsInvalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
         </div>
         @error('email')

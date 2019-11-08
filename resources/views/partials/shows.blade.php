@@ -5,7 +5,14 @@
     @if (!empty($shows))
         <div class="HeaderTitle">
             <h1 class="Sticky">{{$category->name}}</h1>
-            <p class="Back"><a class="Button" href="{{ route('home')}}">Volver</a></p>
+            <p class="Back">
+
+                @can('edit category')
+                <a class="Button" href="{{ route('categories.edit', $category)}}">Editar</a>
+                @endcan
+
+                <a class="Button" href="{{ route('home')}}">Volver</a>
+            </p>
         </div>
 
 
