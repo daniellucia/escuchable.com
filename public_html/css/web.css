@@ -623,3 +623,12 @@ button.Disabled {
 .Form {
     max-width: 500px;
 }
+
+.ErrorInline {
+    background-color: #b42e27;
+    color: #fff;
+    margin-left: 15px;
+    border-radius: 4px;
+    font-size: 12px;
+    padding: 5px;
+}
