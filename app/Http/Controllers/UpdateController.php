@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\Episodes;
 use App\Resources\Channel;
+use App\Resources\Feed;
 use App\Resources\Read;
 use App\Shows;
 use Carbon\Carbon;
@@ -124,32 +125,7 @@ class UpdateController extends Controller
     {
         $feeds = file(storage_path('opml/feeds.txt'));
         foreach ($feeds as $feed) {
-            $feed = trim($feed);
-            $show = Shows::where('feed', $feed)->first();
-
-            if (!$show) {
-                $xml = null;
-                try {
-                    $xml = Read::xml($feed);
-                } catch (Exception $e) {
-                    continue;
-                }
-
-                if (is_object($xml)) {
-                    $channel = new Channel($xml->channel);
-                    $data = $channel->toArray();
-                    //dump($data);
-                    $data['categories_id'] = intval($data['categories_id']);
-                    dump($feed);
-
-                    $data['feed'] = $feed;
-                    $show = Shows::create($data);
-
-                    $show->timestamps = false;
-                    $show->save();
-                }
-
-            }
+            Feed::insert($feed);
         }
     }
     public function tags()

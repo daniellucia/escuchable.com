@@ -5,7 +5,7 @@
         <li><a href="#">Descubrir</a></li>
 
         @can('show.create')
-        <li><a href="#">Añadir show</a></li>
+        <li><a href="{{ route('show.create') }}">Añadir show</a></li>
         @endcan
 
         @guest

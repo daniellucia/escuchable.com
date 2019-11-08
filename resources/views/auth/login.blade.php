@@ -42,13 +42,10 @@
 
         <div class="Control">
             <button type="submit" class="Button">
-                {{ __('Login') }}
+                {{ __('Entrar') }}
             </button>
-
-
-
-            <a class="Button" href="{{ route('register') }}">
-                {{ __('Registro') }}
+             <a class="Button Link" href="{{ route('register') }}">
+                {{ __('Soy nuevo') }}
             </a>
         </div>
     </form>
