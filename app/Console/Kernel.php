@@ -42,6 +42,11 @@ class Kernel extends ConsoleKernel
          * Regenerar sitemap
          */
         $schedule->command('update:sitemap')->daily();
+
+        /**
+         * Actualización del listado del crawler
+         */
+        $schedule->command('crawler:revise')->everyMinute();
     }
 
     /**
