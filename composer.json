@@ -13,6 +13,7 @@
         "arrilot/laravel-widgets": "^3.13",
         "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "doctrine/dbal": "^2.9",
+        "fabpot/goutte": "^3.2",
         "fideloper/proxy": "^4.0",
         "fomvasss/laravel-meta-tags": "^3.0",
         "htmlmin/htmlmin": "^6.0",
