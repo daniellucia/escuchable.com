@@ -19,24 +19,8 @@
         @include('partials.pagination', ['element' => $shows, 'text' => 'shows'])
 
         <ul class="List">
-        @foreach ($shows as $showItem)
-            <li class="ShowSummary @if(isset($show) && $showItem == $show) Selected @endif" id="{{ $showItem->slug }}">
-                <a href="{{ route('show.view', $showItem) }}">
-                    @if ($showItem->thumbnail != '')
-                    <p class="Image"><img src="{{ asset($showItem->image) }}" alt="{{ $showItem->name }}" /></p>
-                    @endif
-
-                    <h5>{{ $showItem->name }}</h5>
-                    <p class="Description">
-                    {{ Str::limit(strip_tags($showItem->description), 110) }}
-                    </p>
-                    <div class="Metas">
-                        <p>
-                        <small>{{ $showItem->last_episode }}</small>
-                        </p>
-                    </div>
-                </a>
-            </li>
+        @foreach ($shows as $item)
+            @include('shows.detail')
         @endforeach
         </ul>
 

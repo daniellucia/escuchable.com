@@ -10,6 +10,7 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 use App\Presenters\DatePublishedAgo;
+use Sofa\Eloquence\Eloquence;
 
 class Episodes extends Model
 {

@@ -12,6 +12,7 @@ use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use App\Presenters\DateLastEpisodeAgo;
+use Sofa\Eloquence\Eloquence;
 
 class Shows extends Model
 {
@@ -23,7 +24,7 @@ class Shows extends Model
 
     protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',
-        'author', 'revised', 'language', 'thumbnail', 'last_episode'];
+        'author', 'revised', 'language', 'thumbnail', 'last_episode', 'active'];
 
     /**
      * Get the options for generating the slug.
