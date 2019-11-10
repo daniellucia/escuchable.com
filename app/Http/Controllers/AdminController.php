@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Shows;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,6 +19,7 @@ class AdminController extends Controller
             $show->categories_id = $request->input('category');
             $show->save();
 
+            Cache::flush();
             return redirect(route('show.view', [$show]))->with('message', 'Perfecto! Se ha actualizado con éxito.');
         }
 
