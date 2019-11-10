@@ -21,11 +21,15 @@
 
         @include('partials.pagination', ['element' => $episodes, 'text' => 'episodios'])
 
-        <ul class="episodesList">
-        @foreach ($episodes as $item)
-            @include('episodes.detail')
-        @endforeach
-        </ul>
+        @if ($episodes->total() > 0)
+            <p class="Title">Episodios</p>
+            <ul class="episodesList">
+            @foreach ($episodes as $item)
+                @include('episodes.detail')
+            @endforeach
+            </ul>
+        @endif
+
         @include('partials.pagination', ['element' => $episodes, 'text' => 'episodios'])
 
     @endif
