@@ -19,13 +19,14 @@
             </div>
         </div>
 
-        {{ $episodes->links() }}
+        @include('partials.pagination', ['element' => $episodes, 'text' => 'episodios'])
+
         <ul class="episodesList">
         @foreach ($episodes as $item)
             @include('episodes.detail')
         @endforeach
         </ul>
-        {{ $episodes->links() }}
+        @include('partials.pagination', ['element' => $episodes, 'text' => 'episodios'])
 
     @endif
 

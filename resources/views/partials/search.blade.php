@@ -6,7 +6,7 @@
 
         <p class="Title Sticky">{{ $term }}</p>
 
-        {{ $shows->links() }}
+        @include('partials.pagination', ['element' => $shows, 'text' => 'shows'])
 
         <ul class="List">
         @foreach ($shows as $showItem)
@@ -30,6 +30,6 @@
         @endforeach
         </ul>
 
-        {{ $shows->links() }}
+        @include('partials.pagination', ['element' => $shows, 'text' => 'shows'])
     @endif
 </div>

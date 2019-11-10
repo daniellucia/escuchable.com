@@ -70,6 +70,7 @@ a:hover {
         display: grid;
         grid-column-gap: 20px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin-bottom: 30px;
     }
 
     .episodesList li a {
@@ -179,20 +180,7 @@ ul li {
         position: relative;
     }
 
-    .Columns:after {
-        content: "";
-        top: 0;
-        right: 0;
-        left: 0;
-        position: absolute;
-        height: 15px;
-        z-index: 999;
-        /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
-        background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-        background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff', GradientType=0);
-    }
+
 
     .Columns>* {
         height: calc(100vh - 80px);
@@ -204,11 +192,6 @@ ul li {
     .ContentHome .Columns>* {
         height: 100vh;
     }
-
-    .Shows {
-        /*max-width: 350px;*/
-    }
-
     .Shows .List {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -279,41 +262,6 @@ h3,
     font-weight: bold;
 }
 
-.pagination {
-    margin: 15px 0;
-    padding: 5px;
-    list-style: none;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.pagination li {
-    display: inline-block;
-    padding: 0px 2px;
-    margin: 0;
-}
-
-.pagination li span,
-.pagination li a {
-    padding: 3px 7px;
-    background-color: #f7f7f7;
-    border-radius: 3px;
-    border: 1px solid #e8e8e8;
-    display: inline-block;
-    font-size: 0.9em;
-}
-
-.pagination li a {
-    background-color: #e6e6e6;
-    border: 1px solid #adadad;
-}
-
-.pagination li.active span {
-    background-color: transparent;
-    border: 1px solid #fff;
-    color: #000;
-    font-weight: bold;
-}
 
 .Episodes .ShowDescription {
     margin: 0 0 30px 0;
@@ -423,6 +371,7 @@ h3,
     padding-bottom: 30px;
 }
 
+/** Móvil **/
 @media only screen and (max-width: 780px) {
     .Categories ul {
         overflow: auto;
@@ -583,6 +532,7 @@ button {
     text-align: center;
     border: none;
     text-decoration: none;
+    border: 1px solid #2f7fd2;
 }
 
 .Button:hover,
@@ -603,6 +553,7 @@ button.Link {
     background-color: transparent;
     color: #2f7fd2 !important;
     font-weight: bold;
+    border: 1px solid #2f7fd2;
 }
 
 .Button.Disabled,
@@ -672,4 +623,63 @@ button.Disabled {
 .Alert.Error {
     background-color: #b42e27;
     color: #fff;
+}
+
+
+.PaginationContent {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px 0;
+    margin: 0 0 20px 0;
+}
+
+.pagination {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: 5px;
+    text-align: right;
+}
+
+.pagination li {
+    display: inline-block;
+    padding: 0px 2px;
+    margin: 0;
+}
+
+.pagination li span,
+.pagination li a {
+    padding: 3px 7px;
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    border: 1px solid #e8e8e8;
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.pagination li a {
+    background-color: #e6e6e6;
+    border: 1px solid #adadad;
+}
+
+.pagination li.active span {
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #000;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 780px) {
+    .PaginationContent {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .pagination, .PaginationContent p {
+        text-align: center;
+    }
+    .PaginationContent p {
+        margin-bottom: 15px;
+    }
 }
