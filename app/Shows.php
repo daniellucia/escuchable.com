@@ -5,12 +5,12 @@ namespace App;
 use Appstract\Meta\Metable;
 use App\Categories;
 use App\Resources\Channel;
+use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 
 class Shows extends Model
 {
@@ -94,7 +94,7 @@ class Shows extends Model
 
     public function getImageAttribute($value)
     {
-        if ($value == ''|| !file_exists(public_path($value))) {
+        if ($value == '' || !file_exists(public_path($value))) {
             return '/images/show/no-image.jpg';
         } else {
             return $value;
@@ -104,7 +104,7 @@ class Shows extends Model
 
     public function getThumbnailAttribute($value)
     {
-        if ($value == ''|| !file_exists(public_path($value))) {
+        if ($value == '' || !file_exists(public_path($value))) {
             return '/images/show/no-image.jpg';
         } else {
             return $value;
@@ -112,8 +112,14 @@ class Shows extends Model
 
     }
 
-    public function category() {
+    public function category()
+    {
         return $this->belongsTo('App\Categories');
+    }
+
+    public function episodes()
+    {
+        return $this->hasMany('App\Episodes');
     }
 
 }
