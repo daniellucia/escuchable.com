@@ -4,7 +4,7 @@
     @include('partials.metatags')
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191108" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=20191110" rel="stylesheet">
 </head>
 <body>
 

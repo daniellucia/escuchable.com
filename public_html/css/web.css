@@ -141,6 +141,7 @@ ul li {
 .MainMenu li.Divider {
     border-top: 1px solid #fff;
 }
+
 .MainMenu li a,
 .MainMenu li span {
     display: block;
@@ -330,10 +331,6 @@ h3,
 
 
 .episodesList {
-    padding: 20px;
-    border-radius: 4px;
-    border: 1px solid #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .04);
     margin: 10px 0;
 }
 
@@ -346,6 +343,12 @@ h3,
     max-width: 200px;
     font-size: .85em;
     margin-right: 20px;
+}
+
+.episodesList li {
+    border-bottom: 1px solid #f3f3f3;
+    margin: 0 0 15px 0;
+    padding: 0 0 10px 0;
 }
 
 @media only screen and (min-width: 1380px) {
@@ -419,13 +422,14 @@ h3,
 .Home .Search {
     padding-bottom: 30px;
 }
+
 @media only screen and (max-width: 780px) {
     .Categories ul {
         overflow: auto;
         white-space: nowrap;
         min-width: 100%;
         margin-bottom: 30px;
-        padding: 0 15px;
+        padding: 0 15px 30px 15px;
     }
 
     .Categories ul li {
@@ -471,8 +475,7 @@ h3,
         /*padding: 30px;*/
     }
 
-    .Home .Search,
-    .episodesList {
+    .Home .Search {
         padding: 30px;
     }
 
@@ -569,7 +572,7 @@ textarea:focus {
 input[type=submit],
 button {
     display: inline-block;
-    padding: 5px 20px!important;
+    padding: 5px 20px !important;
     background-color: #2f7fd2;
     color: #fff;
     font-size: 0.8em;
@@ -598,9 +601,10 @@ button:active {
 input[type=submit].Link,
 button.Link {
     background-color: transparent;
-    color: #2f7fd2!important;
+    color: #2f7fd2 !important;
     font-weight: bold;
 }
+
 .Button.Disabled,
 input[type=submit]:Disabled,
 button.Disabled {
@@ -659,10 +663,12 @@ button.Disabled {
     border-radius: 6px;
     font-size: 0.9em;
 }
+
 .Alert.Success {
     background-color: rgb(153, 216, 139);
     color: #fff;
 }
+
 .Alert.Error {
     background-color: #b42e27;
     color: #fff;
