@@ -192,6 +192,7 @@ ul li {
     .ContentHome .Columns>* {
         height: 100vh;
     }
+
     .Shows .List {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -236,6 +237,10 @@ ul li {
 
 .Metas {
     margin-top: 5px;
+}
+
+.Metas a {
+    width: 100%;
 }
 
 .ShowSummary.Selected {
@@ -676,9 +681,11 @@ button.Disabled {
         padding: 20px;
     }
 
-    .pagination, .PaginationContent p {
+    .pagination,
+    .PaginationContent p {
         text-align: center;
     }
+
     .PaginationContent p {
         margin-bottom: 15px;
     }

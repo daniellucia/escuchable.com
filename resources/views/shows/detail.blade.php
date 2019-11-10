@@ -17,7 +17,7 @@
 
     @if(auth()->user()->can('show.edit'))
     <div class="Metas">
-        <a class="Button" href="{{ route('show.edit', $item)}}">Editar</a>
+        <a class="Button Link" href="{{ route('show.edit', $item)}}">Editar</a>
     </div>
     @endif
 </li>
