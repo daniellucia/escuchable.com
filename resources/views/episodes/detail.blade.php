@@ -9,7 +9,7 @@
     <p class="Author">en <strong>{{ $item->parentShow()->name}}</strong></p>
     <div class="Metas">
         <p>
-        <small>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($item->published))->diffForHumans() }}</small>
+        <small>{{ $item->published }}</small>
         </p>
     </div>
 </a>
