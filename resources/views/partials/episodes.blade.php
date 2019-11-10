@@ -5,12 +5,20 @@
     @if (!empty($episodes))
 
         <div class="ShowDescription Sticky">
+            @if(session()->has('message'))
+                <div class="Alert Success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
+
             <div class="HeaderTitle">
                 <h1>{{$show->name}}</h1>
                 <p class="Back">
-                    @can('edit show')
+
+                    @if(auth()->user()->can('show.edit'))
                     <a class="Button" href="{{ route('show.edit', $show)}}">Editar</a>
-                    @endcan
+                    @endif
+
                     <a class="Button" href="{{ route('category.view', [$category])}}">Volver</a>
                 </p>
             </div>
