@@ -18,7 +18,7 @@ class AdminController extends Controller
             $show->categories_id = $request->input('category');
             $show->save();
 
-            return redirect(route('show.view', [$show]))->back()->with('message', 'Perfecto! Se ha actualizado con éxito.');
+            return redirect(route('show.view', [$show]))->with('message', 'Perfecto! Se ha actualizado con éxito.');
         }
 
         return view('admin.show',[
