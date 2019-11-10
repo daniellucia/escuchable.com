@@ -22,7 +22,7 @@
                     </p>
                     <div class="Metas">
                         <p>
-                        <small>{{ \Carbon\Carbon::createFromTimeStamp(strtotime($showItem->last_episode))->diffForHumans() }}</small>
+                        <small>{{ $showItem->last_episode }}</small>
                         </p>
                     </div>
                 </a>

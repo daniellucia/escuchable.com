@@ -11,7 +11,7 @@
         <p>{!! $episode->description !!}</p>
             <div class="Metas">
                 <p>
-                <small>publicado hace {{ \Carbon\Carbon::createFromTimeStamp(strtotime($episode->published))->diffForHumans() }}</small>
+                <small>publicado hace {{ $episode->published }}</small>
                 </p>
             </div>
         </div>

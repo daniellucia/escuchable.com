@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
+use App\Presenters\DateLastEpisodeAgo;
 
 class Shows extends Model
 {
@@ -18,6 +19,7 @@ class Shows extends Model
     use Metable;
     use CanBeVoted;
     use Metatagable;
+    use DateLastEpisodeAgo;
 
     protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',
