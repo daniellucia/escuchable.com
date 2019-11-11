@@ -42,7 +42,7 @@ class ReviseUrlCrawler extends Command
      */
     public function handle()
     {
-        $elements = Crawler::whereNull('date_revised')->limit(10)->get();
+        $elements = Crawler::whereNull('date_revised')->limit(6)->get();
         $bar = $this->output->createProgressBar(count($elements));
 
         $bar->start();
