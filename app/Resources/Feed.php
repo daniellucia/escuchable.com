@@ -30,7 +30,9 @@ class Feed
                 $show = Shows::where('name', $data['name'])->first();
 
                 if (!$show) {
-                    $data['categories_id'] = intval($data['categories_id']);
+                    if (isset($data['categories_id'])) {
+                        $data['categories_id'] = intval($data['categories_id']);
+                    }
 
                     $data['feed'] = $feed;
 
