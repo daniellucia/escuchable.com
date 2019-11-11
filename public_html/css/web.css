@@ -233,6 +233,7 @@ ul li {
 .ShowSummary.Disabled {
     opacity: .5;
 }
+
 .ShowSummary h5 {
     font-size: 15px;
     margin-bottom: 5px;
@@ -242,9 +243,11 @@ ul li {
     margin-top: 20px;
     font-size: 12px;
 }
+
 .ShowSummary .Form .Control {
-margin: 0 0 2px 0;
+    margin: 0 0 2px 0;
 }
+
 .ShowSummary .Form input[type=email],
 .ShowSummary .Form input[type=url],
 .ShowSummary .Form input[type=text],
@@ -360,10 +363,17 @@ h3,
     font-weight: bold;
     padding: 15px;
     border-radius: 10px;
-    background-color: #f3f3f3;
-    min-height: 150px;
+    min-height: 185px;
     white-space: normal;
     font-size: 22px;
+    color: #fff;
+    text-shadow: 0 2px 2px rgba(0,0,0,.3);
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2353ba+0,258dc8+100 */
+    background: rgb(35, 83, 186);
+    background: -moz-linear-gradient(45deg, rgba(35, 83, 186, 1) 0%, rgba(37, 141, 200, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(35, 83, 186, 1) 0%, rgba(37, 141, 200, 1) 100%);
+    background: linear-gradient(45deg, rgba(35, 83, 186, 1) 0%, rgba(37, 141, 200, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2353ba', endColorstr='#258dc8', GradientType=1);
 }
 
 .Categories a span {
@@ -430,7 +440,7 @@ h3,
     }
 
     .Categories li a {
-        min-height: 200px;
+        min-height: 250px;
         font-size: 18px;
     }
 

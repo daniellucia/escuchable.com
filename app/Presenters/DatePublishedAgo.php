@@ -6,6 +6,10 @@ trait DatePublishedAgo
 {
     public function getPublishedAttribute($value)
     {
-        return \Carbon\Carbon::createFromTimeStamp(strtotime($value))->diffForHumans();
+        if ($value) {
+            return \Carbon\Carbon::createFromTimeStamp(strtotime($value))->diffForHumans();
+        }
+
+        return '';
     }
 }
