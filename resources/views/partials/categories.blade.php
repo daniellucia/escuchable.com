@@ -5,7 +5,10 @@
         @foreach ($categories as $categoryItem)
             <li id="{{ $categoryItem->slug }}" class=" @if(isset($category) && $categoryItem == $category) Selected @endif">
                 <a href="{{ route('category.view', $categoryItem) }}">
-                    <span>{{ ucfirst($categoryItem->name) }}</span>
+                    <span>
+                        <em>{{ $categoryItem->shows()->count()}} shows</em>
+                        {{ ucfirst($categoryItem->name) }}
+                    </span>
                 </a>
             </li>
         @endforeach
