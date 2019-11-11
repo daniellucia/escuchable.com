@@ -15,10 +15,6 @@
         @endif
 
         <div class="Control">
-            {!! $show->description !!}
-        </div>
-
-        <div class="Control">
             <label for="feed">{{ __('Categoria') }}</label>
             <select name="category">
                 @foreach ($categories as $item)
@@ -31,6 +27,10 @@
             <button type="submit" class="Button">
                 {{ __('Enviar') }}
             </button>
+        </div>
+
+        <div class="Control">
+            {!! $show->description !!}
         </div>
     </form>
 </div>
