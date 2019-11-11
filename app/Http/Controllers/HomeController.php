@@ -30,12 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = Cache::remember('categories', 60, function () {
-            Categories::orderBy('name')->get();
-        });
-
         return view('home', [
-            'categories' => $categories,
+            'categories' => Categories::orderBy('name')->get(),
         ]);
     }
 
@@ -54,14 +50,10 @@ class HomeController extends Controller
             });
         }
 
-        $categories = Cache::remember('categories', 60, function () {
-            Categories::orderBy('name')->get();
-        });
-
         return view('shows', [
             'category' => $category,
             'shows' => $shows,
-            'categories' => $categories,
+            'categories' => Categories::orderBy('name')->get(),
         ]);
     }
 
