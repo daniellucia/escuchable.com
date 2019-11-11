@@ -4,7 +4,7 @@
     @include('partials.metatags')
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191111" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=201911111438" rel="stylesheet">
 </head>
 <body>
 
@@ -37,5 +37,9 @@
     </div>
 
     {!! Analytics::render() !!}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
+
 </body>
 </html>

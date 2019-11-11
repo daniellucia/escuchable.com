@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Categories;
 use App\Episodes;
 use App\Shows;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use MetaTag;
-use Illuminate\Http\Request;
 use TorMorten\Eventy\Facades\Events as Eventy;
 
 class HomeController extends Controller
@@ -29,8 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home',[
-            'categories' => Categories::orderBy('name')->get()
+        return view('home', [
+            'categories' => Categories::orderBy('name')->get(),
         ]);
     }
 
@@ -45,9 +46,16 @@ class HomeController extends Controller
             return $category->shows()->active()->orderBy('last_episode', 'desc')->paginate(16);
         });
 
+        $categories = [];
+
+        if (Auth::check() && Auth::user()->hasPermissionTo('show.edit')) {
+            $categories = Categories::orderBy('name')->get();
+        }
+
         return view('shows', [
             'category' => $category,
             'shows' => $shows,
+            'categories' => $categories,
         ]);
     }
 

@@ -178,7 +178,8 @@ ul li {
     .Columns {
         display: flex;
         position: relative;
-        flex-wrap: wrap;;
+        flex-wrap: wrap;
+        ;
     }
 
 
@@ -191,13 +192,13 @@ ul li {
     }
 
     .Columns>*:not(.Alert) {
-        flex:1;
+        flex: 1;
     }
 
     .Columns .Alert {
         width: 100%;
         margin: 40px;
-        height: auto!important;
+        height: auto !important;
     }
 
     .ContentHome .Columns>* {
@@ -232,6 +233,26 @@ ul li {
 .ShowSummary h5 {
     font-size: 15px;
     margin-bottom: 5px;
+}
+
+.ShowSummary .Form {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.ShowSummary .Form input[type=email],
+.ShowSummary .Form input[type=url],
+.ShowSummary .Form input[type=text],
+.ShowSummary .Form input[type=password],
+.ShowSummary .Form input[type=search],
+.ShowSummary .Form select,
+.ShowSummary .Form textarea {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.ShowSummary .Form .Control:last-child {
+    margin: 0;
 }
 
 .ShowSummary .Image {

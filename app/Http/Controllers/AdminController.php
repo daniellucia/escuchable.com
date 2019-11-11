@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Shows;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AdminController extends Controller
 {
@@ -20,12 +20,16 @@ class AdminController extends Controller
             $show->save();
 
             Cache::flush();
+
+            if ($request->ajax()) {
+                return response()->json(['success' => 'Perfecto! Se ha actualizado con éxito.']);
+            }
             return redirect(route('show.view', [$show]))->with('message', 'Perfecto! Se ha actualizado con éxito.');
         }
 
-        return view('admin.show',[
+        return view('admin.show', [
             'show' => $show,
-            'categories' => Categories::orderBy('name')->get()
+            'categories' => Categories::orderBy('name')->get(),
         ]);
     }
 

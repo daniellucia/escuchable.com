@@ -16,8 +16,22 @@
     </a>
 
     @can('show.edit')
-    <div class="Metas">
-        <a class="Button Link" href="{{ route('show.edit', $item)}}">Editar</a>
-    </div>
+        <form method="POST" action="{{ route('show.edit', $item) }}" class="Form Ajax">
+            @csrf
+            <div class="Control">
+                <label for="feed">{{ __('Categoria') }}</label>
+                <select name="category">
+                    @foreach ($categories as $itemCategory)
+                    <option value="{{ $itemCategory->id }}" @if($itemCategory->id == $item->categories_id) selected @endif>{{ ucfirst($itemCategory->name) }}</option>
+                    @endforeach
+            </select>
+            </div>
+
+            <div class="Control">
+                <button type="submit" class="Button">
+                    {{ __('Guardar') }}
+                </button>
+            </div>
+        </form>
     @endcan
 </li>
