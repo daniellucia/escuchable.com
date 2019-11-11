@@ -26,7 +26,7 @@ class UpdateTableEpisodes extends Migration
     public function down()
     {
         Schema::table('episodes', function ($table) {
-            $table->string('link', 250)->change();
+            $table->string('mp3', 250)->change();
         });
     }
 }
