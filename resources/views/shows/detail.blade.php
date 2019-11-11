@@ -15,9 +15,9 @@
         </div>
     </a>
 
-    @if(auth()->user()->can('show.edit'))
+    @can('show.edit')
     <div class="Metas">
         <a class="Button Link" href="{{ route('show.edit', $item)}}">Editar</a>
     </div>
-    @endif
+    @endcan
 </li>

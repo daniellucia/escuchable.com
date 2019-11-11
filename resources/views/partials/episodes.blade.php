@@ -15,9 +15,9 @@
                 <h1>{{$show->name}}</h1>
                 <p class="Back">
 
-                    @if(auth()->user()->can('show.edit'))
+                    @can('show.edit')
                     <a class="Button" href="{{ route('show.edit', $show)}}">Editar</a>
-                    @endif
+                    @endcan
 
                     <a class="Button" href="{{ route('category.view', [$category])}}">Volver</a>
                 </p>
