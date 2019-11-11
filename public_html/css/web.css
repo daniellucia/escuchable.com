@@ -178,6 +178,7 @@ ul li {
     .Columns {
         display: flex;
         position: relative;
+        flex-wrap: wrap;;
     }
 
 
@@ -187,6 +188,16 @@ ul li {
         padding: 40px;
         overflow: auto;
         width: 100%;
+    }
+
+    .Columns>*:not(.Alert) {
+        flex:1;
+    }
+
+    .Columns .Alert {
+        width: 100%;
+        margin: 40px;
+        height: auto!important;
     }
 
     .ContentHome .Columns>* {
