@@ -5,12 +5,6 @@
     @if (!empty($episodes))
 
         <div class="ShowDescription Sticky">
-            @if(session()->has('message'))
-                <div class="Alert Success">
-                    {{ session()->get('message') }}
-                </div>
-            @endif
-
             <div class="HeaderTitle">
                 <h1>{{$show->name}}</h1>
                 <p class="Back">
@@ -23,7 +17,7 @@
                 </p>
             </div>
             <div class="Description">
-                <p>{!! $show->description !!}</p>
+                {!! $show->description !!}
             </div>
         </div>
 

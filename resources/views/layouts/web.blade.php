@@ -24,7 +24,12 @@
             @endif
             <div class="Columns">
 
-            @yield('content')
+                @if(session()->has('message'))
+                    <div class="Alert Success">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+                @yield('content')
 
             </div>
         </div>

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="Container">
-    <div class="Title">{{ __('Editar show') }}</div>
+    <div class="Title">{{ $show->name }}</div>
 
     <form method="POST" action="{{ route('show.edit', $show) }}" class="Form">
         @csrf
@@ -13,6 +13,10 @@
                 {{ session()->get('message') }}
             </div>
         @endif
+
+        <div class="Control">
+            {!! $show->description !!}
+        </div>
 
         <div class="Control">
             <label for="feed">{{ __('Categoria') }}</label>
