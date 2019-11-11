@@ -82,7 +82,7 @@ class Channel
             'description' => $this->description,
             'image' => $this->image,
             'thumbnail' => $this->thumbnail,
-            'categories_id' => $this->categories_id == 0 ? 1 : $this->categories_id,
+            //'categories_id' => $this->categories_id == 0 ? 1 : $this->categories_id,
         ];
     }
 }
