@@ -7,6 +7,7 @@ use App\Resources\Read;
 use App\Shows;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class UpdateFeeds extends Command
 {
@@ -69,9 +70,8 @@ class UpdateFeeds extends Command
                 $show->updateByChannel($xml->channel);
 
                 $lastEpisode = Episodes::whereShow($show->id)->orderBy('published', 'desc')->first();
-
                 if (isset($lastEpisode->published)) {
-                    $show->last_episode = $lastEpisode->published;
+                    $show->last_episode = $lastEpisode->getOriginal('last_episode');
                     $show->save();
                 }
 
