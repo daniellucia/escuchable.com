@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Resources\Utils;
 use Illuminate\Database\Eloquent\Model;
 
 class Crawler extends Model
@@ -22,13 +21,19 @@ class Crawler extends Model
     public static function getDomain(string $url)
     {
         if (filter_var($url, FILTER_VALIDATE_URL)) {
-            return str_replace('www.', '', parse_url($url)['host']);
+            $parse = parse_url($url);
+
+            if (isset($parse['host'])) {
+                return str_replace('www.', '', $parse['host']);
+            }
+
         }
 
         return false;
     }
 
-    public static function normalizeUrl($url) {
+    public static function normalizeUrl($url)
+    {
         $url = rtrim($url, '/');
         $url = strtok($url, '#');
 
