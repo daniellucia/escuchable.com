@@ -18,6 +18,8 @@
     @can('show.edit')
         <form method="POST" action="{{ route('show.edit', $item) }}" class="Form Ajax">
             @csrf
+
+            @if (!empty($categories))
             <div class="Control">
                 <label for="feed">{{ __('Categoria') }}</label>
                 <select name="category">
@@ -26,6 +28,8 @@
                     @endforeach
                 </select>
             </div>
+            @endif
+
             <div class="Control">
                 <label>
                     <input type="checkbox" name="active" value="1" @if($item->active == 1) checked="checked" @endif/>

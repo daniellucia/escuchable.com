@@ -30,8 +30,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $categories = Cache::remember('categories', 60, function () {
+            Categories::orderBy('name')->get();
+        });
+
         return view('home', [
-            'categories' => Categories::orderBy('name')->get(),
+            'categories' => $categories,
         ]);
     }
 
@@ -50,12 +54,9 @@ class HomeController extends Controller
             });
         }
 
-
-        $categories = [];
-
-        if (Auth::check() && Auth::user()->hasPermissionTo('show.edit')) {
-            $categories = Categories::orderBy('name')->get();
-        }
+        $categories = Cache::remember('categories', 60, function () {
+            Categories::orderBy('name')->get();
+        });
 
         return view('shows', [
             'category' => $category,
