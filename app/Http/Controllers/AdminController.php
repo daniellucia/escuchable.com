@@ -17,6 +17,7 @@ class AdminController extends Controller
     {
         if ($request->isMethod('post')) {
             $show->categories_id = $request->input('category');
+            $show->active = intval($request->input('active'));
             $show->save();
 
             Cache::flush();

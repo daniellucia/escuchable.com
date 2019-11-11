@@ -1,4 +1,4 @@
-<li class="ShowSummary @if(isset($show) && $item == $show) Selected @endif" id="{{ $item->slug }}">
+<li class="ShowSummary @if($item->active == 0) Disabled @endif @if(isset($show) && $item == $show) Selected @endif" id="{{ $item->slug }}">
     <a href="{{ route('show.view', $item) }}">
         @if ($item->thumbnail != '')
         <p class="Image"><img src="{{ asset($item->image) }}" alt="{{ $item->name }}" /></p>
@@ -24,9 +24,14 @@
                     @foreach ($categories as $itemCategory)
                     <option value="{{ $itemCategory->id }}" @if($itemCategory->id == $item->categories_id) selected @endif>{{ ucfirst($itemCategory->name) }}</option>
                     @endforeach
-            </select>
+                </select>
             </div>
-
+            <div class="Control">
+                <label>
+                    <input type="checkbox" name="active" value="1" @if($item->active == 1) checked="checked" @endif/>
+                    {{ __('Activo') }}
+                </label>
+            </div>
             <div class="Control">
                 <button type="submit" class="Button">
                     {{ __('Guardar') }}

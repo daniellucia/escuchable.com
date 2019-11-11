@@ -230,6 +230,9 @@ ul li {
     width: 20px;
 }
 
+.ShowSummary.Disabled {
+    opacity: .5;
+}
 .ShowSummary h5 {
     font-size: 15px;
     margin-bottom: 5px;
@@ -239,7 +242,9 @@ ul li {
     margin-top: 20px;
     font-size: 12px;
 }
-
+.ShowSummary .Form .Control {
+margin: 0 0 2px 0;
+}
 .ShowSummary .Form input[type=email],
 .ShowSummary .Form input[type=url],
 .ShowSummary .Form input[type=text],

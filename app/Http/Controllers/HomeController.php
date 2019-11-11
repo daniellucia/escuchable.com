@@ -42,9 +42,14 @@ class HomeController extends Controller
             'description' => $category->description,
         ]);
 
-        $shows = Cache::remember(sprintf('episodes.%d.%d', $category->id, $request->get('page')), 60, function () use ($category) {
-            return $category->shows()->active()->orderBy('last_episode', 'desc')->paginate(16);
-        });
+        if (Auth::check() && Auth::user()->hasPermissionTo('show.edit')) {
+            $shows = $category->shows()->orderBy('last_episode', 'desc')->paginate(18);
+        } else {
+            $shows = Cache::remember(sprintf('episodes.%d.%d', $category->id, $request->get('page')), 60, function () use ($category) {
+                return $category->shows()->active()->orderBy('last_episode', 'desc')->paginate(18);
+            });
+        }
+
 
         $categories = [];
 
