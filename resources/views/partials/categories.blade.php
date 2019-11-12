@@ -3,7 +3,7 @@
         <p class="Title">Categorías</p>
         <ul @if(isset($category)) class="categorySelected" @endif >
         @foreach ($categories as $item)
-            @if ($item->shows()->count() > 0)
+            @if ($item->shows_count > 0)
                 <li id="{{ $item->slug }}" class=" @if(isset($category) && $item == $category) Selected @endif">
                     <a href="{{ route('category.view', $item) }}">
                         <span>

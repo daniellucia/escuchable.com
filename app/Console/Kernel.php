@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\UpdateFeeds',
         'App\Console\Commands\FindDuplicates',
         'App\Console\Commands\AddUrlToCrawler',
+        'App\Console\Commands\RereshCountShows',
     ];
 
     /**
@@ -48,6 +49,11 @@ class Kernel extends ConsoleKernel
          * Actualización del listado del crawler
          */
         $schedule->command('crawler:revise')->everyMinute();
+
+        /**
+         * Actualización de los totales en las categorias
+         */
+        $schedule->command('update:total')->hourly();
     }
 
     /**
