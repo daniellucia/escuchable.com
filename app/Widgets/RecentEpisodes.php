@@ -24,7 +24,7 @@ class RecentEpisodes extends AbstractWidget
     {
         $show = intval($this->config['show']);
         if ($show > 0) {
-            $episodesWidget = Episodes::whereShowId($show)->orderBy('published', 'desc')->limit(15)->get();
+            $episodesWidget = Episodes::whereShowsId($show)->orderBy('published', 'desc')->limit(15)->get();
         } else {
             $episodesWidget = Episodes::orderBy('published', 'desc')->limit(15)->get();
         }
