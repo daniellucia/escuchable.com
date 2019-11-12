@@ -13,6 +13,7 @@ use TorMorten\Eventy\Facades\Events as Eventy;
 
 class HomeController extends Controller
 {
+    private $categories;
     /**
      * Create a new controller instance.
      *
@@ -21,6 +22,9 @@ class HomeController extends Controller
     public function __construct()
     {
         //$this->middleware('auth');
+        $this->categories = Cache::remember('categories', 60, function () {
+            return Categories::orderBy('name')->get();
+        });
     }
 
     /**
@@ -31,7 +35,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', [
-            'categories' => Categories::orderBy('name')->get(),
+            'categories' => $this->categories,
         ]);
     }
 
@@ -53,7 +57,7 @@ class HomeController extends Controller
         return view('shows', [
             'category' => $category,
             'shows' => $shows,
-            'categories' => Categories::orderBy('name')->get(),
+            'categories' => $this->categories,
         ]);
     }
 
