@@ -21,10 +21,10 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        //$this->middleware('auth');
         $this->categories = Cache::remember('categories', 60, function () {
-            return Categories::orderBy('name')->get();
+            return Categories::where('shows_count', '>', 0)->orderBy('name')->get();
         });
+
     }
 
     /**
@@ -49,7 +49,7 @@ class HomeController extends Controller
         if (Auth::check() && Auth::user()->hasPermissionTo('show.edit')) {
             $shows = $category->shows()->orderBy('last_episode', 'desc')->paginate(18);
         } else {
-            $shows = Cache::remember(sprintf('episodes.%d.%d', $category->id, $request->get('page')), 60, function () use ($category) {
+            $shows = Cache::remember(sprintf('shows.%d.%d', $category->id, $request->get('page')), 60, function () use ($category) {
                 return $category->shows()->active()->orderBy('last_episode', 'desc')->paginate(18);
             });
         }
@@ -76,7 +76,7 @@ class HomeController extends Controller
         return view('episodes', [
             'category' => $category,
             'show' => $show,
-            'episodes' => Episodes::whereShow($show->id)->paginate(25),
+            'episodes' => $show->episodes()->paginate(25),
         ]);
     }
 

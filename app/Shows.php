@@ -4,6 +4,7 @@ namespace App;
 
 use Appstract\Meta\Metable;
 use App\Categories;
+use App\Presenters\DateLastEpisodeAgo;
 use App\Resources\Channel;
 use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +12,7 @@ use Illuminate\Support\Str;
 use Jcc\LaravelVote\CanBeVoted;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use App\Presenters\DateLastEpisodeAgo;
-use Sofa\Eloquence\Eloquence;
+use Watson\Rememberable\Rememberable;
 
 class Shows extends Model
 {
@@ -21,10 +21,12 @@ class Shows extends Model
     use CanBeVoted;
     use Metatagable;
     use DateLastEpisodeAgo;
+    use Rememberable;
 
     protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',
         'author', 'revised', 'language', 'thumbnail', 'last_episode', 'active'];
+    public $rememberFor = 120; //2 horas
 
     /**
      * Get the options for generating the slug.
@@ -125,7 +127,8 @@ class Shows extends Model
         return $this->hasMany('App\Episodes');
     }
 
-    public function scopeActive($query) {
+    public function scopeActive($query)
+    {
         return $query->where('active', 1);
     }
 }

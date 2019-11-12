@@ -30,9 +30,11 @@
         "spatie/laravel-sluggable": "^2.2",
         "stichoza/google-translate-php": "^4.0",
         "tormjens/eventy": "^0.5.7",
-        "vipnytt/opmlparser": "dev-master"
+        "vipnytt/opmlparser": "dev-master",
+        "watson/rememberable": "^3.2"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.4",
         "laravel/ui": "^1.1",

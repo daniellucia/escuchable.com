@@ -51,7 +51,7 @@ class CreateSitemap extends Command
             foreach ($shows as $show) {
                 $sitemap->add(route('show.view', $show), $show->updated_at, 0.9, 'daily');
 
-                $episodes = Episodes::whereShow($show->id)->get();
+                $episodes = Episodes::whereShowId($show->id)->get();
                 foreach ($episodes as $episode) {
                     $sitemap->add(route('episode.view', [$show, $episode]), $episode->updated_at, 0.6, 'yearly');
                 }

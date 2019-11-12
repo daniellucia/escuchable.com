@@ -4,7 +4,6 @@ namespace App\Widgets;
 
 use App\Episodes;
 use Arrilot\Widgets\AbstractWidget;
-use Illuminate\Support\Facades\Cache;
 
 class RecentEpisodes extends AbstractWidget
 {
@@ -24,14 +23,11 @@ class RecentEpisodes extends AbstractWidget
     public function run()
     {
         $show = intval($this->config['show']);
-        $episodesWidget = Cache::remember(sprintf('episodes.%d', $show), 60, function () use ($show) {
-            if ($show > 0) {
-                return Episodes::whereShow($show)->orderBy('published', 'desc')->limit(15)->get();
-            } else {
-                return Episodes::orderBy('published', 'desc')->limit(15)->get();
-            }
-
-        });
+        if ($show > 0) {
+            $episodesWidget = Episodes::whereShowId($show)->orderBy('published', 'desc')->limit(15)->get();
+        } else {
+            $episodesWidget = Episodes::orderBy('published', 'desc')->limit(15)->get();
+        }
 
         return view('widgets.recent_episodes', [
             'config' => $this->config,

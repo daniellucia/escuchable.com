@@ -69,7 +69,7 @@ class UpdateFeeds extends Command
             if (is_object($xml)) {
                 $show->updateByChannel($xml->channel);
 
-                $lastEpisode = Episodes::whereShow($show->id)->orderBy('published', 'desc')->first();
+                $lastEpisode = Episodes::whereShowId($show->id)->orderBy('published', 'desc')->first();
                 if (isset($lastEpisode->published)) {
                     $show->last_episode = $lastEpisode->getOriginal('last_episode');
                     $show->save();

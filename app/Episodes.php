@@ -3,14 +3,14 @@
 namespace App;
 
 use Appstract\Meta\Metable;
+use App\Presenters\DatePublishedAgo;
 use Carbon\Carbon;
+use Fomvasss\LaravelMetaTags\Traits\Metatagable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Fomvasss\LaravelMetaTags\Traits\Metatagable;
-use App\Presenters\DatePublishedAgo;
-use Sofa\Eloquence\Eloquence;
+use Watson\Rememberable\Rememberable;
 
 class Episodes extends Model
 {
@@ -18,8 +18,10 @@ class Episodes extends Model
     use Metable;
     use Metatagable;
     use DatePublishedAgo;
+    use Rememberable;
 
-    protected $fillable = ['title', 'slug', 'mp3', 'description', 'published', 'show', 'link', 'mp3', 'length'];
+    protected $fillable = ['title', 'slug', 'mp3', 'description', 'published', 'shows_id', 'link', 'mp3', 'length'];
+    public $rememberFor = 120; //2 horas
 
     /**
      * Get the options for generating the slug.
@@ -70,12 +72,12 @@ class Episodes extends Model
 
         $episode = self::where([
             'title' => Str::limit($item->title, 250),
-            'show' => $show->id,
+            'shows_id' => $show->id,
         ])->first();
 
         $episodeShow = [
             'title' => $item->title, 250,
-            'show' => $show->id,
+            'shows_id' => $show->id,
             'description' => $item->description,
             'link' => $item->link,
             'published' => Carbon::createFromTimeString($item->pubDate)->toDateTimeString(),
@@ -99,7 +101,10 @@ class Episodes extends Model
         }
     }
 
-    public function parentShow() {
-        return Shows::find($this->show);
+    public function show()
+    {
+        //return $this->belongsTo('App\Shows');
+        return Shows::find($this->shows_id);
     }
+
 }

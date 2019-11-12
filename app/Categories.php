@@ -8,13 +8,16 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 use Fomvasss\LaravelMetaTags\Traits\Metatagable;
+use Watson\Rememberable\Rememberable;
 
 class Categories extends Model
 {
     use HasSlug;
     use Metatagable;
+    use Rememberable;
 
     protected $fillable = ['name', 'slug', 'visible'];
+    public $rememberFor = 120; //2 horas
 
     /**
      * Get the options for generating the slug.

@@ -54,7 +54,7 @@ class FindDuplicates extends Command
         $bar->start();
 
         foreach ($results as $show) {
-            Episodes::whereShow($show->id)->delete();
+            Episodes::whereShowId($show->id)->delete();
             $show->delete();
 
             $salida[] = [
