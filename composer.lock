@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "078af00578d88db5634b1f326ebaf269",
+    "content-hash": "701852ed2ab37a167f9ecd88c10d0411",
     "packages": [
         {
             "name": "appstract/laravel-meta",
@@ -2816,6 +2816,56 @@
             "time": "2018-07-19T23:38:55+00:00"
         },
         {
+            "name": "spatie/image-optimizer",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/image-optimizer.git",
+                "reference": "e7527edc984c98ab61db092742856fb15cf71e68"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/e7527edc984c98ab61db092742856fb15cf71e68",
+                "reference": "e7527edc984c98ab61db092742856fb15cf71e68",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "php": "^7.2",
+                "psr/log": "^1.0",
+                "symfony/process": "^4.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8.0",
+                "symfony/var-dumper": "^4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ImageOptimizer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily optimize images using PHP",
+            "homepage": "https://github.com/spatie/image-optimizer",
+            "keywords": [
+                "image-optimizer",
+                "spatie"
+            ],
+            "time": "2019-08-28T14:33:06+00:00"
+        },
+        {
             "name": "spatie/laravel-cookie-consent",
             "version": "2.10.0",
             "source": {
@@ -2882,6 +2932,65 @@
                 "spatie"
             ],
             "time": "2019-10-02T09:36:22+00:00"
+        },
+        {
+            "name": "spatie/laravel-image-optimizer",
+            "version": "1.5.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-image-optimizer.git",
+                "reference": "76f5e2a86cfc3a1ffc2049846c04dca3b872a453"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-image-optimizer/zipball/76f5e2a86cfc3a1ffc2049846c04dca3b872a453",
+                "reference": "76f5e2a86cfc3a1ffc2049846c04dca3b872a453",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.7.0|~5.8.0|^6.0",
+                "php": "^7.2",
+                "spatie/image-optimizer": "^1.2.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.7.0|~3.8.0|^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\LaravelImageOptimizer\\ImageOptimizerServiceProvider"
+                    ],
+                    "aliases": {
+                        "ImageOptimizer": "Spatie\\LaravelImageOptimizer\\Facades\\ImageOptimizer"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelImageOptimizer\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optimize images in your Laravel app",
+            "homepage": "https://github.com/spatie/laravel-image-optimizer",
+            "keywords": [
+                "laravel-image-optimizer",
+                "spatie"
+            ],
+            "time": "2019-11-02T08:41:05+00:00"
         },
         {
             "name": "spatie/laravel-permission",
