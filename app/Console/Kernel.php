@@ -48,7 +48,7 @@ class Kernel extends ConsoleKernel
         /**
          * Actualización del listado del crawler
          */
-        $schedule->command('crawler:revise')->everyMinute();
+        //$schedule->command('crawler:revise')->everyMinute();
 
         /**
          * Actualización de los totales en las categorias
