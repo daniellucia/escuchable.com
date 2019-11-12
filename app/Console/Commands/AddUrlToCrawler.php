@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Crawler;
-use App\Resources\Utils;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class AddUrlToCrawler extends Command
 {
@@ -50,11 +50,14 @@ class AddUrlToCrawler extends Command
         if (!$crawler) {
 
             Crawler::add($url);
-            $this->info(sprintf('La url (%s) se ha añadido correctamente.', $url));
+
+            $this->info(sprintf('La url %s se ha añadido correctamente.', $url));
+            //Log::debug(sprintf('La url (%s) se ha añadido correctamente.', $url));
 
             return;
         } else {
             $this->error('La URL ya existe en la lista');
+            //Log::error('La URL ya existe en la lista');
 
             return;
         }

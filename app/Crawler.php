@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Jobs\ReviseUrlCrawler;
 
 class Crawler extends Model
 {
@@ -16,6 +17,12 @@ class Crawler extends Model
             'url' => $url,
             'domain' => $domain,
         ]);
+
+        /**
+         * Añadimos la tarea a la cola
+         */
+
+        ReviseUrlCrawler::dispatch($url);
     }
 
     public static function getDomain(string $url)
