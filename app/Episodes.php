@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
-use Watson\Rememberable\Rememberable;
 
 class Episodes extends Model
 {
@@ -18,10 +17,8 @@ class Episodes extends Model
     use Metable;
     use Metatagable;
     use DatePublishedAgo;
-    use Rememberable;
 
     protected $fillable = ['title', 'slug', 'mp3', 'description', 'published', 'shows_id', 'link', 'mp3', 'length'];
-    public $rememberFor = 120; //2 horas
 
     /**
      * Get the options for generating the slug.
