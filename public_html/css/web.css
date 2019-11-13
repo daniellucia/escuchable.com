@@ -240,14 +240,21 @@ ul li {
 }
 
 .ShowSummary .Form {
-    margin-top: 20px;
-    font-size: 12px;
+    margin-top: 15px;
+    font-size: 13px;
+    border-top: 1px solid #f3f3f3;
 }
 
 .ShowSummary .Form .Control {
     margin: 0 0 2px 0;
+    padding: 0 0 2px 0;
+    display: block;
 }
-
+.ShowSummary .Form .Control label {
+    display: block;
+    margin-bottom: 3px;
+    padding-left: 6px;
+}
 .ShowSummary .Form input[type=email],
 .ShowSummary .Form input[type=url],
 .ShowSummary .Form input[type=text],

@@ -4,7 +4,7 @@
     @include('partials.metatags')
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=20191113" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=201911132155" rel="stylesheet">
 </head>
 <body>
 
@@ -34,23 +34,24 @@
 
             </div>
         </div>
-
     </div>
-
-    @if (!empty($categories))
-    <datalist id="categories">
-        @foreach ($categories as $itemCategory)
-        <option>{{ ucfirst($itemCategory->name) }}</option>
-        @endforeach
-        </datalist>
-    @endif
 
     @include('cookieConsent::index')
 
     {!! Analytics::render() !!}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="{{ asset('js/script.js') }}"></script>
+    @can('show.edit')
+        @if (!empty($categories))
+            <datalist id="categories">
+                @foreach ($categories as $itemCategory)
+                <option>{{ ucfirst($itemCategory->name) }}</option>
+                @endforeach
+            </datalist>
+        @endif
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
+    @endcan
 
 </body>
 </html>

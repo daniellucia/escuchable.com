@@ -20,7 +20,8 @@ class SearchController extends Controller
 
         if ($term) {
             $shows = Shows::where('name', 'like', '%' . $term . '%')
-                ->orWhere('description', 'like', '%' . $term . '%')->paginate(16);
+                ->orWhere('description', 'like', '%' . $term . '%')->paginate(16)
+                ->appends(request()->except('page'));
         }
 
         return view('search', [

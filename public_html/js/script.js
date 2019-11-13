@@ -24,5 +24,9 @@ $(document).ready(function () {
         });
         return false;
     })
+
+    $('.Form.Ajax input').change(function() {
+        $(this).parents('.Form.Ajax').submit()
+    })
 })
 

@@ -17,8 +17,6 @@
 
     @can('show.edit')
         <form method="POST" action="{{ route('show.edit', $item) }}" class="Form Ajax">
-            @csrf
-
             <div class="Control">
                 <label for="feed">{{ __('Categoria') }}</label>
                 <input list="categories" name="category" class="Input" value="{{ $item->categories()->name }}" autocomplete=off>
@@ -29,11 +27,6 @@
                     <input type="checkbox" name="active" value="1" @if($item->active == 1) checked="checked" @endif/>
                     {{ __('Activo') }}
                 </label>
-            </div>
-            <div class="Control">
-                <button type="submit" class="Button">
-                    {{ __('Guardar') }}
-                </button>
             </div>
         </form>
     @endcan
