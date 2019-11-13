@@ -106,7 +106,7 @@ class Episodes extends Model
 
     public function scopeActuals($query)
     {
-        return $query->whereDate('published', '<=', Carbon::now()->toDateString());;
+        return $query->whereDate('published', '<=', Carbon::now()->toDateString());
     }
 
 }

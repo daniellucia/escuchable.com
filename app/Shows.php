@@ -21,11 +21,9 @@ class Shows extends Model
     use Metatagable;
     use DateLastEpisodeAgo;
 
-
     protected $vote = User::class;
     protected $fillable = ['name', 'slug', 'feed', 'image', 'description', 'categories_id',
         'author', 'revised', 'language', 'thumbnail', 'last_episode', 'active'];
-
 
     /**
      * Get the options for generating the slug.
@@ -116,7 +114,7 @@ class Shows extends Model
 
     }
 
-    public function category()
+    public function categories()
     {
         //return $this->belongsTo('App\Categories');
         return Categories::find($this->categories_id);
