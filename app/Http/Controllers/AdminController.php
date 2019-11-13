@@ -17,7 +17,7 @@ class AdminController extends Controller
     {
         if ($request->isMethod('post')) {
             if ($request->input('category')!= '') {
-                $category = Categories::firstOrCreate(['name' => $request->input('category')]);
+                $category = Categories::firstOrCreate(['name' => trim($request->input('category'))]);
                 $show->categories_id = $category->id;
             }
 
