@@ -254,7 +254,8 @@ ul li {
 .ShowSummary .Form input[type=password],
 .ShowSummary .Form input[type=search],
 .ShowSummary .Form select,
-.ShowSummary .Form textarea {
+.ShowSummary .Form textarea,
+.ShowSummary .Form .Input {
     font-size: 12px;
     padding: 5px;
 }
