@@ -235,8 +235,8 @@ ul li {
 }
 
 .ShowSummary h5 {
-    font-size: 15px;
-    margin-bottom: 5px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .ShowSummary .Form {
@@ -263,7 +263,7 @@ ul li {
 .ShowSummary .Form select,
 .ShowSummary .Form textarea,
 .ShowSummary .Form .Input {
-    font-size: 12px;
+    font-size: 14px;
     padding: 5px;
 }
 
@@ -280,7 +280,7 @@ ul li {
 }
 
 .ShowSummary .Description {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .Metas {
@@ -673,7 +673,6 @@ button.Disabled {
 
 .ErrorInline {
     color: #b42e27;
-    font-size: 12px;
     margin: 5px 0;
 }
 

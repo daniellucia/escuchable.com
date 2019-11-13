@@ -4,7 +4,7 @@
     @include('partials.metatags')
     <link href="{{ asset('css/fonts/apercu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fonts/source-sans.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/web.css') }}?v=201911132155" rel="stylesheet">
+    <link href="{{ asset('css/web.css') }}?v=201911132206" rel="stylesheet">
 </head>
 <body>
 
@@ -50,7 +50,7 @@
         @endif
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}?v=201911132206"></script>
     @endcan
 
 </body>
