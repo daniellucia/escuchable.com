@@ -8,12 +8,6 @@
     <form method="POST" action="{{ route('show.store') }}" class="Form">
         @csrf
 
-        @if(session()->has('message'))
-            <div class="Alert Success">
-                {{ session()->get('message') }}
-            </div>
-        @endif
-
         <div class="Control">
             <label for="feed">{{ __('Url feed') }}</label>
             <input id="feed" type="url" class=" @if($errors->any()) IsInvalid @endif" name="feed" value="{{ old('feed') }}" required autocomplete="email" autofocus>

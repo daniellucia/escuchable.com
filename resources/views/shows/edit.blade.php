@@ -8,12 +8,6 @@
     <form method="POST" action="{{ route('show.edit', $show) }}" class="Form">
         @csrf
 
-        @if(session()->has('message'))
-            <div class="Alert Success">
-                {{ session()->get('message') }}
-            </div>
-        @endif
-
         <div class="Control">
             <label for="feed">{{ __('Categoria') }}</label>
             <select name="category">

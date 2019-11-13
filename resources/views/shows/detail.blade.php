@@ -21,7 +21,7 @@
 
             <div class="Control">
                 <label for="feed">{{ __('Categoria') }}</label>
-                <input list="categories" name="category" value="{{ $item->category()->name }}" autocomplete=off>
+                <input list="categories" name="category" class="Input" value="{{ $item->category()->name }}" autocomplete=off>
             </div>
 
             <div class="Control">
