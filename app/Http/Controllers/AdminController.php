@@ -16,7 +16,11 @@ class AdminController extends Controller
     public function show(Shows $show, Request $request)
     {
         if ($request->isMethod('post')) {
-            $show->categories_id = $request->input('category');
+            if ($request->input('category')!= '') {
+                $category = Categories::firstOrCreate(['name' => $request->input('category')]);
+                $show->categories_id = $category->id;
+            }
+
             $show->active = intval($request->input('active'));
             $show->save();
 

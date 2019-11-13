@@ -118,7 +118,8 @@ class Shows extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Categories');
+        //return $this->belongsTo('App\Categories');
+        return Categories::find($this->categories_id);
     }
 
     public function episodes()

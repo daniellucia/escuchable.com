@@ -36,6 +36,14 @@
 
     </div>
 
+    @if (!empty($categories))
+    <datalist id="categories">
+        @foreach ($categories as $itemCategory)
+        <option>{{ ucfirst($itemCategory->name) }}</option>
+        @endforeach
+        </datalist>
+    @endif
+
     @include('cookieConsent::index')
 
     {!! Analytics::render() !!}

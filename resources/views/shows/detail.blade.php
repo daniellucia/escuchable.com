@@ -19,16 +19,10 @@
         <form method="POST" action="{{ route('show.edit', $item) }}" class="Form Ajax">
             @csrf
 
-            @if (!empty($categories))
             <div class="Control">
                 <label for="feed">{{ __('Categoria') }}</label>
-                <select name="category">
-                    @foreach ($categories as $itemCategory)
-                    <option value="{{ $itemCategory->id }}" @if($itemCategory->id == $item->categories_id) selected @endif>{{ ucfirst($itemCategory->name) }}</option>
-                    @endforeach
-                </select>
+                <input list="categories" name="category" value="{{ $item->category()->name }}" autocomplete=off>
             </div>
-            @endif
 
             <div class="Control">
                 <label>
