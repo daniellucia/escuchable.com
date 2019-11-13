@@ -22,7 +22,7 @@ class Crawler extends Model
          * Añadimos la tarea a la cola
          */
 
-        ReviseUrlCrawler::dispatch($url);
+        //ReviseUrlCrawler::dispatch($url);
     }
 
     public static function getDomain(string $url)
