@@ -20,7 +20,7 @@
                 <li id="{{ $item->slug }}" class=" @if(isset($category) && $item == $category) Selected @endif">
                     <a href="{{ route('category.view', $item) }}">
                         <span>
-                            <em>{{ $item->shows()->count()}} shows</em>
+                            <em>{{ $item->shows_count }} shows</em>
                             {{ ucfirst($item->name) }}
                         </span>
                     </a>
