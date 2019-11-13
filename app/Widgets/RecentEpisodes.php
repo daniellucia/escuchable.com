@@ -4,6 +4,7 @@ namespace App\Widgets;
 
 use App\Episodes;
 use Arrilot\Widgets\AbstractWidget;
+use Carbon\Carbon;
 
 class RecentEpisodes extends AbstractWidget
 {
@@ -24,9 +25,9 @@ class RecentEpisodes extends AbstractWidget
     {
         $show = intval($this->config['show']);
         if ($show > 0) {
-            $episodesWidget = Episodes::whereShowsId($show)->orderBy('published', 'desc')->limit(15)->get();
+            $episodesWidget = Episodes::actuals()->whereShowsId($show)->orderBy('published', 'desc')->limit(15)->get();
         } else {
-            $episodesWidget = Episodes::orderBy('published', 'desc')->limit(15)->get();
+            $episodesWidget = Episodes::actuals()->orderBy('published', 'desc')->limit(15)->get();
         }
 
         return view('widgets.recent_episodes', [

@@ -104,4 +104,9 @@ class Episodes extends Model
         return Shows::find($this->shows_id);
     }
 
+    public function scopeActuals($query)
+    {
+        return $query->whereDate('published', '<=', Carbon::now()->toDateString());;
+    }
+
 }
