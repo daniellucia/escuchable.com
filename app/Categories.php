@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-use Watson\Rememberable\Rememberable;
 
 class Categories extends Model
 {
