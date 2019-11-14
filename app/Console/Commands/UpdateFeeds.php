@@ -57,7 +57,7 @@ class UpdateFeeds extends Command
 
         foreach ($shows as $show) {
             $show->touch();
-            $show->category()->touch();
+            $show->categories()->touch();
 
             $xml = null;
             try {
